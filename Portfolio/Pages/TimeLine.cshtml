@@ -9,7 +9,47 @@
 </header>
 
 <main>
+    <h1>
+        My Life in Weeks
+    </h1>
+    <div class="div-container">
+        <div>
+            <div class="grid-container">
+                @for (int i = 0; i < 4693; i++)
+                {
+                    @if (i < Model.WeeksLived)
+                    {
+                        <div class="grid-item" id="week-@i"></div>
+                    } 
+                    else
+                    {
+                        <div class="grid-item future-week" id="week-@i"></div>  
+                    }
+                }
+            </div>
+        </div>
+        <div>
+            <div class="tabs">
+                <h2 class="active">Education</h2>
+                <h2>Sections</h2>
+                <h2>Dates</h2>
+            </div>
+            <div class="tab-content">
+                <div class="active">
+                    <p>Elementary School</p>
+                    <p>Junior High School</p>
+                    <p>High School</p>
+                    <p>Dalhousie University</p>
+                </div>
+                <div>
 
+                </div>
+                <div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
 
 <footer>

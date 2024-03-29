@@ -1,1 +1,111 @@
-﻿
+﻿/* Remove Defaults */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+}
+
+/* Font Stuff */
+* {
+    font-family: "Bitter", serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}
+
+body {
+    background-color: black;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 5px;
+    padding-top: 10px
+}
+
+.grid-container {
+    padding: 20px 20px 20px 50px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    gap: 5px;                               
+}
+
+.grid-item {
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 100px;
+}
+
+.future-week {
+    opacity: 0.4;
+}
+
+.elem {
+
+}
+
+.junior {
+
+}
+
+.high {
+
+}
+
+.dal {
+
+}
+
+.div-container {
+    display: flex;
+}
+
+.div-container div {
+    flex: 1;
+}
+
+.tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.tabs h2 {
+    text-align: center;
+    padding: 15px 0;
+    cursor: pointer;
+    font-weight: 400;
+}
+
+.tab-content {
+    padding: 10px;
+}
+
+.tab-content p {
+    padding: 5px 0px;
+    cursor: default;
+    transition: font-size 0.3s ease, font-weight 0.3s ease;
+}
+
+.tab-content p:hover {
+    font-size: larger;
+    font-weight: 400;
+    transition: font-size 0.3s ease, font-weight 0.3s ease;
+}
+
+.tab-content div {
+    display: none;
+}
+
+/* Selected Tab Label */
+.tabs .active {
+    font-weight: 600;
+    border-bottom: 2px solid white;
+}
+
+/* Selected Tab */
+.tab-content .active {
+    display: block;
+}
