@@ -15,37 +15,64 @@
     <div class="div-container">
         <div>
             <div class="grid-container">
-                @for (int i = 0; i < 4693; i++)
+                @for (int i = 0; i < Model.Weeks; i++)
                 {
-                    @if (i < Model.WeeksLived)
-                    {
-                        <div class="grid-item" id="week-@i"></div>
-                    } 
-                    else
-                    {
-                        <div class="grid-item future-week" id="week-@i"></div>  
-                    }
+                    <div class="@Model.ClassList[i]" id="@i"></div>
                 }
             </div>
         </div>
         <div>
             <div class="tabs">
                 <h2 class="active">Education</h2>
-                <h2>Sections</h2>
+                <h2>Career</h2>
                 <h2>Dates</h2>
             </div>
             <div class="tab-content">
                 <div class="active">
-                    <p>Elementary School</p>
-                    <p>Junior High School</p>
-                    <p>High School</p>
-                    <p>Dalhousie University</p>
+                    <p>
+                        Elementary School
+                        <span>Crichton Park Elementary</span>
+                    </p>
+                    <p>
+                        Junior High School
+                        <span>Ellenvale Junior High</span>    
+                    </p>
+                    <p>
+                        High School
+                        <span>Dartmouth High</span>
+                    </p>
+                    <p>
+                        Post Secondary
+                        <span>Dalhousie University</span>
+                    </p>
                 </div>
                 <div>
-
+                    <p>
+                        Jake's Variety
+                        <span>Weeks X-Y</span>
+                    </p>
+                    <p>
+                        Med IT
+                        <span>Weeks Z-W</span>
+                    </p>
                 </div>
                 <div>
-
+                    <p>
+                        Birth
+                        <span>Week 0</span>    
+                    </p>
+                    <p>
+                        Learned to Code
+                        <span>Week X</span>    
+                    </p>
+                    <p>
+                        High School Graduation
+                        <span>Week Y</span>
+                    </p>
+                    <p>
+                        University Graduation
+                        <span>Week W</span>
+                    </p>
                 </div>
             </div>
         </div>

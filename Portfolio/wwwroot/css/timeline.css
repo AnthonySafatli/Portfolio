@@ -28,13 +28,13 @@ h1 {
     padding: 20px 20px 20px 50px;
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(20, 1fr);
-    gap: 5px;                               
+    grid-template-columns: repeat(35, 1fr);
+    gap: 3px;                               
 }
 
 .grid-item {
-    width: 10px;
-    height: 10px;
+    width: 5px;
+    height: 5px;
     background-color: white;
     border-radius: 100px;
 }
@@ -43,24 +43,9 @@ h1 {
     opacity: 0.4;
 }
 
-.elem {
-
-}
-
-.junior {
-
-}
-
-.high {
-
-}
-
-.dal {
-
-}
-
 .div-container {
     display: flex;
+    padding: 10px;
 }
 
 .div-container div {
@@ -89,10 +74,23 @@ h1 {
     transition: font-size 0.3s ease, font-weight 0.3s ease;
 }
 
+.tab-content p span {
+    opacity: 0;
+    margin-left: 5px;
+    font-size: smaller;
+    transition: opacity 0.5s ease;
+}
+
 .tab-content p:hover {
     font-size: larger;
     font-weight: 400;
     transition: font-size 0.3s ease, font-weight 0.3s ease;
+}
+
+
+.tab-content p:hover span {
+    opacity: 0.7;
+    transition: opacity 1s ease;
 }
 
 .tab-content div {
