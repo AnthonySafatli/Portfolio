@@ -20,8 +20,21 @@ body {
 
 h1 {
     text-align: center;
-    margin-top: 5px;
+    margin-top: 30px;
     padding-top: 10px
+}
+
+h1 span {
+    font-weight: 450;
+}
+
+.div-container {
+    display: flex;
+    padding: 10px;
+}
+
+.div-container div {
+    flex: 1;
 }
 
 .grid-container {
@@ -36,22 +49,27 @@ h1 {
     width: 5px;
     height: 5px;
     background-color: white;
+    opacity: 0.5;
     border-radius: 100px;
+    transition: 
+        box-shadow ease 0.2s, 
+        opacity ease 0.2s;
+}
+
+.selected-week {
+    background-color: white;
+    opacity: 1;
+    box-shadow: 0 0 20px 0.25px rgba(255, 255, 255, 0.8);
+    transition: 
+        box-shadow ease 0.5s,
+        opacity ease 0.5s;
 }
 
 .future-week {
-    opacity: 0.4;
+    opacity: 0.25;
 }
 
-.div-container {
-    display: flex;
-    padding: 10px;
-}
-
-.div-container div {
-    flex: 1;
-}
-
+/* Tabs */
 .tabs {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -62,14 +80,23 @@ h1 {
     padding: 15px 0;
     cursor: pointer;
     font-weight: 400;
+    transition: font-weight 0.3s ease;
 }
 
+/* Selected Tab */
+.tabs .active {
+    font-weight: 600;
+    border-bottom: 2px solid white;
+    transition: font-weight 0.3s ease; 
+}
+
+/* Tab Content */
 .tab-content {
-    padding: 10px;
+    padding: 20px 10px;
 }
 
 .tab-content p {
-    padding: 5px 0px;
+    padding: 10px 0px;
     cursor: default;
     transition: font-size 0.3s ease, font-weight 0.3s ease;
 }
@@ -97,13 +124,7 @@ h1 {
     display: none;
 }
 
-/* Selected Tab Label */
-.tabs .active {
-    font-weight: 600;
-    border-bottom: 2px solid white;
-}
-
-/* Selected Tab */
+/* Selected Tab Content */
 .tab-content .active {
     display: block;
 }

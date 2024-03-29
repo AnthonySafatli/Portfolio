@@ -2,40 +2,86 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Reflection;
 
-namespace Portfolio.Pages
+namespace Portfolio.Pages;
+
+public class TimeLineModel : PageModel
 {
-    public class TimeLineModel : PageModel
+    public int WeeksLived { get; set; }
+    public int Weeks { get; set; } = 4693;
+    public string[]? ClassList { get; set; }
+
+    public void OnGet()
     {
-        public int WeeksLived { get; set; }
-        public int Weeks { get; set; } = 4693;
-        public string[]? ClassList { get; set; }
+        ClassList = new string[Weeks];
 
-        public void OnGet()
+        DateTime birthday = new DateTime(2004, 10, 14);
+        DateTime currentDate = DateTime.Today;
+
+        TimeSpan timeSpan = currentDate - birthday;
+        WeeksLived = (int)(timeSpan.TotalDays / 7);
+
+        Range[] ranges = {
+            // Education
+            new Range(306, 611, "elem"),
+            new Range(620, 767, "junior"),
+            new Range(776, 924, "high"),
+            new Range(933, 1132, "dal"),
+
+            // Career
+            new Range(711, 933, "jakes"),
+            new Range(937, WeeksLived, "medit"),
+
+            // Days
+            new Range(0, "birth"),
+            new Range(804, "code"),
+            new Range(924, "hgrad"),
+            new Range(1132, "ugrad"),
+        };
+
+        for (int i = 0; i < Weeks; i++)
         {
-            ClassList = new string[Weeks];
-
-            DateTime birthday = new DateTime(2004, 10, 14);
-            DateTime currentDate = DateTime.Today;
-
-            TimeSpan timeSpan = currentDate - birthday;
-            WeeksLived = (int)(timeSpan.TotalDays / 7);
-
-            for (int i = 0; i < Weeks; i++)
+            ClassList[i] = "grid-item";
+            if (i > WeeksLived)
             {
-                ClassList[i] = "grid-item";
-                if (i > WeeksLived)
-                {
-                    ClassList[i] += " future-week";
-                }
-                //if (i > 10 && i < 50)
-                //{
-                //    ClassList[i] += " elem";
-                //}
-                // more if's
+                ClassList[i] += " future-week";
+                continue;
             }
 
-            // ClassList[10] += " birthday";
-            // TODO: Add javascript for this
+            foreach (Range range in ranges)
+            {
+                if (range.inRange(i)) 
+                {
+                    ClassList[i] += " " + range;
+                }
+            }
         }
+    }
+}
+
+struct Range
+{
+    private int start;
+    private int end;
+    private string cssClass;
+
+    public Range(int start, int end, string cssClass)
+    {
+        this.start = start;
+        this.end = end;
+        this.cssClass = cssClass;
+    }
+
+    public Range(int num, string cssClass)
+    {
+        this.start = num;
+        this.end = num;
+        this.cssClass = cssClass;
+    }
+
+    public bool inRange(int i) => start <= i && i <= end;
+
+    public override string ToString()
+    {
+        return cssClass;
     }
 }
