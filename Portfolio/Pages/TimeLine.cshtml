@@ -10,70 +10,55 @@
 
 <main>
     <h1>
-        My <span>Life</span> in Weeks
+        My <span id="life">Life</span> in <span id="weeks">Weeks</span>
     </h1>
-    <div class="div-container">
-        <div>
-            <div class="grid-container">
+    <div class="main-divider">
+        <div class="weeks-container">
+            <div></div>
+            <div class="weeks">
                 @for (int i = 0; i < Model.Weeks; i++)
                 {
-                    <div class="@Model.ClassList[i]" id="@i"></div>
+                    <div class="@Model.ClassList[i]"></div>
                 }
             </div>
+            <div></div>
         </div>
-        <div>
-            <div class="tabs">
-                <h2 class="active">Education</h2>
-                <h2>Career</h2>
-                <h2>Dates</h2>
+        <div class="week-selectors">
+            <div>
+                <p>
+                    Birth
+                    <span>Week 0</span>
+                </p>
             </div>
-            <div class="tab-content">
-                <div class="active">
-                    <p>
-                        Elementary School
-                        <span>Crichton Park Elementary</span>
-                    </p>
-                    <p>
-                        Junior High School
-                        <span>Ellenvale Junior High</span>    
-                    </p>
-                    <p>
-                        High School
-                        <span>Dartmouth High</span>
-                    </p>
-                    <p>
-                        Post Secondary
-                        <span>Dalhousie University</span>
-                    </p>
-                </div>
-                <div>
-                    <p>
-                        Jake's Variety
-                        <span>Weeks 711 - 933</span>
-                    </p>
-                    <p>
-                        Med IT
-                        <span>Weeks 937 - Present</span>
-                    </p>
-                </div>
-                <div>
-                    <p>
-                        Birth
-                        <span>Week 0</span>    
-                    </p>
-                    <p>
-                        Learned to Code
-                        <span>Week 804</span>    
-                    </p>
-                    <p>
-                        High School Graduation
-                        <span>Week 924</span>
-                    </p>
-                    <p>
-                        University Graduation
-                        <span>Week 1132</span>
-                    </p>
-                </div>
+            <div>
+                <h2>Education</h2>
+                <p>
+                    Crichton Park Elementary
+                    <span>Week 306 - 611</span>
+                </p>
+                <p>
+                    Ellenvale Junior High
+                    <span>Week 620 - 767</span>
+                </p>
+                <p>
+                    Dartmouth High
+                    <span>Week 776 - 924</span>
+                </p>
+                <p>
+                    Dalhousie University
+                    <span>Week 933 - 1132</span>
+                </p>
+            </div>
+            <div>
+                <h2>Career</h2>
+                <p>
+                    Jake's Variety
+                    <span>Weeks 711 - 933</span>
+                </p>
+                <p>
+                    Med IT
+                    <span>Weeks 937 - Present</span>
+                </p>
             </div>
         </div>
     </div>

@@ -1,0 +1,132 @@
+$secondary-color: #a6f3ff;
+
+/* Remove Defaults */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+}
+
+/* Font Stuff */
+* {
+    font-family: "Bitter", serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}
+
+body {
+    background-color: black;
+}
+
+h1 {
+    font-size: 3.5em;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    padding-top: 10px;
+}
+
+h1 #life {
+    font-weight: 450;
+    color: $secondary-color;
+}
+
+h1 #weeks {
+    font-weight: 350;
+}
+
+.main-divider {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    padding: 10px;
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        grid-template-columns: auto; 
+    }
+}
+
+.main-divider > div {
+    padding: 20px;
+    flex: 1;
+}
+
+.weeks-container {
+    display: flex;
+    justify-content: center;
+}
+
+$columns: 50;
+$gap: 4;
+.weeks {
+    height: 100%;
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat($columns, 1fr);
+    gap: #{$gap}px;
+}
+
+$size: 5;
+.week {
+    width: #{$size}px;
+    height: #{$size}px;
+    background-color: white;
+    opacity: 0.5;
+    border-radius: 100px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.weeks {
+    width: #{$columns * $size + ($gap * ($columns - 1))}px;
+}
+
+.selected-week {
+    background-color: $secondary-color;
+    opacity: 1;
+    box-shadow: 0 0 20px 0.25px $secondary-color;
+}
+
+.future-week {
+    opacity: 0.25;
+}
+
+/* Week Selectors */
+.week-selectors div {
+    padding-bottom: 10px;
+}
+
+.week-selectors h2 {
+    padding-bottom: 10px;
+    padding-top: 5px;
+    font-weight: 350;
+    color: $secondary-color;
+}
+
+.week-selectors p {
+    padding-bottom: 10px;
+    cursor: default;
+    transition: font-size 0.3s ease, font-weight 0.3s ease;
+}
+
+.week-selectors p span {
+    opacity: 0;
+    margin-left: 5px;
+    font-size: smaller;
+    transition: opacity 0.5s ease;
+}
+
+.week-selectors p:hover {
+    font-size: larger;
+    font-weight: 400;
+    transition: font-size 0.3s ease, font-weight 0.3s ease;
+}
+
+
+.week-selectors p:hover span {
+    opacity: 0.7;
+    transition: opacity 1s ease;
+}

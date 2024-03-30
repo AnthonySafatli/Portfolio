@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        background: './wwwroot/js/background.js',
+        timeline: './wwwroot/js/timeline.js',
         site: './wwwroot/js/site.js'
     },
     output: {

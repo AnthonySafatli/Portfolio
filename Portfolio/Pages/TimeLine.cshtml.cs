@@ -21,6 +21,8 @@ public class TimeLineModel : PageModel
         WeeksLived = (int)(timeSpan.TotalDays / 7);
 
         Range[] ranges = {
+            new Range(0, "birth"),
+
             // Education
             new Range(306, 611, "elem"),
             new Range(620, 767, "junior"),
@@ -30,21 +32,14 @@ public class TimeLineModel : PageModel
             // Career
             new Range(711, 933, "jakes"),
             new Range(937, WeeksLived, "medit"),
-
-            // Days
-            new Range(0, "birth"),
-            new Range(804, "code"),
-            new Range(924, "hgrad"),
-            new Range(1132, "ugrad"),
         };
 
         for (int i = 0; i < Weeks; i++)
         {
-            ClassList[i] = "grid-item";
+            ClassList[i] = "week";
             if (i > WeeksLived)
             {
                 ClassList[i] += " future-week";
-                continue;
             }
 
             foreach (Range range in ranges)
