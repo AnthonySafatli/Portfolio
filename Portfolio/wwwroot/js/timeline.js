@@ -2,8 +2,6 @@
 let dateSelectors = document.querySelectorAll(".week-selectors p");
 
 let weekGroups = [
-    document.querySelectorAll(".birth"),
-
     // Education
     document.querySelectorAll(".elem"),
     document.querySelectorAll(".junior"),
@@ -13,6 +11,36 @@ let weekGroups = [
     // Career
     document.querySelectorAll(".jakes"),
     document.querySelectorAll(".medit"),
+
+    // Hobbies
+    null,
+    null,
+    null,
+    null,
+    /*
+    Coding
+    Motorcycling
+    Biking
+    Gym
+    */
+
+    // Social Groups
+    null,
+    null,
+    null,
+    null,
+    /*
+    SOYO
+    Tech Club
+    YAM
+    Linux Society
+    */
+
+    // Other
+    null,
+    /*
+    Birthdays
+    */
 ];
 
 dateSelectors.forEach((selector, index) => {

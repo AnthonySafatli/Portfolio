@@ -22,17 +22,19 @@ h1 {
   font-size: 3.5em;
   text-align: center;
   margin-top: 30px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   padding-top: 10px;
 }
 
 h1 #life {
   font-weight: 450;
   color: #a6f3ff;
+  text-shadow: 0px 0px 50px #a6f3ff;
 }
 
 h1 #weeks {
   font-weight: 350;
+  text-shadow: 0px 0px 60px white;
 }
 
 .main-divider {
@@ -72,6 +74,7 @@ h1 #weeks {
   border-radius: 100px;
   padding: 0px;
   margin: 0px;
+  transition: background-color 0.2s ease, opacity 0.4s ease, box-shadow 0.2s ease;
 }
 
 .weeks {
@@ -82,6 +85,7 @@ h1 #weeks {
   background-color: #a6f3ff;
   opacity: 1;
   box-shadow: 0 0 20px 0.25px #a6f3ff;
+  transition: background-color 0.5s ease, opacity 1.5s ease, box-shadow 0.3s ease;
 }
 
 .future-week {
@@ -98,6 +102,7 @@ h1 #weeks {
   padding-top: 5px;
   font-weight: 350;
   color: #a6f3ff;
+  text-shadow: 0px 0px 30px #a6f3ff;
 }
 
 .week-selectors p {
@@ -116,7 +121,8 @@ h1 #weeks {
 .week-selectors p:hover {
   font-size: larger;
   font-weight: 400;
-  transition: font-size 0.3s ease, font-weight 0.3s ease;
+  text-shadow: 0px 0px 15px white;
+  transition: font-size 0.3s ease, font-weight 0.3s ease, text-shadow 0.3s ease;
 }
 
 .week-selectors p:hover span {

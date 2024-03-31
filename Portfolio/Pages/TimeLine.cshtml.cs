@@ -21,8 +21,6 @@ public class TimeLineModel : PageModel
         WeeksLived = (int)(timeSpan.TotalDays / 7);
 
         Range[] ranges = {
-            new Range(0, "birth"),
-
             // Education
             new Range(306, 611, "elem"),
             new Range(620, 767, "junior"),
