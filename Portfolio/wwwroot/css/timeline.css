@@ -62,7 +62,7 @@ h1 #weeks {
   height: 100%;
   display: grid;
   place-items: center;
-  grid-template-columns: repeat(50, 1fr);
+  grid-template-columns: repeat(52, 1fr);
   gap: 4px;
 }
 
@@ -78,7 +78,7 @@ h1 #weeks {
 }
 
 .weeks {
-  width: 446px;
+  width: 464px;
 }
 
 .selected-week {

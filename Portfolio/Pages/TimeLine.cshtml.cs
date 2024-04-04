@@ -30,6 +30,9 @@ public class TimeLineModel : PageModel
             // Career
             new Range(711, 933, "jakes"),
             new Range(937, WeeksLived, "medit"),
+
+            // Hobbies
+            //new Range("coding"), // TODO: Finish weeks
         };
 
         for (int i = 0; i < Weeks; i++)
