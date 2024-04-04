@@ -1,0 +1,11 @@
+﻿namespace Portfolio.Models;
+
+public class Project
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public DateTime DateStarted { get; set; }
+    public DateTime DateEnded { get; set; }
+    public string File {  get; set; }
+    public string Thumbnail { get; set; }
+}
