@@ -1,4 +1,13 @@
 ﻿@page
+@using Portfolio.Models
 @model Portfolio.Pages.ProjectsModel
 @{
+}
+
+<h1>Projects</h1>
+
+@foreach (Project project in Model.Projects)
+{
+    <h2>@project.Name</h2>
+    <img src="@project.Thumbnail">
 }
