@@ -9,6 +9,6 @@ public class ProjectsContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlite(@"Data source=Bakery.db");
+        optionsBuilder.UseSqlite(@"Data source=Projects.db");
     }
 }
