@@ -1,3 +1,4 @@
+from ast import List
 import md_to_enums as enum
 import re
 import json
@@ -43,7 +44,6 @@ def get_dict(data):
             last_item = element[TYPE]
             continue
         
-        # Needs fixing
         if element[TYPE] == enum.LIST:
             is_ordered = re.search(r"^\t*-\s.+", element[TEXT])
             if is_ordered:
@@ -55,26 +55,8 @@ def get_dict(data):
             list_item = element[TEXT].strip()[space_index+1:]
                 
             if last_item == enum.LIST:
-                degree = count_tabs(element[TEXT])
-                
-                list_ = dictionary["elements"][-1]
-                lists = [ dictionary["elements"], list_ ]
-                count = 0
-                while count < degree:
-                    if isinstance(list_["items"][-1], dict):
-                        list_ = list_["items"][-1]
-                        lists.append(list_)
-                        count += 1
-                    else: 
-                        break
-                    
-                if list_["ordered"] == is_ordered:
-                    list_["items"].append(list_item)
-                    continue
-                else:
-                    items = [ list_item ]
-                    md_list = { "name": "list", "ordered": is_ordered, "items": items }
-                    lists[-2].append(md_list)
+                if dictionary["elements"][-1]["ordered"] == is_ordered:
+                    dictionary["elements"][-1]["items"].append(list_item)
                     continue
 
             items = [ list_item ]

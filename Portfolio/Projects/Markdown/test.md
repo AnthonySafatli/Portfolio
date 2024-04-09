@@ -21,10 +21,11 @@ should be concated
 
 - lets test nesting
 - wow its cool
-    - what if i do this?
-    - thats cool
-        1. what about this?
-        1. awesome
+- what if i do this?
+- thats cool
+
+1. what about this?
+1. awesome
 
 lets test out a media element
 

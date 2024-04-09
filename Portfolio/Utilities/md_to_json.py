@@ -5,10 +5,6 @@ import json
 file_name = input("File Name: ")
 print("")
 
-def read_file(filename):
-    
-    return lines_list
-
 print("Reading in file")
 md_file = "../Projects/Markdown/" + file_name + ".md"
 lines_list = []
