@@ -1,13 +1,26 @@
 import md_to_enums as enum
+import re
 import json
 
 TEXT = 0
 TYPE = 1
 
+END_CODE = enum.EMPTY + 1
+
+def count_tabs(string):
+    return len(string) - len(string.lstrip('\t'))
+
 def get_dict(data):
     dictionary = { "elements" : [] }
+    last_item = None
 
     for element in data:
+        # Code type overrides everything
+        if element[TYPE] == enum.CODE and last_item == enum.CODE:
+            element[TYPE] = END_CODE
+        elif last_item == enum.CODE:
+            element[TYPE] = enum.CODE
+
         # Convert headers to dict
         if element[TYPE] <= enum.HEADER_6:
             degree = element[TYPE] + 1
@@ -16,6 +29,7 @@ def get_dict(data):
             
             header = { "name": "header", "degree": degree, "text": text.strip() }
             dictionary["elements"].append(header)
+            last_item = element[TYPE]
             continue
 
         if element[TYPE] == enum.QUOTE:
@@ -23,44 +37,101 @@ def get_dict(data):
             
             quote = { "name": "quote", "text": text.strip() }
             dictionary["elements"].append(quote)
+            last_item = element[TYPE]
             continue
         
         if element[TYPE] == enum.ORDERED_LIST or element[TYPE] == enum.LIST:
-            continue # remember to manage nested lists and tabs
+            is_ordered = re.search(r"^\t*-\s.+")
+            if is_ordered:
+                is_ordered = True
+            else:
+                is_ordered = False
+
+            space_index = element[TEXT].strip().find(' ')
+            list_item = element[TEXT].strip()[space_index+1:]
+                
+            if last_item == enum.LIST:
+                degree = count_tabs(element[TEXT])
+                
+                list_ = dictionary["elements"][-1]
+                lists = [ dictionary["elements"], list_ ]
+                count = 0
+                while count < degree:
+                    if isinstance(list_["items"][-1], dict):
+                        list_ = list_["items"][-1]
+                        lists.append(list_)
+                        count += 1
+                    else: 
+                        break
+                    
+                if list_["ordered"] == is_ordered:
+                    list_["items"].append(list_item)
+                    continue
+                else:
+                    items = [ list_item ]
+                    md_list = { "name": "list", "ordered": is_ordered, "items": items }
+                    lists[-2].append(md_list)
+                    continue
+
+            items = [ list_item ]
+            md_list = { "name": "list", "ordered": is_ordered, "items": items }
+            dictionary["elements"].append(md_list)
+            last_item = element[TYPE]
+            continue 
 
         if element[TYPE] == enum.MEDIA:
             split_index = element[TEXT].rfind(')[')
-            file = element[TEXT][2:split_index]
-            alt = element[TEXT][(split_index + 2):len(element[TEXT])]
+            alt = element[TEXT][2:split_index]
+            file = element[TEXT][(split_index + 2):len(element[TEXT])]
             
-            media = { "name": "media", "file": file, "alt": alt }
+            media = { "name": "media", "alt": alt, "file": file }
             dictionary["elements"].append(media)
+            last_item = element[TYPE]
             continue
 
         if element[TYPE] == enum.LINK:
-            link = None
-            alt = None
+            split_index = element[TEXT].rfind(')[')
+            alt = element[TEXT][1:split_index]
+            file = element[TEXT][(split_index + 2):len(element[TEXT])]
             
-            link = { "name": "link", "link": link, "alt": alt }
+            link = { "name": "link", "alt": alt, "link": link }
             dictionary["elements"].append(link)
+            last_item = element[TYPE]
             continue
 
         if element[TYPE] == enum.HORIZONTAL:
             horizontal = { "name": "horizontal" }
             dictionary["elements"].append(horizontal)
+            last_item = element[TYPE]
+            continue
+        
+        if element[TYPE] == enum.CODE:
+            if last_item == enum.CODE:
+                dictionary["elements"][-1]["text"].append(element[TEXT])
+                continue
+            
+            code = { "name": "code", "text": [] }
+            dictionary["elements"].append(code)
+
+        if element[TYPE] == END_CODE:
+            last_item = END_CODE
             continue
 
         if element[TYPE] == enum.PARAGRAPH:
             text = element[TEXT].strip()
 
+            if last_item == enum.PARAGRAPH:
+                dictionary["elements"][-1]["text"] += " " + text
+                continue
+
             paragraph = { "name": "paragraph", "text": text }
             dictionary["elements"].append(paragraph)
+            last_item = element[TYPE]
             continue
 
         if element[TYPE] == enum.EMPTY:
+            last_item = element[TYPE]
             continue
-
-            
         
     return dictionary
 

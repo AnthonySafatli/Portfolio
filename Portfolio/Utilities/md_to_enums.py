@@ -19,13 +19,15 @@ LINK = 10
 
 HORIZONTAL = 11
 
-PARAGRAPH = 12
-EMPTY = 13
+CODE = 12
+
+PARAGRAPH = 13
+EMPTY = 14
 
 # Convert md to enum
 def get_enum(line):
     # Check if line is header
-    header = re.search(r"^#{1,6}\s.+", line)
+    header = re.search(r"^#{1,6}\s.+", line) 
     if header:
         return len(line.split()[0]) - 1
     
@@ -48,7 +50,7 @@ def get_enum(line):
         return MEDIA
     
     # Check if it is link
-    link = re.search(r"^\[.+\]\(.+\)", line)
+    link = re.search(r"^\[.+\]\(.+\)$", line)
     if link:
         return LINK
     
@@ -56,7 +58,12 @@ def get_enum(line):
     horizontal = re.search(r"^((---)|(___)|(\*\*\*))$", line)
     if horizontal:
         return HORIZONTAL
-    
+
+    # Check if line is code block
+    code = re.search(r"^```", line)
+    if code:
+        return CODE
+
     # Check if its a paragraph or empty
     if len(line.strip()) > 0:
         return PARAGRAPH
