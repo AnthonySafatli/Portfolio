@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <Folder Include="Pages\Admin\" />
+    <Folder Include="Projects\Markdown\" />
   </ItemGroup>
 
   <ItemGroup>

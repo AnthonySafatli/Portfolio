@@ -32,7 +32,7 @@ public class ProjectModel : PageModel
                 DateEnded = DateTime.Now,
             };
 
-            return NotFound(); // remove for testing
+            //return NotFound(); // remove for testing
         }
 
         return Page();
