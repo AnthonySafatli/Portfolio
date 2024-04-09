@@ -10,19 +10,18 @@ HEADER_6 = 5
 
 QUOTE = 6
 
-ORDERED_LIST = 7
-LIST = 8
+LIST = 7
 
-MEDIA = 9
+MEDIA = 8
 
-LINK = 10
+LINK = 9
 
-HORIZONTAL = 11
+HORIZONTAL = 10
 
-CODE = 12
+CODE = 11
 
-PARAGRAPH = 13
-EMPTY = 14
+PARAGRAPH = 12
+EMPTY = 13
 
 # Convert md to enum
 def get_enum(line):
@@ -39,10 +38,7 @@ def get_enum(line):
     # Check if line is list
     md_list = re.search(r"^\t*(-|[0-9]+\.)\s.+", line)
     if md_list:
-        if re.match(r"^-\s.+"):
-            return LIST
-        else:
-            return ORDERED_LIST
+        return LIST
 
     # Check if line is media element (photo or video)
     media = re.search(r"^!\[.+\]\(.+\)$", line)

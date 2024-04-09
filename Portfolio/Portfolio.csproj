@@ -13,6 +13,7 @@
   <ItemGroup>
     <Folder Include="Pages\Admin\" />
     <Folder Include="Projects\Markdown\" />
+    <Folder Include="Projects\Json\" />
   </ItemGroup>
 
   <ItemGroup>

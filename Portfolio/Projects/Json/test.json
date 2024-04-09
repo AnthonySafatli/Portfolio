@@ -1,0 +1,173 @@
+{
+  "elements": [
+    {
+      "name": "header",
+      "degree": 1,
+      "text": "Header"
+    },
+    {
+      "name": "header",
+      "degree": 2,
+      "text": "Header 2"
+    },
+    {
+      "name": "header",
+      "degree": 3,
+      "text": "Header 3"
+    },
+    {
+      "name": "paragraph",
+      "text": "this is a p tag"
+    },
+    {
+      "name": "paragraph",
+      "text": "these two p tags should be concated"
+    },
+    {
+      "name": "quote",
+      "text": "This is a quote element"
+    },
+    {
+      "name": "list",
+      "ordered": true,
+      "items": [
+        "this is a list",
+        "this is in the same list",
+        "so is this"
+      ]
+    },
+    {
+      "name": "list",
+      "ordered": false,
+      "items": [
+        "this shouldnt be",
+        "this is another list",
+        "wow"
+      ]
+    },
+    {
+      "name": "list",
+      "ordered": true,
+      "items": [
+        "lets test nesting",
+        "wow its cool",
+        "what if i do this?",
+        "thats cool"
+      ]
+    },
+    {
+      "name": "list",
+      "ordered": false,
+      "items": [
+        "what about this?",
+        "awesome"
+      ]
+    },
+    {
+      "name": "paragraph",
+      "text": "lets test out a media element"
+    },
+    {
+      "name": "media",
+      "alt": "alts text",
+      "file": "path\\to\\file"
+    },
+    {
+      "name": "link",
+      "alt": "this is a link",
+      "link": "www.link.com"
+    },
+    {
+      "name": "horizontal"
+    },
+    {
+      "name": "horizontal"
+    },
+    {
+      "name": "horizontal"
+    },
+    {
+      "name": "code",
+      "lang": "",
+      "text": [
+      ]
+    },
+    {
+      "name": "paragraph",
+      "text": "this is a code block does it parse it correctly? wow this is cool"
+    },
+    {
+      "name": "code",
+      "lang": "",
+      "text": [
+      ]
+    },
+    {
+      "name": "code",
+      "lang": "language",
+      "text": [
+      ]
+    },
+    {
+      "name": "paragraph",
+      "text": "does the language feature work? we will never know?"
+    },
+    {
+      "name": "code",
+      "lang": "",
+      "text": [
+      ]
+    },
+    {
+      "name": "code",
+      "lang": "",
+      "text": [
+        " ",
+        "w",
+        "h",
+        "a",
+        "t",
+        " ",
+        "i",
+        "f",
+        " ",
+        "t",
+        "h",
+        "e",
+        "y",
+        " ",
+        "a",
+        "r",
+        "e",
+        " ",
+        "b",
+        "a",
+        "c",
+        "k",
+        " ",
+        "t",
+        "o",
+        " ",
+        "b",
+        "a",
+        "c",
+        "k",
+        "?"
+      ]
+    },
+    {
+      "name": "code",
+      "lang": "",
+      "text": [
+      ]
+    },
+    {
+      "name": "paragraph",
+      "text": "do things after work?"
+    },
+    {
+      "name": "paragraph",
+      "text": "lets see!"
+    }
+  ]
+}

@@ -40,8 +40,8 @@ def get_dict(data):
             last_item = element[TYPE]
             continue
         
-        if element[TYPE] == enum.ORDERED_LIST or element[TYPE] == enum.LIST:
-            is_ordered = re.search(r"^\t*-\s.+")
+        if element[TYPE] == enum.LIST:
+            is_ordered = re.search(r"^\t*-\s.+", element[TEXT])
             if is_ordered:
                 is_ordered = True
             else:
@@ -80,9 +80,9 @@ def get_dict(data):
             continue 
 
         if element[TYPE] == enum.MEDIA:
-            split_index = element[TEXT].rfind(')[')
+            split_index = element[TEXT].rfind('](')
             alt = element[TEXT][2:split_index]
-            file = element[TEXT][(split_index + 2):len(element[TEXT])]
+            file = element[TEXT][(split_index + 2):len(element[TEXT]) - 1]
             
             media = { "name": "media", "alt": alt, "file": file }
             dictionary["elements"].append(media)
@@ -90,9 +90,9 @@ def get_dict(data):
             continue
 
         if element[TYPE] == enum.LINK:
-            split_index = element[TEXT].rfind(')[')
+            split_index = element[TEXT].rfind('](')
             alt = element[TEXT][1:split_index]
-            file = element[TEXT][(split_index + 2):len(element[TEXT])]
+            link = element[TEXT][(split_index + 2):len(element[TEXT]) - 1]
             
             link = { "name": "link", "alt": alt, "link": link }
             dictionary["elements"].append(link)
@@ -110,7 +110,8 @@ def get_dict(data):
                 dictionary["elements"][-1]["text"].append(element[TEXT])
                 continue
             
-            code = { "name": "code", "text": [] }
+            lang = element[TEXT][3:].strip()
+            code = { "name": "code", "lang": lang, "text": [] }
             dictionary["elements"].append(code)
 
         if element[TYPE] == END_CODE:
@@ -136,4 +137,6 @@ def get_dict(data):
     return dictionary
 
 def save_dict(dictionary, path):
-    pass
+    print(path)
+    with open(path, "w") as json_file:
+        json.dump(dictionary, json_file)
