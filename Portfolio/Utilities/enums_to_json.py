@@ -16,10 +16,13 @@ def get_dict(data):
 
     for element in data:
         # Code type overrides everything
+        code_override = False
         if element[TYPE] == enum.CODE and last_item == enum.CODE:
-            element[TYPE] = END_CODE
+            last_item = END_CODE
+            continue
         elif last_item == enum.CODE:
-            element[TYPE] = enum.CODE
+            dictionary["elements"][-1]["text"].append(element[TEXT])
+            continue
 
         # Convert headers to dict
         if element[TYPE] <= enum.HEADER_6:
@@ -40,12 +43,13 @@ def get_dict(data):
             last_item = element[TYPE]
             continue
         
+        # Needs fixing
         if element[TYPE] == enum.LIST:
             is_ordered = re.search(r"^\t*-\s.+", element[TEXT])
             if is_ordered:
-                is_ordered = True
-            else:
                 is_ordered = False
+            else:
+                is_ordered = True
 
             space_index = element[TEXT].strip().find(' ')
             list_item = element[TEXT].strip()[space_index+1:]
@@ -106,16 +110,10 @@ def get_dict(data):
             continue
         
         if element[TYPE] == enum.CODE:
-            if last_item == enum.CODE:
-                dictionary["elements"][-1]["text"].append(element[TEXT])
-                continue
-            
             lang = element[TEXT][3:].strip()
             code = { "name": "code", "lang": lang, "text": [] }
             dictionary["elements"].append(code)
-
-        if element[TYPE] == END_CODE:
-            last_item = END_CODE
+            last_item = element[TYPE]
             continue
 
         if element[TYPE] == enum.PARAGRAPH:

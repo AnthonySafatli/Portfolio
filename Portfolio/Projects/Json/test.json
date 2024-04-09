@@ -29,7 +29,7 @@
     },
     {
       "name": "list",
-      "ordered": true,
+      "ordered": false,
       "items": [
         "this is a list",
         "this is in the same list",
@@ -38,7 +38,7 @@
     },
     {
       "name": "list",
-      "ordered": false,
+      "ordered": true,
       "items": [
         "this shouldnt be",
         "this is another list",
@@ -47,7 +47,7 @@
     },
     {
       "name": "list",
-      "ordered": true,
+      "ordered": false,
       "items": [
         "lets test nesting",
         "wow its cool",
@@ -57,7 +57,7 @@
     },
     {
       "name": "list",
-      "ordered": false,
+      "ordered": true,
       "items": [
         "what about this?",
         "awesome"
@@ -90,75 +90,24 @@
       "name": "code",
       "lang": "",
       "text": [
-      ]
-    },
-    {
-      "name": "paragraph",
-      "text": "this is a code block does it parse it correctly? wow this is cool"
-    },
-    {
-      "name": "code",
-      "lang": "",
-      "text": [
+        "this is a code block",
+        "does it parse it correctly?",
+        "wow this is cool"
       ]
     },
     {
       "name": "code",
       "lang": "language",
       "text": [
-      ]
-    },
-    {
-      "name": "paragraph",
-      "text": "does the language feature work? we will never know?"
-    },
-    {
-      "name": "code",
-      "lang": "",
-      "text": [
+        "does the language feature work?",
+        "we will never know?"
       ]
     },
     {
       "name": "code",
       "lang": "",
       "text": [
-        " ",
-        "w",
-        "h",
-        "a",
-        "t",
-        " ",
-        "i",
-        "f",
-        " ",
-        "t",
-        "h",
-        "e",
-        "y",
-        " ",
-        "a",
-        "r",
-        "e",
-        " ",
-        "b",
-        "a",
-        "c",
-        "k",
-        " ",
-        "t",
-        "o",
-        " ",
-        "b",
-        "a",
-        "c",
-        "k",
-        "?"
-      ]
-    },
-    {
-      "name": "code",
-      "lang": "",
-      "text": [
+        "what if they are back to back?"
       ]
     },
     {
