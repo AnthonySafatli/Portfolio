@@ -1,4 +1,5 @@
 ﻿@page "{name}"
+@using Portfolio.Models
 @model Portfolio.Pages.ProjectModel
 @{
 }
@@ -8,17 +9,7 @@
 <p>Date Started: @Model.Project.DateStarted</p>
 <p>Date Ended: @Model.Project.DateEnded</p>
 
-<p>
-    Description: 
-    
-    And spoke a i that yore i i of cried ember marvelled thee denser grew if remember he was least nevermore 
-    fancy the late sitting nevermore raven angels lining bird on tell the the name nevermore what my and hath chamber and 
-    devil tis of so from nearly or he me door beguiling the napping god before lenore that tempest a wore on the the
-    darkness i the no flirt into nights rare sitting thereat surcease it and forget oh gently tis lost i but of dream 
-    lenore thereis thee more spoken fancy not me i and sign chamber presently straight a here nevermore to sainted was 
-    uncertain enchanted and parting my whom plainly with floating and here the than the desert borrow with dying of tapping 
-    aptly its engaged leave that the of my nothing feather fancy chamber still faster before seeming shall name days no 
-    raven balm on this the grew the forgiveness me i still above my in above visiter heart came soul to above be and we 
-    expressing burning the on sainted if mien raven shall stopped here sent and of door i this me the me and murmured angels
-    the angels to devil then sitting
-</p>
+@foreach (PageElement element in Model.ProjectPage.Elements)
+{
+    element.ToHTML();
+}

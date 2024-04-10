@@ -34,12 +34,13 @@ public class ProjectModel : PageModel
                 Name = Name,
                 DateStarted = DateTime.MinValue,
                 DateEnded = DateTime.Now,
+                File = "C:\\Users\\Anthony\\source\\repos\\Portfolio\\Portfolio\\Projects\\Json\\test.json",
             };
 
             //return NotFound(); // remove for testing
         }
 
-
+        Console.WriteLine(Project.File);
         if (!System.IO.File.Exists(Project.File))
         {
             return NotFound();

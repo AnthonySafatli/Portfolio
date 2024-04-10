@@ -28,42 +28,6 @@
       "text": "This is a quote element"
     },
     {
-      "name": "list",
-      "ordered": false,
-      "items": [
-        "this is a list",
-        "this is in the same list",
-        "so is this"
-      ]
-    },
-    {
-      "name": "list",
-      "ordered": true,
-      "items": [
-        "this shouldnt be",
-        "this is another list",
-        "wow"
-      ]
-    },
-    {
-      "name": "list",
-      "ordered": false,
-      "items": [
-        "lets test nesting",
-        "wow its cool",
-        "what if i do this?",
-        "thats cool"
-      ]
-    },
-    {
-      "name": "list",
-      "ordered": true,
-      "items": [
-        "what about this?",
-        "awesome"
-      ]
-    },
-    {
       "name": "paragraph",
       "text": "lets test out a media element"
     },

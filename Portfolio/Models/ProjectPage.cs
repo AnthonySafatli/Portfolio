@@ -10,13 +10,14 @@ public class ProjectPage
 public abstract class PageElement
 {
     public string Name { get; set; }
+    
     public abstract string ToHTML();
 }
 
 public class HeaderElement : PageElement
 {
-    public int Degree { get; set; }
     public string Text { get; set; }
+    public int Degree { get; set; }
 
     public override string ToHTML()
     {
