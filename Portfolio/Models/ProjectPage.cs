@@ -1,4 +1,6 @@
 ﻿
+using Microsoft.VisualBasic.FileIO;
+
 namespace Portfolio.Models;
 
 public class ProjectPage
@@ -8,6 +10,9 @@ public class ProjectPage
 
 public class PageElement
 {
+    private static string[] ImageExt = { "jpg", "jpeg", "svg", "gif", "bmp", "png", "webp" };
+    private static string[] VideoExt = { "mp4", "ogg", "webm" };
+
     public string Name { get; set; }
     public string? Text { get; set; }
     public int? Degree { get; set; }
@@ -20,44 +25,54 @@ public class PageElement
         switch (Name)
         {
             case "header":
-                return $"<h{Degree}>{Text}</h{Degree}>";
+                return $"\n<h{Degree}>{Text}</h{Degree}>\n";
             
             case "quote":
-                return $"<blockquote>{Text}</blockquote>";
+                return $"\n<blockquote>{Text}</blockquote>\n";
             
             case "list":
                 string tag = (bool)Ordered ? "ol" : "ul";
 
-                string list = $"<{tag}>";
+                string list = $"\n<{tag}>";
                 foreach (string item in Items)
                 {
                     list += item;
                 }
-                list += $"</{tag}>";
+                list += $"</{tag}>\n";
 
                 return tag;
-            
             case "media":
+                string extension = Path.GetExtension(Link).TrimStart('.').ToLower();
+
+                if (Array.Exists(ImageExt, ext => ext == extension))
+                {
+                    return $"\n<img src=\"{Link}\" alt=\"{Text}\">\n";
+                }
+                else if (Array.Exists(VideoExt, ext => ext == extension))
+                {
+                    return $"\n<video controls><source src=\"{Link}\" type=\"video/{extension}\">{Text}</video>\n";
+                }
+
                 return "";
 
             case "link":
-                return $"<a href={Link}>{Text}</a>";
+                return $"\n<a href=\"{Link}\">{Text}</a>\n";
 
             case "horizontal":
-                return "<hr>";
+                return "\n<hr>\n";
 
             case "code":
-                string code = "<code><pre>";
+                string code = "\n<code><pre>";
                 foreach (string item in Items)
                 {
                     code += "\n" + item;
                 }
-                code += "</pre></code>";
+                code += "</pre></code>\n";
 
                 return code;
 
             case "paragraph":
-                return $"<p>{Text}</p>";
+                return $"\n<p>{Text}</p>\n";
 
         }
 
