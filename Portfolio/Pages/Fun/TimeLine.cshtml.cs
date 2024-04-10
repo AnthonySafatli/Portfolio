@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Reflection;
 
-namespace Portfolio.Pages;
+namespace Portfolio.Pages.Fun;
 
 public class TimeLineModel : PageModel
 {
@@ -45,7 +45,7 @@ public class TimeLineModel : PageModel
 
             foreach (Range range in ranges)
             {
-                if (range.inRange(i)) 
+                if (range.inRange(i))
                 {
                     ClassList[i] += " " + range;
                 }
@@ -69,8 +69,8 @@ struct Range
 
     public Range(int num, string cssClass)
     {
-        this.start = num;
-        this.end = num;
+        start = num;
+        end = num;
         this.cssClass = cssClass;
     }
 
