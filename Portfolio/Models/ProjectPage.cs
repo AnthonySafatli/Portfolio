@@ -1,7 +1,4 @@
-﻿
-using Microsoft.VisualBasic.FileIO;
-
-namespace Portfolio.Models;
+﻿namespace Portfolio.Models;
 
 public class ProjectPage
 {
