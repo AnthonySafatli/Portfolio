@@ -22,7 +22,7 @@ def get_dict(data):
             last_item = END_CODE
             continue
         elif last_item == enum.CODE:
-            dictionary["elements"][-1]["text"].append(element[TEXT])
+            dictionary["elements"][-1]["items"].append(element[TEXT])
             continue
 
         # Convert headers to dict
@@ -70,7 +70,7 @@ def get_dict(data):
             alt = element[TEXT][2:split_index]
             file = element[TEXT][(split_index + 2):len(element[TEXT]) - 1]
             
-            media = { "name": "media", "alt": alt, "file": file }
+            media = { "name": "media", "text": alt, "link": file }
             dictionary["elements"].append(media)
             last_item = element[TYPE]
             continue
@@ -80,7 +80,7 @@ def get_dict(data):
             alt = element[TEXT][1:split_index]
             link = element[TEXT][(split_index + 2):len(element[TEXT]) - 1]
             
-            link = { "name": "link", "alt": alt, "link": link }
+            link = { "name": "link", "text": alt, "link": link }
             dictionary["elements"].append(link)
             last_item = element[TYPE]
             continue
@@ -93,7 +93,7 @@ def get_dict(data):
         
         if element[TYPE] == enum.CODE:
             lang = element[TEXT][3:].strip()
-            code = { "name": "code", "lang": lang, "text": [] }
+            code = { "name": "code", "text": lang, "items": [] }
             dictionary["elements"].append(code)
             last_item = element[TYPE]
             continue
@@ -117,6 +117,5 @@ def get_dict(data):
     return dictionary
 
 def save_dict(dictionary, path):
-    print(path)
     with open(path, "w") as json_file:
         json.dump(dictionary, json_file)

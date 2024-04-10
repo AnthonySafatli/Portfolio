@@ -3,9 +3,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Portfolio.Data;
 using Portfolio.Models;
-using System.Text.Json.Serialization;
-using System.Text.Json;
-using System.ComponentModel;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
 
 namespace Portfolio.Pages;
 
@@ -40,7 +39,6 @@ public class ProjectModel : PageModel
             //return NotFound(); // remove for testing
         }
 
-        Console.WriteLine(Project.File);
         if (!System.IO.File.Exists(Project.File))
         {
             return NotFound();
@@ -48,15 +46,12 @@ public class ProjectModel : PageModel
 
         string jsonString = System.IO.File.ReadAllText(Project.File);
 
-        var options = new JsonSerializerOptions
+        if (jsonString == null)
         {
-            PropertyNameCaseInsensitive = true,
-            Converters = { new JsonStringEnumConverter(JsonNamingPolicy.CamelCase) },
-            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-            ReferenceHandler = ReferenceHandler.Preserve,
-        };
-        
-        ProjectPage = JsonSerializer.Deserialize<ProjectPage>(jsonString, options);
+            return NotFound();
+        }
+
+        ProjectPage = JsonConvert.DeserializeObject<ProjectPage>(jsonString);
 
         return Page();
     }

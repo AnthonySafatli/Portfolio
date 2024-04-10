@@ -11,5 +11,5 @@
 
 @foreach (PageElement element in Model.ProjectPage.Elements)
 {
-    element.ToHTML();
+    @Html.Raw(element.ToHTML());
 }
