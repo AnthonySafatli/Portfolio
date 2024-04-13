@@ -39,7 +39,7 @@ public class ProjectModel : PageModel
             //return NotFound(); // remove for testing
         }
 
-        if (!System.IO.File.Exists(Project.File))
+        if (!System.IO.File.Exists(Project.File)) // TODO: Change to file name, check json, if no json, check markdown, if markdown use python, otherwise, not found
         {
             return NotFound();
         }

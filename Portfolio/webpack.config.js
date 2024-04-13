@@ -4,7 +4,7 @@ module.exports = {
     entry: {
         timeline: './wwwroot/js/timeline.js',
         site: './wwwroot/js/site.js',
-        resume: '/www/js/resume.js',
+        resume: '/wwwroot/js/resume.js',
     },
     output: {
         filename: '[name].bundle.js',
