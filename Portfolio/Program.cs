@@ -9,7 +9,11 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
-        builder.Services.AddRazorPages();
+        builder.Services.AddRazorPages().AddRazorPagesOptions(options =>
+        {
+            options.Conventions.AddPageRoute("/Admin/Dashboard", "/Admin/Index");
+            options.Conventions.AddPageRoute("/Admin/Dashboard", "/Admin");
+        });
         builder.Services.AddDbContext<ProjectsContext>();
 
         var app = builder.Build();

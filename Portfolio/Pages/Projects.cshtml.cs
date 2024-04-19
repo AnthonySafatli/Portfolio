@@ -3,22 +3,21 @@ using Microsoft.EntityFrameworkCore;
 using Portfolio.Data;
 using Portfolio.Models;
 
-namespace Portfolio.Pages
+namespace Portfolio.Pages;
+
+public class ProjectsModel : PageModel
 {
-    public class ProjectsModel : PageModel
+    private readonly ProjectsContext _context;
+
+    public List<Project> Projects { get; set; } = new();
+
+    public ProjectsModel(ProjectsContext context)
     {
-        private readonly ProjectsContext _context;
+        _context = context;
+    }
 
-        public List<Project> Projects { get; set; } = new();
-
-        public ProjectsModel(ProjectsContext context)
-        {
-            _context = context;
-        }
-
-        public async void OnGetAsync()
-        {
-            Projects = await _context.Projects.ToListAsync();
-        }
+    public async void OnGetAsync()
+    {
+        Projects = await _context.Projects.ToListAsync();
     }
 }
