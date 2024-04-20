@@ -2,3 +2,14 @@
 @model Portfolio.Pages.Admin.LoginModel
 @{
 }
+
+<div>
+    <form method="post">
+        <!-- Do Data Validation -->
+        <label asp-for="Credential.Username"></label>
+        <input type="text" asp-for="Credential.Username" />
+        <label asp-for="Credential.Password"></label>
+        <input type="password" asp-for="Credential.Password" />
+        <input type="submit" value="Login!"/>
+    </form>
+</div>
