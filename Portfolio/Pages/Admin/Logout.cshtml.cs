@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Portfolio.Models;
 
 namespace Portfolio.Pages.Admin;
 
@@ -10,7 +11,7 @@ public class LogoutModel : PageModel
 {
     public async Task<IActionResult> OnPostAsync()
     {
-        await HttpContext.SignOutAsync("AdminCookieAuth");
+        await HttpContext.SignOutAsync(Security.AdminCookieName);
 
         return RedirectToPage("/Index");
     }

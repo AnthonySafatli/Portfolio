@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Portfolio.Models;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 
@@ -20,19 +21,22 @@ public class LoginModel : PageModel
         if (!ModelState.IsValid)
             return Page();
 
-        // TODO: Use database instead
-        if (Credential.Username == "Anthony" && Credential.Password == "Safatli")
+        if (Security.EncryptSHA256(Credential.Password) == Security.AdminPassword)
         {
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, Credential.Username),
-                new Claim(ClaimTypes.Email, "anthonysafatli@dal.ca")
+                new Claim(ClaimTypes.Name, "Anthony"),
             };
 
-            var identity = new ClaimsIdentity(claims, "AdminCookieAuth"); // TODO: Use constants
+            var identity = new ClaimsIdentity(claims, Security.AdminCookieName);
             ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(identity);
 
-            await HttpContext.SignInAsync("AdminCookieAuth", claimsPrincipal);
+            var authProperties = new AuthenticationProperties
+            {
+                IsPersistent = true,
+            };
+
+            await HttpContext.SignInAsync(Security.AdminCookieName, claimsPrincipal);
 
             return RedirectToPage("/Admin/Dashboard");
         }
@@ -43,9 +47,6 @@ public class LoginModel : PageModel
 
 public class Credential
 {
-    [Required]
-    [Display(Name = "User Name")]
-    public string Username { get; set; }
     [Required]
     public string Password { get; set; }
 }

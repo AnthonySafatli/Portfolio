@@ -1,4 +1,5 @@
 using Portfolio.Data;
+using Portfolio.Models;
 using Portfolio.Pages.Admin;
 
 namespace Portfolio;
@@ -15,12 +16,12 @@ public class Program
             options.Conventions.AddPageRoute("/Admin/Dashboard", "/Admin/Index");
             options.Conventions.AddPageRoute("/Admin/Dashboard", "/Admin");
         });
-        builder.Services.AddAuthentication("AdminCookieAuth").AddCookie("AdminCookieAuth", options =>
+        builder.Services.AddAuthentication(Security.AdminCookieName).AddCookie(Security.AdminCookieName, options =>
         {
-            options.Cookie.Name = "AdminCookieAuth";
+            options.Cookie.Name = Security.AdminCookieName;
             options.LoginPath = "/Admin/Login";
             options.AccessDeniedPath = "/Admin/AccessDenied";
-            // TODO: Add cookie lifetime
+            options.ExpireTimeSpan = TimeSpan.FromDays(1);
         });
         builder.Services.AddDbContext<ProjectsContext>();
 
