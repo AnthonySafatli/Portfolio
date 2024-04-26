@@ -1,3 +1,3 @@
 .\/.venv/Scripts/Activate.ps1
 
-cd Portfolio/Utilities/
+cd Portfolio/Scripts/
