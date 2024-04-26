@@ -49,4 +49,9 @@ public class UploadFilesProjectModel : PageModel
         ProjectPage = JsonConvert.DeserializeObject<ProjectPage>(jsonString);
         return Page();          // Upload HyperText Links
     }
+
+    public async Task<IActionResult> OnPostAsync()
+    {
+        return Page();
+    }
 }

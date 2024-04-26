@@ -12,6 +12,8 @@ public class Project
     public string File {  get; set; }
     public string Thumbnail { get; set; }
 
+    // TODO: add hidden boolean
+
     public bool RunMdToJson()
     {
         string pythonInterpreter = "python";

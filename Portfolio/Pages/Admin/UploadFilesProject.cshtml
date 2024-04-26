@@ -5,13 +5,16 @@
 
 @if (!Model.HasMd)          @* Upload Markdown *@
 {
-    <p>upload md</p>
+    <p>Markdown: Bad</p>
+    <p>Json: Bad</p>
 } 
 else if (!Model.HasJson)    @* Rerun Script *@
 {
-    <p>run script</p>
+    <p>Markdown: Good</p>
+    <p>Json: Bad</p>
 }
 else                        @* Upload Hypertext Links *@
 {
-    <p>upload hypertext</p>
+    <p>Markdown: Good</p>
+    <p>Json: Bad</p>
 }
