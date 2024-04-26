@@ -40,6 +40,6 @@ public class CreateModel : PageModel
         _context.Projects.Add(Project);
         await _context.SaveChangesAsync();
 
-        return RedirectToPage("./Index");
+        return Redirect("/Admin/UploadFilesProject/" + Project.Name);
     }
 }

@@ -1,0 +1,20 @@
+﻿@page "{name}"
+@model Portfolio.Pages.Admin.UploadFilesProjectModel
+@{
+}
+
+@if (Model.Project == null)
+{
+    @* Upload File *@
+    <p>no "name"</p>
+} 
+else if (Model.ProjectPage == null)
+{
+    @* Upload Markdown *@
+    <p>prject esists, but no md</p>
+} 
+else
+{
+    @* Upload HyperText Links *@
+    <p>md exists</p>
+}

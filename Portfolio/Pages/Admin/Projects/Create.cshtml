@@ -9,37 +9,37 @@
 
 <h4>Project</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
+<div>
+    <div>
         <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Project.Name" class="control-label"></label>
-                <input asp-for="Project.Name" class="form-control" />
-                <span asp-validation-for="Project.Name" class="text-danger"></span>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div> @* TODO: maybe remove validation *@
+            <div>
+                <label asp-for="Project.Name"></label>
+                <input asp-for="Project.Name"/>
+                <span asp-validation-for="Project.Name"></span>
+            </div>
+            <div>
+                <label asp-for="Project.DateStarted"></label>
+                <input asp-for="Project.DateStarted"/>
+                <span asp-validation-for="Project.DateStarted"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Project.DateStarted" class="control-label"></label>
-                <input asp-for="Project.DateStarted" class="form-control" />
-                <span asp-validation-for="Project.DateStarted" class="text-danger"></span>
+                <label asp-for="Project.DateEnded"></label>
+                <input asp-for="Project.DateEnded"/>
+                <span asp-validation-for="Project.DateEnded"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Project.DateEnded" class="control-label"></label>
-                <input asp-for="Project.DateEnded" class="form-control" />
-                <span asp-validation-for="Project.DateEnded" class="text-danger"></span>
+                <label asp-for="Project.File"></label>
+                <input asp-for="Project.File"/>
+                <span asp-validation-for="Project.File"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Project.File" class="control-label"></label>
-                <input asp-for="Project.File" class="form-control" />
-                <span asp-validation-for="Project.File" class="text-danger"></span>
+                <label asp-for="Project.Thumbnail"></label>
+                <input asp-for="Project.Thumbnail"/>
+                <span asp-validation-for="Project.Thumbnail"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Project.Thumbnail" class="control-label"></label>
-                <input asp-for="Project.Thumbnail" class="form-control" />
-                <span asp-validation-for="Project.Thumbnail" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create"/>
             </div>
         </form>
     </div>

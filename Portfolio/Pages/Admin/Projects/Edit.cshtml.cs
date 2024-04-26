@@ -68,7 +68,7 @@ public class EditModel : PageModel
             }
         }
 
-        return RedirectToPage("./Index");
+        return Redirect("/Admin/UploadFilesProject/" + Project.Name);
     }
 
     private bool ProjectExists(int id)

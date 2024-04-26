@@ -1,22 +1,24 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using Portfolio.Data;
 using Portfolio.Models;
-using Newtonsoft.Json;
 
-namespace Portfolio.Pages;
+namespace Portfolio.Pages.Admin;
 
-public class ProjectModel : PageModel
+[Authorize]
+public class UploadFilesProjectModel : PageModel
 {
     private readonly ProjectsContext _context;
 
-    [BindProperty(SupportsGet=true)]
+    [BindProperty(SupportsGet = true)]
     public string Name { get; set; }
     public Project? Project { get; set; }
     public ProjectPage? ProjectPage { get; set; }
 
-    public ProjectModel(ProjectsContext context)
+    public UploadFilesProjectModel(ProjectsContext context)
     {
         _context = context;
     }
@@ -26,20 +28,17 @@ public class ProjectModel : PageModel
         Project = await _context.Projects.FirstOrDefaultAsync(x => x.Name == Name);
 
         if (Project == null)
-            return NotFound(); 
+            return NotFound();  // Error
 
         string jsonPath = @"Projects\Json\" + Project.File + ".json";
         if (!System.IO.File.Exists(jsonPath))
-            return NotFound();
+            return Page();      // Upload Markdown
 
         string jsonString = System.IO.File.ReadAllText(jsonPath);
         if (jsonString == null)
-            return NotFound();
+            return Page();      // Upload Markdown
 
         ProjectPage = JsonConvert.DeserializeObject<ProjectPage>(jsonString);
-        if (ProjectPage == null)
-            return NotFound();
-
-        return Page();
+        return Page();          // Upload HyperText Links
     }
 }
