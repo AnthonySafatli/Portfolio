@@ -36,7 +36,7 @@ public class LoginModel : PageModel
                 IsPersistent = true,
             };
 
-            await HttpContext.SignInAsync(Security.AdminCookieName, claimsPrincipal);
+            await HttpContext.SignInAsync(Security.AdminCookieName, claimsPrincipal, authProperties);
 
             return RedirectToPage("/Admin/Dashboard");
         }

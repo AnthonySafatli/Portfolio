@@ -8,6 +8,8 @@
 
 @foreach (Project project in Model.Projects)
 {
-    <h2>@project.Name</h2>
-    <img src="@project.Thumbnail">
+    <a asp-page="/Project" asp-route-name="@project.Name">
+        <h2>@project.Name</h2>
+        <img src="@project.Thumbnail">
+    </a>
 }

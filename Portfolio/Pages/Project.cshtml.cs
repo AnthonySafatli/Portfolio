@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Portfolio.Data;
 using Portfolio.Models;
-using Newtonsoft.Json.Converters;
 using Newtonsoft.Json;
+using System.Diagnostics;
 
 namespace Portfolio.Pages;
 
@@ -28,23 +28,23 @@ public class ProjectModel : PageModel
 
         if (Project == null)
         {
-            Project = new Project()
-            {
-                Name = Name,
-                DateStarted = DateTime.MinValue,
-                DateEnded = DateTime.Now,
-                File = "C:\\Users\\Anthony\\source\\repos\\Portfolio\\Portfolio\\Projects\\Json\\test.json",
-            };
-
-            //return NotFound(); // remove for testing
+            return NotFound(); 
         }
 
-        if (!System.IO.File.Exists(Project.File)) // TODO: Change to file name, check json, if no json, check markdown, if markdown use python, otherwise, not found
+        // TODO: Change to file name, check json, if no json, check markdown, if markdown use python, otherwise, not found
+        if (!System.IO.File.Exists(@"Projects\Json\" + Project.File + ".json"))
         {
-            return NotFound();
+            if (System.IO.File.Exists(@"Projects\Markdown\" + Project.File + ".md"))
+            {
+                Project.RunMdToJson();
+            } 
+            else
+            {
+                return NotFound();
+            }
         }
 
-        string jsonString = System.IO.File.ReadAllText(Project.File);
+        string jsonString = System.IO.File.ReadAllText(@"Projects\Json\" + Project.File + ".json");
 
         if (jsonString == null)
         {

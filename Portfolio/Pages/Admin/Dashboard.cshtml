@@ -2,3 +2,8 @@
 @model Portfolio.Pages.Admin.DashboardModel
 @{
 }
+
+<a asp-page="./Projects/Index">Projects Panel</a>
+<form method="post" asp-page="/Admin/Logout">
+    <button type="submit">Logout</button>
+</form>
