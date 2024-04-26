@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Portfolio.Data;
 using Portfolio.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace Portfolio.Pages.Admin;
 
@@ -12,6 +13,7 @@ namespace Portfolio.Pages.Admin;
 public class UploadFilesProjectModel : PageModel
 {
     private readonly ProjectsContext _context;
+    private readonly IWebHostEnvironment _environment;
 
     [BindProperty(SupportsGet = true)]
     public string Name { get; set; }
@@ -20,9 +22,13 @@ public class UploadFilesProjectModel : PageModel
     public bool HasMd { get; set; } = false;
     public bool HasJson {  get; set; } = false;
 
-    public UploadFilesProjectModel(ProjectsContext context)
+    [BindProperty, Display(Name = "Markdown File")]
+    public IFormFile MdFile { get; set; }
+
+    public UploadFilesProjectModel(ProjectsContext context, IWebHostEnvironment environment)
     {
         _context = context;
+        _environment = environment;
     }
 
     public async Task<IActionResult> OnGetAsync()
@@ -52,6 +58,40 @@ public class UploadFilesProjectModel : PageModel
 
     public async Task<IActionResult> OnPostAsync()
     {
-        return Page();
+        if (!HasMd)
+        {
+            return await UploadMdFile();
+        } 
+        else if (!HasJson)
+        {
+            return RunJsonScript();
+        }
+        else
+        {
+            return await UploadProjectFiles();
+        }
+    }
+
+    public async Task<IActionResult> UploadMdFile()
+    {
+        // TODO: imput checking. make sure this is the right method to go to
+
+        string filePath = _environment.ContentRootPath + Path.Combine("\\Projects\\Markdown\\", Project.File + ".md");
+        using FileStream fileStream = new FileStream(filePath, FileMode.Create);
+        await MdFile.CopyToAsync(fileStream);
+
+        Project.RunMdToJson();
+
+        return Redirect("/Admin/UploadFilesproject/" + Project.Name);
+    }
+
+    private IActionResult RunJsonScript()
+    {
+        throw new NotImplementedException();
+    }
+
+    private async Task<IActionResult> UploadProjectFiles()
+    {
+        throw new NotImplementedException();
     }
 }
