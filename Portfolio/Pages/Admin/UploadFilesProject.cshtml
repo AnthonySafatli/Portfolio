@@ -3,18 +3,15 @@
 @{
 }
 
-@if (Model.Project == null)
+@if (!Model.HasMd)          @* Upload Markdown *@
 {
-    @* Upload File *@
-    <p>no "name"</p>
+    <p>upload md</p>
 } 
-else if (Model.ProjectPage == null)
+else if (!Model.HasJson)    @* Rerun Script *@
 {
-    @* Upload Markdown *@
-    <p>prject esists, but no md</p>
-} 
-else
+    <p>run script</p>
+}
+else                        @* Upload Hypertext Links *@
 {
-    @* Upload HyperText Links *@
-    <p>md exists</p>
+    <p>upload hypertext</p>
 }

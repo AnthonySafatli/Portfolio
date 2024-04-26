@@ -17,6 +17,8 @@ public class UploadFilesProjectModel : PageModel
     public string Name { get; set; }
     public Project? Project { get; set; }
     public ProjectPage? ProjectPage { get; set; }
+    public bool HasMd { get; set; } = false;
+    public bool HasJson {  get; set; } = false;
 
     public UploadFilesProjectModel(ProjectsContext context)
     {
@@ -28,15 +30,21 @@ public class UploadFilesProjectModel : PageModel
         Project = await _context.Projects.FirstOrDefaultAsync(x => x.Name == Name);
 
         if (Project == null)
-            return NotFound();  // Error
+            return NotFound(); 
 
+        string mdPath = @"Projects\Markdown\" + Project.File + ".md";
         string jsonPath = @"Projects\Json\" + Project.File + ".json";
-        if (!System.IO.File.Exists(jsonPath))
+        if (!System.IO.File.Exists(mdPath))
             return Page();      // Upload Markdown
+        HasMd = true;
+
+        if (!System.IO.File.Exists(jsonPath))
+            return Page();      // Rerun Script
 
         string jsonString = System.IO.File.ReadAllText(jsonPath);
         if (jsonString == null)
-            return Page();      // Upload Markdown
+            return Page();      // Rerun Script
+        HasJson = true;
 
         ProjectPage = JsonConvert.DeserializeObject<ProjectPage>(jsonString);
         return Page();          // Upload HyperText Links
