@@ -2,3 +2,11 @@
 @model Portfolio.Pages.Admin.Upload.MarkdownModel
 @{
 }
+
+<p>Markdown: @Model.HasMd ? Html.Raw("Good") : Html.Raw("Bad")</p>
+<p>Json: @Model.HasJson ? Html.Raw("Good") : Html.Raw("Bad")</p>
+<form method="post" enctype="multipart/form-data">
+    <label asp-for="MdFile"></label>
+    <input asp-for="MdFile" accept=".md" />
+    <button type="submit">Upload</button>
+</form>

@@ -2,3 +2,13 @@
 @model Portfolio.Pages.Admin.Upload.IndexModel
 @{
 }
+
+<form method="post" enctype="multipart/form-data">
+    <label asp-for="File"></label>
+    <input asp-for="File" accept=".jpg, .png" />
+    <label asp-for="FileLocation"></label>
+    <input asp-for="FileLocation" />
+    <label asp-for="Rename"></label>
+    <input asp-for="Rename" />
+    <button type="submit">Upload</button>
+</form>
