@@ -1,4 +1,39 @@
-﻿@page
+﻿@page "{name}"
 @model Portfolio.Pages.Admin.Upload.ProjectFilesModel
 @{
+}
+
+<p>
+    Markdown:
+    @{
+        if (Model.HasMd)
+        {
+            @: Good
+        }
+        else
+        {
+            @: Bad
+        }
+    }
+</p>
+<p>
+    Json:
+    @{
+        if (Model.HasJson)
+        {
+            @: Good
+        }
+        else
+        {
+            @: Bad
+        }
+    }
+</p>
+@if (!Model.HasJson)
+{
+    // some error
+}
+else
+{
+    // normal page
 }

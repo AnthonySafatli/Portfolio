@@ -3,8 +3,32 @@
 @{
 }
 
-<p>Markdown: @Model.HasMd ? Html.Raw("Good") : Html.Raw("Bad")</p>
-<p>Json: @Model.HasJson ? Html.Raw("Good") : Html.Raw("Bad")</p>
+<p>
+    Markdown:
+    @{
+        if (Model.HasMd)
+        {
+            @: Good
+        }
+        else
+        {
+            @: Bad
+        }
+    }
+</p>
+<p>
+    Json:
+    @{
+        if (Model.HasJson)
+        {
+            @: Good
+        }
+        else
+        {
+            @: Bad
+        }
+    }
+</p>
 <form method="post" enctype="multipart/form-data">
     <label asp-for="MdFile"></label>
     <input asp-for="MdFile" accept=".md" />

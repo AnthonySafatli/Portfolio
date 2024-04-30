@@ -1,4 +1,34 @@
-﻿@page
+﻿@page "{name}"
 @model Portfolio.Pages.Admin.Upload.JsonModel
 @{
 }
+
+<p>
+    Markdown: 
+    @{
+        if (Model.HasMd)
+        {
+            @: Good
+        }
+        else
+        {
+            @: Bad
+        }
+    }
+</p>
+<p>
+    Json: 
+    @{
+        if (Model.HasJson)
+        {
+            @: Good
+        }
+        else
+        {
+            @: Bad
+        }
+    }
+</p>
+<form method="post">
+    <button type="submit">Run Script</button>
+</form>
