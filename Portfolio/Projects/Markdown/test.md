@@ -13,7 +13,10 @@ should be concated
 
 lets test out a media element
 
-![alts text](path\to\file.mp4)
+![alts text vid](path/to/file.mp4)
+
+![alts text img](path/to/fils.jpg)
+![alts text img](path/to/fils.jpg)
 
 [this is a link](www.link.com)
 

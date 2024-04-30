@@ -43,11 +43,11 @@ public class PageElement
 
                 if (Array.Exists(ImageExt, ext => ext == extension))
                 {
-                    return $"\n<img src=\"{Link}\" alt=\"{Text}\">\n";
+                    return $"\n<img src=\"/projects/{Link}\" alt=\"{Text}\">\n";
                 }
                 else if (Array.Exists(VideoExt, ext => ext == extension))
                 {
-                    return $"\n<video controls><source src=\"{Link}\" type=\"video/{extension}\">{Text}</video>\n";
+                    return $"\n<video controls><source src=\"/projects/{Link}\" type=\"video/{extension}\">{Text}</video>\n";
                 }
 
                 return "";
@@ -77,4 +77,10 @@ public class PageElement
     }
 
     public override string ToString() => ToHTML();
+}
+
+public class PageMediaLink
+{
+    public string Path { get; set; }
+    public IFormFile File { get; set; }
 }

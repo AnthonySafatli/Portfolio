@@ -31,9 +31,24 @@
 </p>
 @if (!Model.HasJson)
 {
-    // some error
+    <p>Error</p>
+}
+else if (Model.Links.Count == 0)
+{
+    <p>No files to upload</p>
 }
 else
 {
-    // normal page
+    <form method="post" enctype="multipart/form-data">
+        @for (int i = 0; i < Model.Links.Count; i++)
+        {
+            <label asp-for="Links[i].Path"></label>
+            <input asp-for="Links[i].Path" />
+            <label asp-for="Links[i].File">
+                @Html.Raw(Model.Links[i].Path)
+            </label>
+            <input asp-for="Links[i].File" />
+        }   
+        <button type="submit">Upload</button>
+    </form>
 }
