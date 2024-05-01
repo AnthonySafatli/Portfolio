@@ -2,3 +2,8 @@
 @model Portfolio.Pages.Admin.DeleteFilesModel
 @{
 }
+
+@foreach (string file in Model.Files)
+{ 
+    <p>@file <a asp-page="DeleteFiles" asp-route-file="@file">Delete</a></p>  
+}
