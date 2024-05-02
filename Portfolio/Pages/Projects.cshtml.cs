@@ -18,6 +18,6 @@ public class ProjectsModel : PageModel
 
     public async void OnGetAsync()
     {
-        Projects = await _context.Projects.ToListAsync();
+        Projects = await _context.Projects.Where(p => !p.Hidden).ToListAsync();
     }
 }

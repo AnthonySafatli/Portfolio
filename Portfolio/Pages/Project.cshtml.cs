@@ -26,7 +26,10 @@ public class ProjectModel : PageModel
         Project = await _context.Projects.FirstOrDefaultAsync(x => x.Name == Name);
 
         if (Project == null)
-            return NotFound(); 
+            return NotFound();
+
+        if (Project.Hidden)
+            return NotFound();
 
         string jsonPath = @"Projects\Json\" + Project.File + ".json";
         if (!System.IO.File.Exists(jsonPath))
