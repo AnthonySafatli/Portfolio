@@ -11,8 +11,6 @@ namespace Portfolio.Pages.Admin.Upload;
 [Authorize]
 public class MarkdownModel : PageModel
 {
-    // TODO: Link create, edit and delete html pages to these 3 pages
-
     private readonly ProjectsContext _context;
     private readonly IWebHostEnvironment _environment;
 
@@ -68,6 +66,6 @@ public class MarkdownModel : PageModel
 
         Project.RunMdToJson();
 
-        return Redirect("/Admin/Upload/ProjectFiles/" + Project.Name);
+        return Redirect("/Admin/Upload/Markdown/" + Project.Name);
     }
 }

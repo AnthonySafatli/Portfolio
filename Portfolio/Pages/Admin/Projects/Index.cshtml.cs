@@ -14,9 +14,9 @@ namespace Portfolio.Pages.Admin.Projects;
 [Authorize]
 public class IndexModel : PageModel
 {
-    private readonly Portfolio.Data.ProjectsContext _context;
+    private readonly ProjectsContext _context;
 
-    public IndexModel(Portfolio.Data.ProjectsContext context)
+    public IndexModel(ProjectsContext context)
     {
         _context = context;
     }

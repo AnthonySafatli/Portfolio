@@ -14,9 +14,9 @@ namespace Portfolio.Pages.Admin.Projects;
 [Authorize]
 public class DetailsModel : PageModel
 {
-    private readonly Portfolio.Data.ProjectsContext _context;
+    private readonly ProjectsContext _context;
 
-    public DetailsModel(Portfolio.Data.ProjectsContext context)
+    public DetailsModel(ProjectsContext context)
     {
         _context = context;
     }

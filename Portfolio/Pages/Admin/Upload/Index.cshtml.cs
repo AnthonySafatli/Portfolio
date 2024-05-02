@@ -35,9 +35,9 @@ public class IndexModel : PageModel
 
         // TODO: More data validation
 
-        string fileName = Rename == null ? File.FileName : Rename;
-        string folder = FileLocation == null ? "" : FileLocation;
-        string filePath = Path.Combine(_environment.WebRootPath, folder, fileName);
+        string fileName = (Rename == null) ? File.FileName : Rename;
+        string folder = (FileLocation == null) ? "" : FileLocation;
+        string filePath = Path.Combine(_environment.WebRootPath, "projects", folder, fileName);
         using FileStream fileStream = new FileStream(filePath, FileMode.Create);
         await File.CopyToAsync(fileStream);
 

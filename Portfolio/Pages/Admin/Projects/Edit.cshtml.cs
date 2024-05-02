@@ -15,9 +15,9 @@ namespace Portfolio.Pages.Admin.Projects;
 [Authorize]
 public class EditModel : PageModel
 {
-    private readonly Portfolio.Data.ProjectsContext _context;
+    private readonly ProjectsContext _context;
 
-    public EditModel(Portfolio.Data.ProjectsContext context)
+    public EditModel(ProjectsContext context)
     {
         _context = context;
     }
@@ -68,7 +68,7 @@ public class EditModel : PageModel
             }
         }
 
-        return Redirect("/Admin/UploadFilesProject/" + Project.Name);
+        return Redirect("/Admin/Upload/Markdown/" + Project.Name);
     }
 
     private bool ProjectExists(int id)

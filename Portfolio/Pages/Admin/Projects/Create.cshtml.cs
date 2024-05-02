@@ -14,9 +14,9 @@ namespace Portfolio.Pages.Admin.Projects;
 [Authorize]
 public class CreateModel : PageModel
 {
-    private readonly Portfolio.Data.ProjectsContext _context;
+    private readonly ProjectsContext _context;
 
-    public CreateModel(Portfolio.Data.ProjectsContext context)
+    public CreateModel(ProjectsContext context)
     {
         _context = context;
     }
@@ -40,6 +40,6 @@ public class CreateModel : PageModel
         _context.Projects.Add(Project);
         await _context.SaveChangesAsync();
 
-        return Redirect("/Admin/UploadFilesProject/" + Project.Name);
+        return Redirect("/Admin/Upload/Markdown/" + Project.Name);
     }
 }

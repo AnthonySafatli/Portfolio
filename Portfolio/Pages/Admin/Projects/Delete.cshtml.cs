@@ -14,9 +14,9 @@ namespace Portfolio.Pages.Admin.Projects;
 [Authorize]
 public class DeleteModel : PageModel
 {
-    private readonly Portfolio.Data.ProjectsContext _context;
+    private readonly ProjectsContext _context;
 
-    public DeleteModel(Portfolio.Data.ProjectsContext context)
+    public DeleteModel(ProjectsContext context)
     {
         _context = context;
     }
