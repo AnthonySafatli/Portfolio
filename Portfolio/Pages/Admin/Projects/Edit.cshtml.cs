@@ -25,14 +25,14 @@ public class EditModel : PageModel
     [BindProperty]
     public Project Project { get; set; } = default!;
 
-    public async Task<IActionResult> OnGetAsync(int? id)
+    public async Task<IActionResult> OnGetAsync(string id)
     {
         if (id == null)
         {
             return NotFound();
         }
 
-        var project =  await _context.Projects.FirstOrDefaultAsync(m => m.Id == id);
+        var project =  await _context.Projects.FirstOrDefaultAsync(m => m.Name == id);
         if (project == null)
         {
             return NotFound();
@@ -58,7 +58,7 @@ public class EditModel : PageModel
         }
         catch (DbUpdateConcurrencyException)
         {
-            if (!ProjectExists(Project.Id))
+            if (!ProjectExists(Project.Name))
             {
                 return NotFound();
             }
@@ -71,8 +71,8 @@ public class EditModel : PageModel
         return Redirect("/Admin/Upload/Markdown/" + Project.Name);
     }
 
-    private bool ProjectExists(int id)
+    private bool ProjectExists(string id)
     {
-        return _context.Projects.Any(e => e.Id == id);
+        return _context.Projects.Any(e => e.Name == id);
     }
 }

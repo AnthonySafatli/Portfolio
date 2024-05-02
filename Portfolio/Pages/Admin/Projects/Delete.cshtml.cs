@@ -24,14 +24,14 @@ public class DeleteModel : PageModel
     [BindProperty]
     public Project Project { get; set; } = default!;
 
-    public async Task<IActionResult> OnGetAsync(int? id)
+    public async Task<IActionResult> OnGetAsync(string id)
     {
         if (id == null)
         {
             return NotFound();
         }
 
-        var project = await _context.Projects.FirstOrDefaultAsync(m => m.Id == id);
+        var project = await _context.Projects.FirstOrDefaultAsync(m => m.Name == id);
 
         if (project == null)
         {
@@ -44,7 +44,7 @@ public class DeleteModel : PageModel
         return Page();
     }
 
-    public async Task<IActionResult> OnPostAsync(int? id)
+    public async Task<IActionResult> OnPostAsync(string id)
     {
         if (id == null)
         {
@@ -59,6 +59,6 @@ public class DeleteModel : PageModel
             await _context.SaveChangesAsync();
         }
 
-        return Redirect("/Admin/DeleteFiles");
+        return RedirectToPage("./Index");
     }
 }

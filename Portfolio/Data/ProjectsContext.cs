@@ -11,4 +11,9 @@ public class ProjectsContext : DbContext
     {
         optionsBuilder.UseSqlite(@"Data source=Projects.db");
     }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Project>().HasKey(t => t.Name);
+    }
 }

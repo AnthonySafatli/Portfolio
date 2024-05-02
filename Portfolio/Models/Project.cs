@@ -5,14 +5,12 @@ namespace Portfolio.Models;
 
 public class Project
 {
-    public int Id { get; set; }
-    public string Name { get; set; }            // TODO: Make unique
-    public DateTime DateStarted { get; set; }   // TODO: Change to only date
-    public DateTime DateEnded { get; set; }     // TODO: Change to only date
+    public string Name { get; set; }
+    public DateTime DateStarted { get; set; }   
+    public DateTime DateEnded { get; set; }     
     public string File {  get; set; }
     public string Thumbnail { get; set; }
-
-    // TODO: add hidden boolean
+    public bool Hidden { get; set; }
 
     public bool RunMdToJson()
     {

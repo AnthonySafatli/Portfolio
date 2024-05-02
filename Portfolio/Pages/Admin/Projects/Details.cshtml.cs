@@ -23,14 +23,14 @@ public class DetailsModel : PageModel
 
     public Project Project { get; set; } = default!;
 
-    public async Task<IActionResult> OnGetAsync(int? id)
+    public async Task<IActionResult> OnGetAsync(string id)
     {
         if (id == null)
         {
             return NotFound();
         }
 
-        var project = await _context.Projects.FirstOrDefaultAsync(m => m.Id == id);
+        var project = await _context.Projects.FirstOrDefaultAsync(m => m.Name == id);
         if (project == null)
         {
             return NotFound();
