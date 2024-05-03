@@ -18,9 +18,10 @@
 </head>
 <body>
     <header>
-        <a asp-page="@ViewData["Page"]">@ViewData["HeaderText"]?.ToString()?.ToUpper()</a>
+        <!-- Logo -->
         <nav>
-            @if (ViewData["Page"]?.Equals("Index") != true)
+            @* TODO: Fix *@
+            @if (ViewData["ShowNarBar"] == "true")
             {
                 <a asp-page="\Index">Home</a>
                 <a asp-page="\Projects">Projects</a>
@@ -35,9 +36,7 @@
     </main>
 
     <footer>
-        <div >
-            &copy; 2024 - Anthony Safatli
-        </div>
+        &copy; 2024 - Anthony Safatli
     </footer>
 
     <script src="~/dist/site.bundle.js" asp-append-version="true"></script>

@@ -1,0 +1,48 @@
+/* Remove Defaults */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit; 
+}
+
+/* Font Stuff */
+* {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: #a9eeff;
+}
+
+/* Page Grid */
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+
+header {
+    grid-row: 1;
+}
+
+main {
+    grid-row: 2;
+}
+
+footer {
+    grid-row: 3;
+}
+
+/* Other CSS */
+main {
+    padding: 10px;
+}
+
+a:hover {
+    color: white;
+}

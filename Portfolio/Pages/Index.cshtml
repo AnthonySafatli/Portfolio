@@ -1,26 +1,29 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home";
-    ViewData["HeaderText"] = "Welcome";
-    ViewData["Page"] = "Index";
+    // TODO: Do ViewData stuff
 }
 
 @section Styles {
     <link rel="stylesheet" href="~/css/index.css" asp-append-version="true" />
 }
 
-<div>
-    <h1 id="title">
-        Hi
-        <span class="br"></span>
-        I'm Anthony
-    </h1>
-    <p id="title-p">I'm a Software Developer</p>
+<div class="grid-container">
+    
+    <div class="hero">
+        <h1 id="title">
+            <span>Hi</span>
+            <span>I'm Anthony</span>
+        </h1>
 
-    <div class="links-flex">
+        <p id="title-desc">I'm a Software Developer</p>
+    </div>
+
+
+    <div class="links">
         <a asp-page="/Projects">Projects</a>
         <a asp-page="/AboutMe">About Me</a>
         <a asp-page="/Contact">Contact</a>
     </div>
+
 </div>
