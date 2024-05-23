@@ -1,48 +1,63 @@
-/* Remove Defaults */
+﻿/* Remove Defaults */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 a {
-    text-decoration: none;
-    color: inherit; 
+  text-decoration: none;
+  color: inherit;
 }
 
 /* Font Stuff */
 * {
-    font-family: "Plus Jakarta Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-    color: #a9eeff;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: cyan;
 }
 
 /* Page Grid */
 body {
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
 }
 
 header {
-    grid-row: 1;
+  grid-row: 1;
 }
 
 main {
-    grid-row: 2;
+  grid-row: 2;
 }
 
 footer {
-    grid-row: 3;
+  grid-row: 3;
+  padding: 20px;
+  padding-left: 40px;
 }
 
 /* Other CSS */
-main {
-    padding: 10px;
+nav {
+  padding: 20px 0;
+  padding-left: 20px;
+}
+
+nav a {
+  padding: 20px;
+}
+
+a {
+  transition: color 0.3s ease;
 }
 
 a:hover {
-    color: white;
+  color: white;
+}
+
+.block {
+  display: block;
 }

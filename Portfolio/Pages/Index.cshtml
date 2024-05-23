@@ -8,22 +8,23 @@
     <link rel="stylesheet" href="~/css/index.css" asp-append-version="true" />
 }
 
-<div class="grid-container">
+<div class="content">
     
-    <div class="hero">
-        <h1 id="title">
-            <span>Hi</span>
-            <span>I'm Anthony</span>
-        </h1>
+    <div>
+        <div class="hero">
+            <h1 id="title">
+                <span id="title-1" class="block">Hi</span>
+                <span id="title-2" class="block">I'm Anthony</span>
+            </h1>
 
-        <p id="title-desc">I'm a Software Developer</p>
-    </div>
+            <p id="title-desc">I'm a Software Developer</p>
+        </div>
 
-
-    <div class="links">
-        <a asp-page="/Projects">Projects</a>
-        <a asp-page="/AboutMe">About Me</a>
-        <a asp-page="/Contact">Contact</a>
+        <div class="links">
+            <span class="block"><a asp-page="/Projects">Projects</a></span>
+            <span class="block"><a asp-page="/AboutMe">About Me</a></span>
+            <span class="block"><a asp-page="/Contact">Contact</a></span>
+        </div>
     </div>
 
 </div>

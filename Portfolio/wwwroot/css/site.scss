@@ -1,0 +1,68 @@
+$main-colour: cyan;
+$seconrdary-colour: white;
+
+/* Remove Defaults */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit; 
+}
+
+/* Font Stuff */
+* {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: $main-colour;
+}
+
+/* Page Grid */
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+
+header {
+    grid-row: 1;
+}
+
+main {
+    grid-row: 2;
+}
+
+footer {
+    grid-row: 3;
+    padding: 20px;
+    padding-left: 40px;
+}
+
+/* Other CSS */
+nav {
+    padding: 20px 0;
+    padding-left: 20px;
+}
+
+nav a {
+    padding: 20px;
+    
+}
+
+a {
+    transition: 
+        color 0.3s ease;
+}
+
+a:hover {
+    color: $seconrdary-colour;
+}
+
+.block {
+    display: block;
+}
