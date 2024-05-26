@@ -1,6 +1,11 @@
 $main-colour: cyan;
 $seconrdary-colour: white;
 
+/* Temp, before THREE.js stuff */
+html {
+    background-color: black;
+}
+
 /* Remove Defaults */
 * {
     margin: 0;
@@ -54,15 +59,16 @@ nav a {
     
 }
 
-a {
+a, a * {
     transition: 
         color 0.3s ease;
 }
 
-a:hover {
+a:hover, a:hover * {
     color: $seconrdary-colour;
 }
 
-.block {
-    display: block;
+.title {
+    text-align: center;
+    margin-top: 20px;
 }

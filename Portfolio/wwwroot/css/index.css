@@ -1,9 +1,4 @@
-﻿/* Temp, before THREE.js stuff */
-* {
-    background-color: black;
-}
-
-main {
+﻿main {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr auto 1fr;
@@ -39,7 +34,7 @@ main {
     padding-top: 15px;
 }
 
-.links span {
+.links div {
     padding: 5px 0;
 }
 

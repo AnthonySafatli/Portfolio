@@ -1,4 +1,9 @@
-﻿/* Remove Defaults */
+﻿/* Temp, before THREE.js stuff */
+html {
+  background-color: black;
+}
+
+/* Remove Defaults */
 * {
   margin: 0;
   padding: 0;
@@ -50,14 +55,15 @@ nav a {
   padding: 20px;
 }
 
-a {
+a, a * {
   transition: color 0.3s ease;
 }
 
-a:hover {
+a:hover, a:hover * {
   color: white;
 }
 
-.block {
-  display: block;
+.title {
+  text-align: center;
+  margin-top: 20px;
 }

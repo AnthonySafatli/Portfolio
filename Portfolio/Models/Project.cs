@@ -12,6 +12,8 @@ public class Project
     public string Thumbnail { get; set; }
     public bool Hidden { get; set; }
 
+    // TODO: Make description property
+
     public bool RunMdToJson()
     {
         string pythonInterpreter = "python";
