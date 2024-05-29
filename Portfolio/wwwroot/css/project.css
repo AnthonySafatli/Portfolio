@@ -1,0 +1,79 @@
+﻿#dates {
+    padding: 0px 20px;
+    margin-top: 10px;
+    font-size: 0.75rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+#dates .bolder {
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+#desc {
+
+}
+
+#links {
+
+}
+
+#project-page {
+    margin: 20px;
+}
+
+#project-page h1 {
+    text-align: center;
+}
+
+#project-page h1, #project-page h2 {
+    margin-top: 15px;
+}
+
+#project-page h3, #project-page h4, #project-page h5, #project-page h6 {
+    margin-top: 10px;
+}
+
+#project-page p {
+    margin: 5px 0;
+}
+
+#project-page blockquote {
+    margin: 10px;
+    font-weight: 550;
+    font-size: 1.1rem;
+}
+
+#project-page .media-div {
+    margin: 15px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#project-page .media-div * {
+    width: 500px;
+    object-fit: cover;
+    text-align: center;
+}
+
+#project-page a {
+    display: block;
+    margin: 6px 0;
+    font-weight: 500;
+}
+
+#project-page code {
+    display: block;
+    background-color: rgba(1, 1, 1, 0.5);
+    margin: 10px 0;
+    padding: 5px;
+}
+
+#project-page code * {
+    font-family: "Courier Prime", monospace;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
+}
