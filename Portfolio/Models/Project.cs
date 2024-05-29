@@ -12,7 +12,7 @@ public class Project
     public string Thumbnail { get; set; }
     public bool Hidden { get; set; }
 
-    // TODO: Make description property
+    // TODO: Make description, github, website and dowload properties
 
     public bool RunMdToJson()
     {

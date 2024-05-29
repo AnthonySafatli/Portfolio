@@ -4,12 +4,28 @@
 @{
 }
 
-<h1>Project: @Model.Project.Name</h1>
-
-<p>Date Started: @Model.Project.DateStarted</p>
-<p>Date Ended: @Model.Project.DateEnded</p>
-
-@foreach (PageElement element in Model.ProjectPage.Elements)
-{
-    @Html.Raw(element.ToHTML());
+@section Styles {
+    <link rel="stylesheet" href="~/css/project.css" asp-append-version="true" />
 }
+
+<h1 class="title">Project: @Model.Project.Name</h1>
+
+<div id="dates">
+    <span>Date Started: <span class="bolder">@Model.Project.DateStarted.ToString("MMMM yyy")</span></span>
+    <span>Date Ended: <span class="bolder">@Model.Project.DateEnded.ToString("MMMM yyy")</span></span>
+</div>
+
+<div id="desc">
+    <!-- Description -->
+</div>
+
+<div id="links">
+    <!-- Links -->
+</div>
+
+<div id="project-page">
+    @foreach (PageElement element in Model.ProjectPage.Elements)
+    {
+        @Html.Raw(element.ToHTML());
+    }
+</div>

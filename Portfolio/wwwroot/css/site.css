@@ -55,6 +55,7 @@ nav a {
   padding: 20px;
 }
 
+/* Theme */
 a, a * {
   transition: color 0.3s ease;
 }
@@ -66,4 +67,10 @@ a:hover, a:hover * {
 .title {
   text-align: center;
   margin-top: 20px;
+}
+
+hr {
+  background-color: black;
+  border-color: cyan;
+  margin: 20px 0;
 }
