@@ -1,7 +1,17 @@
 ﻿@page
 @model TimeLineModel
 @{
-    Layout = "Fun/_TimeLineLayout";
+    Layout = "_FunLayout";
+}
+
+@section Fonts {
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/timeline.min.css" asp-append-version="true" />
 }
 
 <header>
@@ -105,3 +115,7 @@
 <footer>
 
 </footer>
+
+@section Scripts {
+    <script src="~/dist/timeline.bundle.js" asp-append-version="true"></script>
+}
