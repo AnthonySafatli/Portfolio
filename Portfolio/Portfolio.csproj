@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\css\contact.css" />
     <_ContentIncludedByDefault Remove="wwwroot\css\index.css" />
   </ItemGroup>
 
