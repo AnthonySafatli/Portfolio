@@ -1,0 +1,49 @@
+﻿$middle-column-width: 500;
+
+form {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+form div {
+    max-width: #{$middle-column-width}px;
+}
+
+form div * {
+    display: block;
+    margin: 5px;
+}
+
+input[type="email"], input[type=submit], textarea {
+    padding: 5px;
+    background-color: #111111;
+    border: 2px solid #1a1a1a;
+    border-radius: 5px;
+}
+
+input[type=email]::placeholder,
+textarea::placeholder {
+    color: #343434; 
+    opacity: 1; 
+}
+
+input[type=email]:focus,
+input[type=submit]:focus,
+textarea:focus {
+    border-color: cyan;
+    outline: none;
+    box-shadow: 0 0 5px rgba(102, 233, 233, 0.50);
+}
+
+input[type=email] {
+    width: #{$middle-column-width - 25}px;
+}
+
+textarea {
+    width: #{$middle-column-width - 25}px;
+    height: #{$middle-column-width / 2}px;
+    resize: vertical;
+}
