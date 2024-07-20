@@ -4,7 +4,32 @@
     Layout = "_AdminLayout";
 }
 
-@foreach (string file in Model.Files)
-{ 
-    <p>@file <a asp-page="DeleteFiles" asp-route-file="@file">Delete</a></p>  
-}
+<h1>Delete Files</h1>
+
+<div class="section center">
+    <table>
+        <thead>
+            <tr class="head-row">
+                <th>
+                    File Path
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (string file in Model.Files)
+            {
+                <tr>
+                    <td>
+                        @file
+                    </td>
+                    <td>
+                        <a class="inline-button" asp-page="DeleteFiles" asp-route-file="@file">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<a class="button" asp-page="/Admin/Dashboard">Back to Dashboard</a>

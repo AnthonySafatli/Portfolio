@@ -29,6 +29,10 @@ header span {
 }
 
 /* Layout */
+main {
+    margin: 0px 10px;
+}
+
 a {
     text-decoration: none;
     color: inherit;
@@ -55,14 +59,16 @@ button {
 
 .button {
     padding: 8px;
-    margin: 0px 5px;
+}
+
+.button, .normal-form input[type=text] {
     background-color: transparent;
     border-radius: 5px;
     border: 1.5px solid rgba(100, 100, 100, 0.5);
     transition: border-color ease 0.5s, box-shadow ease 0.4s;
 }
 
-.button:hover {
+.button:hover, .button:focus, .normal-form input[type=text]:hover, .normal-form input[type=text]:focus {
     border-color: white;
     box-shadow: 0 0 30px 2px rgba(255, 255, 255, 0.6);
     transition: border-color ease 0.2s, box-shadow ease 0.3s;
@@ -88,6 +94,15 @@ table, th, td {
     border: 1.5px solid rgb(100, 100, 100);
 }
 
+tbody tr {
+    transition: background-color ease 0.5s;
+}
+
+tbody tr:hover {
+    background-color: rgba(100, 100, 100, 0.2);
+    transition: background-color ease 0.2s;
+}
+
 th {
     font-size: 1.1rem;
     padding: 6px;
@@ -98,6 +113,22 @@ td {
     text-align: center;
 }
 
+.normal-form {
+    display: grid;
+    width: 90%;
+}
+
+.normal-form > div:not(.uninclude) {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin: 5px 0px;
+}
+
+.normal-form input {
+    width: 100%;
+    padding: 5px;
+}
+
 .center {
     display: flex;
     justify-content: center;
@@ -105,4 +136,8 @@ td {
 
 .section {
     margin: 30px 10px;
+}
+
+.gap > * {
+    margin: 0px 5px;
 }
