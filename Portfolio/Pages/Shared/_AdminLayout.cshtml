@@ -17,16 +17,16 @@
 </head>
 <body>
     <header>
+        <span>Admin Zone</span>
 
+        <form method="post" asp-page="/Admin/Logout">
+            <button class="button" type="submit">Logout</button>
+        </form>
     </header>
 
     <main>
         @RenderBody()
     </main>
-
-    <footer>
-
-    </footer>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

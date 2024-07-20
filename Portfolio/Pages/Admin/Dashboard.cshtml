@@ -5,63 +5,62 @@
     ViewData["Title"] = "Dashboard";
 }
 
-<h1>Admin Dashboard</h1>
+<h1>Dashboard</h1>
 
-<a asp-page="./DeleteFiles">Delete Files</a>
-<a asp-page="./Upload/Index">Upload Files</a>
-<a asp-page="./Projects/Create">Create New</a>
+<div class="center section">
+    <a class="button" asp-page="./DeleteFiles">Delete Files</a>
+    <a class="button" asp-page="./Upload/Index">Upload Files</a>
+    <a class="button" asp-page="./Projects/Create">Create New</a>
+</div>
 
-<table>
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Project[0].DateStarted)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Project[0].DateEnded)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Project[0].File)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Project[0].Thumbnail)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Project[0].Hidden)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Project)
-        {
+<div class="center section">
+    <table>
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateStarted)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DateEnded)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.File)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Thumbnail)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Hidden)
-                </td>
-                <td>
-                    <a asp-page="./Projects/Edit" asp-route-id="@item.Name">Edit</a> |
-                    <a asp-page="./Projects/Details" asp-route-id="@item.Name">Details</a> |
-                    <a asp-page="./Projects/Delete" asp-route-id="@item.Name">Delete</a>
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.Project[0].DateStarted)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Project[0].DateEnded)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Project[0].File)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Project[0].Thumbnail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Project[0].Hidden)
+                </th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
-
-
-<form method="post" asp-page="/Admin/Logout">
-    <button type="submit">Logout</button>
-</form>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Project)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateStarted)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateEnded)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.File)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Thumbnail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Hidden)
+                    </td>
+                    <td>
+                        <a class="inline-button" asp-page="./Projects/Edit" asp-route-id="@item.Name">Edit</a>
+                        <a class="inline-button" asp-page="./Projects/Details" asp-route-id="@item.Name">Details</a>
+                        <a class="inline-button" asp-page="./Projects/Delete" asp-route-id="@item.Name">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
