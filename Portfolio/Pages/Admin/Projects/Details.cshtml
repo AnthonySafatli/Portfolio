@@ -8,9 +8,7 @@
 
 <h1>Details</h1>
 
-<div>
-    <h4>Project</h4>
-    <hr />
+<div class="section">
     <dl class="row">
         <dt>
             @Html.DisplayNameFor(model => model.Project.DateStarted)
@@ -44,7 +42,6 @@
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Project.Name">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
-</div>
+
+<a class="button" asp-page="./Edit" asp-route-id="@Model.Project.Name">Edit</a>
+<a class="button" asp-page="../Dashboard">Back to List</a>

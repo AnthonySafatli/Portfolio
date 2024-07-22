@@ -31,15 +31,3 @@ this is a code block
 does it parse it correctly?
 wow this is cool
 ```
-
-```language
-does the language feature work?
-we will never know?
-```
-```
-what if they are back to back?
-```
-
-do things after work?
-
-lets see!

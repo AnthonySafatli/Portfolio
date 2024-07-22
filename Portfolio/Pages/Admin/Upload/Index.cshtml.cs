@@ -41,6 +41,8 @@ public class IndexModel : PageModel
         using FileStream fileStream = new FileStream(filePath, FileMode.Create);
         await File.CopyToAsync(fileStream);
 
+        // TODO: Create folder if folder doesnt exist
+
         return Redirect("/Admin/Dashboard");
     }
 }

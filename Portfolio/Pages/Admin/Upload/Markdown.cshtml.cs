@@ -32,6 +32,8 @@ public class MarkdownModel : PageModel
 
     public async Task<IActionResult> OnGetAsync()
     {
+        // TODO: Integrate and finialize uploading stuff
+
         Project = await _context.Projects.FirstOrDefaultAsync(x => x.Name == Name);
         if (Project == null)
             return NotFound();
