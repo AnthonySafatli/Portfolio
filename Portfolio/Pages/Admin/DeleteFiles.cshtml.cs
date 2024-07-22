@@ -61,6 +61,8 @@ public class DeleteFilesModel : PageModel
                     }
                 }
             }
+
+            // TODO: Check thumbnails as well
         }
 
         return Page();

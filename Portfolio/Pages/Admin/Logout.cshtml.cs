@@ -9,6 +9,11 @@ namespace Portfolio.Pages.Admin;
 [Authorize]
 public class LogoutModel : PageModel
 {
+    public IActionResult OnGet()
+    {
+        return NotFound();
+    }
+
     public async Task<IActionResult> OnPostAsync()
     {
         await HttpContext.SignOutAsync(Security.AdminCookieName);

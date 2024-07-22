@@ -34,7 +34,6 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\assets\" />
-    <Folder Include="wwwroot\projects\images\" />
     <Folder Include="wwwroot\projects\videos\" />
   </ItemGroup>
 

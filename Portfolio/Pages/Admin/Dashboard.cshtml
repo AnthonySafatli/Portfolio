@@ -17,6 +17,7 @@
     <table>
         <thead>
             <tr>
+                <th class="name"></th>
                 <th>
                     @Html.DisplayNameFor(model => model.Project[0].DateStarted)
                 </th>
@@ -39,6 +40,9 @@
             @foreach (var item in Model.Project)
             {
                 <tr>
+                    <td class="name">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.DateStarted)
                     </td>

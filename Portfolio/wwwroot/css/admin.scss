@@ -96,7 +96,7 @@ table {
     width: 90%;
 }
 
-table, th, td {
+th:not(.name), td:not(.name) {
     border: 1.5px solid rgb(100, 100, 100);
 }
 
@@ -117,6 +117,17 @@ th {
 td {
     padding: 4px;
     text-align: center;
+}
+
+td.name {
+    font-size: 1.1rem;
+    font-weight: 450;
+    transition: text-shadow ease 0.5s;
+}
+
+tr:hover td.name {
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3), 0 0 16px rgba(255, 255, 255, 0.3), 0 0 24px rgba(255, 255, 255, 0.3);
+    transition: text-shadow ease 0.2s;
 }
 
 .normal-form {
