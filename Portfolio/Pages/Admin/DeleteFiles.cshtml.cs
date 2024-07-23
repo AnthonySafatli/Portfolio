@@ -34,7 +34,7 @@ public class DeleteFilesModel : PageModel
             } catch (Exception ex) { }
         }
 
-        Files = GetAllFiles();
+        Files = GetAllFiles(); // TODO: Can you delete md and json files?
         IList<Project> projects = await _context.Projects.ToListAsync();
 
         foreach (Project proj in projects)

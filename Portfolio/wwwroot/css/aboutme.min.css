@@ -1,1 +1,1 @@
-﻿.dual-div{margin:40px;display:flex;align-items:center;justify-content:center;gap:20px;}.dual-div div{flex:1;display:flex;justify-content:center;align-items:center;}@media(max-width:768px){.dual-div{flex-direction:column;}}.dual-div img{width:70%;}
+﻿.dual-div{margin:40px;display:flex;align-items:center;justify-content:center;gap:20px;text-align:center;}.dual-div div{flex:1;display:flex;justify-content:center;align-items:center;}@media(max-width:768px){.dual-div{flex-direction:column;}}.dual-div img{width:70%;}

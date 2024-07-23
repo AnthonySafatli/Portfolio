@@ -65,12 +65,13 @@ nav a {
 }
 
 a, a * {
-    transition: 
-        color 0.3s ease;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 a:hover, a:hover * {
     color: $seconrdary-colour;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.45), 0 0 16px rgba(255, 255, 255, 0.45), 0 0 24px rgba(255, 255, 255, 0.45);
+    transition: color 0.5s ease, text-shadow ease 0.2s;
 }
 
 .title {
@@ -82,4 +83,25 @@ hr {
     background-color: black;
     border-color: $main-colour;
     margin: 20px 0;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    font-size: 1.1rem;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid $main-colour;
+    transition: border ease 0.3s, color ease 0.3s, box-shadow ease 0.3s;
+}
+
+.button:hover {
+    text-shadow: none;
+    border: 2px solid $seconrdary-colour;
+    box-shadow: 0 0 30px 2px rgba(255, 255, 255, 0.3);
+    transition: border ease 0.5s, color ease 0.5s, box-shadow ease 0.5s;
 }
