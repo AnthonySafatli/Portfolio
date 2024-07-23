@@ -1,7 +1,8 @@
 ﻿@page
 @model Portfolio.Pages.Fun.IndexModel
 @{
-    Layout = "_FunLayout";
+    Layout = "_SimpleLayout";
+    ViewBag["Title"] = "Fun";
 }
 
 <p>A few pages I made just for fun</p>
@@ -9,5 +10,5 @@
 <p>Here are some links</p>
 
 <div>
-    <a href="/Fun/TimeLine">My Life in Weeks</a>
+    <a asp-page="TimeLine">My Life in Weeks</a>
 </div>

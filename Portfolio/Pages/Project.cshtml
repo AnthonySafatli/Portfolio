@@ -2,11 +2,14 @@
 @using Portfolio.Models
 @model Portfolio.Pages.ProjectModel
 @{
+    ViewData["Title"] = Model.Project?.Name;
 }
 
 @section Styles {
     <link rel="stylesheet" href="~/css/project.css" asp-append-version="true" />
 }
+
+<!-- TOOD: Make for iphone -->
 
 <h1 class="title">Project: @Model.Project.Name</h1>
 

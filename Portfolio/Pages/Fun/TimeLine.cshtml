@@ -1,7 +1,8 @@
 ﻿@page
 @model TimeLineModel
 @{
-    Layout = "_FunLayout";
+    Layout = "_SimpleLayout";
+    ViewBag["Title"] = "My Life in Weeks";
 }
 
 @section Fonts {
@@ -12,6 +13,10 @@
 
 @section Styles {
     <link rel="stylesheet" href="~/css/timeline.min.css" asp-append-version="true" />
+}
+
+@section Scripts {
+    <script src="~/dist/timeline.bundle.js" asp-append-version="true"></script>
 }
 
 <header>
@@ -115,7 +120,3 @@
 <footer>
 
 </footer>
-
-@section Scripts {
-    <script src="~/dist/timeline.bundle.js" asp-append-version="true"></script>
-}
