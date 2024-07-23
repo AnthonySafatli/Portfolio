@@ -14,11 +14,16 @@
   align-items: center;
 }
 
-@media (max-width: 768px) {
+.dual-div > * {
+  width: 75%;
+}
+
+img {
+  width: 100%;
+}
+
+@media (max-width: 1100px) {
   .dual-div {
     flex-direction: column;
   }
-}
-.dual-div img {
-  width: 70%;
 }
