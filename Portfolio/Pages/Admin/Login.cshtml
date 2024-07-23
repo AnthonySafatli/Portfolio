@@ -1,12 +1,17 @@
 ﻿@page
 @model Portfolio.Pages.Admin.LoginModel
 @{
-    Layout = "_LoginLayout";
+    Layout = "_AdminLayout";
 }
 
-<div>
-    <form method="post">
-        <input type="password" asp-for="Credential.Password" />
-        <input type="submit" value="Login!"/>
+<div class="center section center-h">
+    <form method="post" class="normal-form">
+        <div>
+            <label asp-for="Credential.Password"></label>
+            <input type="password" asp-for="Credential.Password" />
+        </div>
+        <div class="uninclude center-button">
+            <button class="button" type="submit">Login</button>
+        </div>
     </form>
 </div>
