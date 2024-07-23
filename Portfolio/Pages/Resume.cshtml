@@ -6,7 +6,7 @@
 }
 
 @section Styles {
-    
+    <link rel="stylesheet" href="~/css/resume.css" asp-append-version="true" />
 }
 
 @section Fonts {
@@ -20,72 +20,67 @@
     <script src="~/dist/resume.bundle.js" asp-append-version="true"></script>
 }
 
-<header>
-    <h1>Anthony Safatli</h1>
-    <p>
-        <span>Dartmouth NS</span> | 
-        <span><a href="mailto:anthonysafatli@dal.ca">AnthonySafatli@dal.ca</a></span>
-    </p>
-</header>
+<div class="page">
+    <header>
+        <h1 class="roboto-slab">Anthony Safatli</h1>
+        <p class="roboto">
+            <span>Dartmouth NS</span> | <span><a href="mailto:anthonysafatli@dal.ca">AnthonySafatli@dal.ca</a></span>
+        </p>
+    </header>
 
-<!-- Maybe could have a white border around resume to make it look like a peice of paper, or pdf document? (also add shadow to make it neat) -->
-
-<main>
-    <div>
-        <button class="selected">Compact</button>
-        <button>Full</button>
-    </div>
-    <div>
+    <main class="roboto">
         <div>
-            <h2>Education</h2>
             <div>
-                <!-- High School -->
-                <!-- Dalhousie -->
-            </div>
-        </div>
-        <div>
-            <h2>Skills</h2>
-            <div>
+                <h2 class="roboto-slab">Education</h2>
                 <div>
-                    <h3>Technical</h3>
+                    <!-- High School -->
+                    <!-- Dalhousie -->
+                </div>
+            </div>
+            <div>
+                <h2 class="roboto-slab">Skills</h2>
+                <div>
                     <div>
-                        <!-- Technical Skills -->
-                    </div>
-                    <h3>Non-Technical</h3>
-                    <div>
-                        <!-- Non-Technical Skills -->
+                        <h3 class="roboto-slab">Technical</h3>
+                        <div>
+                            <!-- Technical Skills -->
+                        </div>
+                        <h3 class="roboto-slab">Non-Technical</h3>
+                        <div>
+                            <!-- Non-Technical Skills -->
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div>
-            <h2>Experience</h2>
             <div>
-                <!-- Jake's Variety -->
-                <!-- No Frills -->
-                <!-- Dalhousie MedIT -->
+                <h2 class="roboto-slab">Experience</h2>
+                <div>
+                    <!-- Jake's Variety -->
+                    <!-- No Frills -->
+                    <!-- Dalhousie MedIT -->
+                </div>
+            </div>
+            <div>
+                <h2 class="roboto-slab">Projects</h2>
+                <div>
+                    <!-- Personal Projects -->
+                    <!-- Hackathons -->
+                </div>
+            </div>
+            <div>
+                <h2 class="roboto-slab">Other</h2>
+                <div>
+                    <!-- Teen SOYO + YAM -->
+                    <!-- Linux Society -->
+                </div>
             </div>
         </div>
-        <div>
-            <h2>Projects</h2>
-            <div>
-                <!-- Personal Projects -->
-                <!-- Hackathons -->
-            </div>
-        </div>
-        <div>
-            <h2>Other</h2>
-            <div>
-                <!-- Teen SOYO + YAM -->
-                <!-- Linux Society -->
-            </div>
-        </div>
-    </div>
-</main>
+    </main>
 
-<footer>
-    <button>Download PDF</button>
+    <footer class="roboto">
+        <button>Download PDF</button>
 
-    <p>Feel free to contact me here</p>
-    <p><a href="/Contact">Contact Me!</a></p>
-</footer>
+        <p>Feel free to contact me here</p>
+        <p><a href="/Contact">Contact Me!</a></p>
+    </footer>
+</div>
