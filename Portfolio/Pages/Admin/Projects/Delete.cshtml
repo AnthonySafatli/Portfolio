@@ -46,7 +46,15 @@
             @Html.DisplayNameFor(model => model.Project.Hidden)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Project.Hidden)
+            @if (Model.Project.Hidden)
+            {
+                @Html.Raw("&#x2714")
+                ;
+            } 
+            else
+            {
+                @Html.DisplayFor(model => model.Project.Hidden)
+            }
         </dd>
     </dl>
 </div>

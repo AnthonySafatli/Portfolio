@@ -56,7 +56,10 @@
                         @Html.DisplayFor(modelItem => item.Thumbnail)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Hidden)
+                        @if (item.Hidden)
+                        {
+                            @Html.Raw("&#x2714");
+                        }
                     </td>
                     <td>
                         <a class="inline-button" asp-page="./Projects/Edit" asp-route-id="@item.Name">Edit</a>
