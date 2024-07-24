@@ -6,3 +6,107 @@
     ViewData["Title"] = "Files";
 }
 
+<h1>Files</h1>
+
+<h2>Asset Files</h2>
+
+<div class="center section">
+    <table>
+        <thead>
+            <tr>
+                <th>Path</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (FileStatus asset in Model.AssetFiles)
+            {
+                <tr>
+                    <td>
+                        @asset.ShortPath
+                    </td>
+                    <td>
+                        <!-- TODO: Change to post -->
+                        <a class="inline-button" asp-page="Delete" asp-route-path="@asset.FullPath">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<h2>Project Files</h2>
+
+<div class="center section">
+    <table>
+        <thead>
+            <tr>
+                <th>Path</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (FileStatus projectFile in Model.ProjectFiles)
+            {
+                <tr>
+                    <td>
+                        @projectFile.ShortPath
+                    </td>
+                    <td>
+                        @if (projectFile.Used)
+                        {
+                            @Html.Raw("&#x2714");
+                        }
+                    </td>
+                    <td>
+                        <!-- TODO: Change to post -->
+                        <a class="inline-button" asp-page="Delete" asp-route-path="@projectFile.FullPath">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<h2>Markdown Files</h2>
+
+<div class="center section">
+    <table>
+        <thead>
+            <tr>
+                <th>Path</th>
+                <th>Status</th>
+                <th>Json Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (MarkDownStatus mdFiles in Model.MarkDownFiles)
+            {
+                <tr>
+                    <td>
+                        @mdFiles.ShortPath
+                    </td>
+                    <td>
+                        @if (mdFiles.Used)
+                        {
+                            @Html.Raw("&#x2714");
+                        }
+                    </td>
+                    <td>
+                        @if (mdFiles.JsonStatus)
+                        {
+                            @Html.Raw("&#x2714");
+                        }
+                    </td>
+                    <td>
+                        <!-- TODO: Change to post -->
+                        <a class="inline-button" asp-page="Delete" asp-route-path="@mdFiles.FullPath">Delete</a>
+                        <!-- TODO: Add delete/recreate json file -->
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
