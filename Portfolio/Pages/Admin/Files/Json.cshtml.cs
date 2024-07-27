@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Diagnostics;
 
 namespace Portfolio.Pages.Admin.Files;
 
+[Authorize]
 public class JsonModel : PageModel
 {
     [BindProperty(SupportsGet = true)]

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 namespace Portfolio.Pages.Admin.Files;
 
 [Authorize]
-public class AddModel : PageModel
+public class UploadModel : PageModel
 {
     public void OnGet()
     {
