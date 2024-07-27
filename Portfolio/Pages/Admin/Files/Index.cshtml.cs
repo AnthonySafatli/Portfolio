@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Portfolio.Data;
 using Portfolio.Models;
+using System.Diagnostics;
 
 namespace Portfolio.Pages.Admin.Files;
 
@@ -46,7 +47,7 @@ public class IndexModel : PageModel
         {
             string shortPath = mdFile.Remove(0, mdDir.Length + 1).Replace("\\", "/");
             bool used = projects.Any(p => p.File + ".md" == shortPath);
-            bool jsonStatus = true; // TODO: Fix later
+            bool jsonStatus = CheckJson(shortPath);
             bool mediaStatus = false; // TODO: Fix later
 
             MarkDownFiles.Add(new MarkDownStatus(mdFile, shortPath, used, jsonStatus, mediaStatus));
@@ -96,5 +97,58 @@ public class IndexModel : PageModel
         }
 
         return files;
+    }
+
+    private bool CheckJson(string mdPath)
+    {
+        string pythonInterpreter = "python";
+        string pythonScript = @"Scripts\md_to_json_tester.py " + mdPath.Substring(0, mdPath.Length - 3);
+
+        ProcessStartInfo startInfo = new ProcessStartInfo
+        {
+            FileName = pythonInterpreter,
+            Arguments = pythonScript,
+            UseShellExecute = false,
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+            CreateNoWindow = true
+        };
+
+        // Create and start the process
+        string error;
+        string output;
+        using (Process process = new Process())
+        {
+            process.StartInfo = startInfo;
+            process.Start();
+
+            output = process.StandardOutput.ReadToEnd();
+            error = process.StandardError.ReadToEnd();
+
+            process.WaitForExit();
+        }
+
+        string filePath = Path.Combine(_environment.ContentRootPath, "Projects\\Json\\" + mdPath.Substring(0, mdPath.Length - 2) + "json");
+
+        try
+        {
+            using (StreamReader reader = new StreamReader(filePath))
+            {
+                string? firstLine = reader.ReadLine();
+
+                if (firstLine == null)
+                {
+                    return false;
+                } 
+                else
+                {
+                    return firstLine.TrimEnd() == output.Replace('\'', '\"').TrimEnd();
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
     }
 }
