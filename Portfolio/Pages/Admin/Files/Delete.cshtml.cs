@@ -10,7 +10,11 @@ public class DeleteModel : PageModel
 
     public IActionResult OnGet()
     {
-        //TODO: delete "path" (md and json)
+        try
+        {
+            System.IO.File.Delete(Path);
+        }
+        catch (Exception ex) { }
 
         return Redirect("../Index");
     }
