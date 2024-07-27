@@ -48,7 +48,7 @@ public class IndexModel : PageModel
             string shortPath = mdFile.Remove(0, mdDir.Length + 1).Replace("\\", "/");
             bool used = projects.Any(p => p.File + ".md" == shortPath);
             bool jsonStatus = CheckJson(shortPath);
-            bool mediaStatus = false; // TODO: Fix later
+            bool mediaStatus = CheckMedia(shortPath, projectFiles);
 
             MarkDownFiles.Add(new MarkDownStatus(mdFile, shortPath, used, jsonStatus, mediaStatus));
         }
@@ -150,5 +150,32 @@ public class IndexModel : PageModel
         {
             return false;
         }
+    }
+
+    private bool CheckMedia(string mdPath, List<string> projectFiles)
+    {
+        string jsonPath = @"Projects\Json\" + mdPath.Substring(0, mdPath.Length - 3) + ".json";
+        if (!System.IO.File.Exists(jsonPath))
+            return true;
+
+        string jsonString = System.IO.File.ReadAllText(jsonPath);
+        if (jsonString == null)
+            return true;
+
+        ProjectPage projectJson = JsonConvert.DeserializeObject<ProjectPage>(jsonString);
+
+        if (projectJson == null)
+            return true;
+
+        foreach (PageElement elem in projectJson.Elements)
+        {
+            if (elem.Name == "media" && elem.Link != null)
+            {
+                if (!projectFiles.Contains(elem.Link))
+                    return false;
+            }
+        }
+
+        return true;
     }
 }
