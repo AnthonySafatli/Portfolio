@@ -28,7 +28,7 @@
             {
                 <tr>
                     <td>
-                        @projectFile.ShortPath
+                        <a class="inline-button" href="~/projects/@projectFile.ShortPath" target="_blank">@projectFile.ShortPath</a>
                     </td>
                     <td>
                         @if (projectFile.Used)
@@ -37,9 +37,7 @@
                         }
                     </td>
                     <td>
-                        <!-- TODO: Change to post -->
                         <a class="inline-button" asp-page="Delete" asp-route-path="@projectFile.FullPath">Delete</a>
-                        <!-- TODO: Add preview  link -->
                     </td>
                 </tr>
             }
@@ -94,10 +92,8 @@
                         }
                     </td>
                     <td>
-                        <!-- TODO: Change to post -->
                         <a class="inline-button" asp-page="Delete" asp-route-path="@mdFiles.FullPath">Delete</a>
-                        <!-- TODO: Add delete/recreate json file -->
-                        <!-- TODO: Add preview  link -->
+                        <a class="inline-button" asp-page="Json" asp-route-file="@mdFiles.ShortPath">Run Json</a>
                     </td>
                 </tr>
             }
