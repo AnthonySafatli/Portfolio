@@ -14,7 +14,6 @@ public class IndexModel : PageModel
     private readonly ProjectsContext _context;
     private readonly IWebHostEnvironment _environment;
 
-    public List<FileStatus> AssetFiles { get; set; } = new List<FileStatus>();
     public List<FileStatus> ProjectFiles { get; set; } = new List<FileStatus>();
     public List<MarkDownStatus> MarkDownFiles { get; set; } = new List<MarkDownStatus>();
 
@@ -28,20 +27,37 @@ public class IndexModel : PageModel
     {
         IList<Project> projects = await _context.Projects.ToListAsync();
 
-        string assetDir = Path.Combine(_environment.WebRootPath, "assets");
-        List<string> assetFiles = GetAllFiles(assetDir);
-
-        foreach (string asset in assetFiles)
-        {
-            string shortPath = asset.Remove(0, assetDir.Length);
-            AssetFiles.Add(new FileStatus(asset, shortPath, true));
-        }
-
         string projectDir = Path.Combine(_environment.WebRootPath, "projects");
         List<string> projectFiles = GetAllFiles(projectDir);
+        List<string> usedProjectFiles = GetUsedFiles(projects);
+
+        foreach (string projectFile in projectFiles)
+        {
+            string shortPath = projectFile.Remove(0, projectDir.Length + 1).Replace("\\", "/");
+            bool used = usedProjectFiles.Contains(shortPath);
+
+            ProjectFiles.Add(new FileStatus(projectFile, shortPath, used));
+        }
+
+        string mdDir = Path.Combine(_environment.ContentRootPath, "Projects", "Markdown");
+        List<string> mdFiles = GetAllFiles(mdDir);
+
+        foreach (string mdFile in mdFiles)
+        {
+            string shortPath = mdFile.Remove(0, mdDir.Length + 1).Replace("\\", "/");
+            bool used = projects.Any(p => p.File + ".md" == shortPath);
+            bool jsonStatus = true; // TODO: Fix later
+            bool mediaStatus = false; // TODO: Fix later
+
+            MarkDownFiles.Add(new MarkDownStatus(mdFile, shortPath, used, jsonStatus, mediaStatus));
+        }
+    }
+
+    private List<string> GetUsedFiles(IList<Project> projects)
+    {
         List<string> usedProjectFiles = new List<string>();
 
-        foreach (Project proj in projects) 
+        foreach (Project proj in projects)
         {
             usedProjectFiles.Add(proj.Thumbnail);
 
@@ -66,25 +82,7 @@ public class IndexModel : PageModel
             }
         }
 
-        foreach (string projectFile in projectFiles)
-        {
-            string shortPath = projectFile.Remove(0, projectDir.Length);
-            bool used = usedProjectFiles.Contains(shortPath);
-
-            ProjectFiles.Add(new FileStatus(projectFile, shortPath, used));
-        }
-
-        string mdDir = Path.Combine(_environment.ContentRootPath, "Projects", "Markdown");
-        List<string> mdFiles = GetAllFiles(projectDir);
-
-        foreach (string mdFile in mdFiles)
-        {
-            string shortPath = mdFile.Remove(0, mdDir.Length);
-            bool used = projects.Any(p => "Projects/Markdown/" + p.File + ".md" == shortPath);
-            bool jsonStatus = true; // TODO: Fix later
-
-            MarkDownFiles.Add(new MarkDownStatus(mdFile, shortPath, used, jsonStatus));
-        }
+        return usedProjectFiles;
     }
 
     private List<string> GetAllFiles(string rootDirectory)

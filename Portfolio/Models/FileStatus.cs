@@ -17,10 +17,12 @@ public class FileStatus
 public class MarkDownStatus : FileStatus 
 {
     public bool JsonStatus { get; set; }
+    public bool MediaStatus { get; set; }
 
-    public MarkDownStatus(string fullPath, string shortPath, bool used, bool jsonStatus) 
+    public MarkDownStatus(string fullPath, string shortPath, bool used, bool jsonStatus, bool mediaStatus) 
         : base(fullPath, shortPath, used) 
     {
         JsonStatus = jsonStatus;
+        MediaStatus = mediaStatus;
     }
 }
