@@ -3,3 +3,27 @@
 @{
     Layout = "_AdminLayout";
 }
+
+<h1>Upload</h1>
+
+<div class="section center">
+    <form class="normal-form" method="post" enctype="multipart/form-data">
+        <div>
+            <label asp-for="File"></label>
+            <input asp-for="File" accept=".jpg, .png" />
+        </div>
+        <div>
+            <label asp-for="FileLocation"></label>
+            <input asp-for="FileLocation" />
+        </div>
+        <div>
+            <label asp-for="Name"></label>
+            <input asp-for="Name" />
+        </div>
+        <div class="uninclude">
+            <button class="button" type="submit">Upload</button>
+        </div>
+    </form>
+</div>
+
+<a class="button" asp-page="../Dashboard">Back to Dashboard</a>
