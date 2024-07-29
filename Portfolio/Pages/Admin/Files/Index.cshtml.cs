@@ -47,7 +47,7 @@ public class IndexModel : PageModel
         {
             string shortPath = mdFile.Remove(0, mdDir.Length + 1).Replace("\\", "/");
             bool used = projects.Any(p => p.File + ".md" == shortPath);
-            bool jsonStatus = CheckJson(shortPath);
+            bool? jsonStatus = CheckJson(shortPath);
             bool mediaStatus = CheckMedia(shortPath, projectFiles);
 
             MarkDownFiles.Add(new MarkDownStatus(mdFile, shortPath, used, jsonStatus, mediaStatus));
@@ -99,7 +99,7 @@ public class IndexModel : PageModel
         return files;
     }
 
-    private bool CheckJson(string mdPath)
+    private bool? CheckJson(string mdPath)
     {
         string pythonInterpreter = "python";
         string pythonScript = @"Scripts\md_to_json_tester.py " + mdPath.Substring(0, mdPath.Length - 3);
@@ -126,6 +126,11 @@ public class IndexModel : PageModel
             error = process.StandardError.ReadToEnd();
 
             process.WaitForExit();
+        }
+
+        if (!String.IsNullOrEmpty(error))
+        {
+            return null;
         }
 
         string filePath = Path.Combine(_environment.ContentRootPath, "Projects\\Json\\" + mdPath.Substring(0, mdPath.Length - 2) + "json");

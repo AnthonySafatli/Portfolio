@@ -5,19 +5,18 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Portfolio.Pages.Admin.Files;
 
+
 [Authorize]
-public class UploadModel : PageModel
+public class MarkdownModel : PageModel
 {
     private readonly IWebHostEnvironment _environment;
 
     [BindProperty, Display(Name = "File to Upload")]
     public IFormFile File { get; set; }
-    [BindProperty]
-    public string FileLocation { get; set; }
-    [BindProperty, Display(Name = "New Name")]
+    [BindProperty, Display(Name = "File Name")]
     public string Name { get; set; }
 
-    public UploadModel(IWebHostEnvironment environment)
+    public MarkdownModel(IWebHostEnvironment environment)
     {
         _environment = environment;
     }
@@ -28,16 +27,12 @@ public class UploadModel : PageModel
 
     public async Task<IActionResult> OnPostAsync()
     {
-        ModelState.Remove("Rename");
-        ModelState.Remove("FileLocation");
         if (!ModelState.IsValid)
             return Page();
 
         // TODO: More data validation
 
-        string fileName = (Name == null) ? File.FileName : Name;
-        string folder = (FileLocation == null) ? "" : FileLocation;
-        string filePath = Path.Combine(_environment.WebRootPath, "projects", folder, fileName);
+        string filePath = Path.Combine(_environment.ContentRootPath, "Projects/Markdown", Name + ".md");
         using FileStream fileStream = new FileStream(filePath, FileMode.Create);
         await File.CopyToAsync(fileStream);
 

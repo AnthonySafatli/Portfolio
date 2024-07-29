@@ -10,10 +10,11 @@
 
 <div class="center section gap">
     <a class="button" asp-page="../Dashboard">Back To Dashboard</a>
-    <a class="button" asp-page="./Upload">Upload File</a>
+    <a class="button" asp-page="./Upload">Upload Media</a>
+    <a class="button" asp-page="./Markdown">Upload Markdown</a>
 </div>
 
-<h2>Project Files</h2>
+<h2>Media Files</h2>
 
 <div class="center section">
     <table>
@@ -64,6 +65,10 @@
             {
                 <tr>
                     <td>
+                        @if (mdFiles.JsonStatus == null)
+                        {
+                            @: &#10071
+                        }
                         @mdFiles.ShortPath
                     </td>
                     <td>
@@ -73,7 +78,7 @@
                         }
                     </td>
                     <td>
-                        @if (mdFiles.JsonStatus)
+                        @if (mdFiles.JsonStatus == true)
                         {
                             @: &#x2714 
                         }
