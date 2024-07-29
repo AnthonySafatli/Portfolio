@@ -141,7 +141,17 @@ tr:hover td.name {
   width: 90%;
 }
 
+.login-form {
+  margin-top: 20px;
+}
+
+.login-form input[type=password], .login-form label {
+  padding: 15px;
+  font-size: 2rem;
+}
+
 .normal-form > div:not(.uninclude) {
+  align-items: center;
   display: grid;
   grid-template-columns: 1fr 2fr;
   margin: 5px 0px;
@@ -173,10 +183,15 @@ dt {
   margin: 0px 5px;
 }
 
-.center-button {
-  margin-top: 10px;
+.login-button {
+  margin-top: 50px;
   display: flex;
   justify-content: center;
+}
+
+.login-button button {
+  padding: 15px;
+  font-size: 1.5rem;
 }
 
 .center-h {
