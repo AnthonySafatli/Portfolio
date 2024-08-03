@@ -14,12 +14,12 @@
 <form method="post">
     <div>
         <label>Email</label>
-        <input type="email" placeholder="example@@website.ca"/>
+        <input type="email" asp-for="Message.Email" placeholder="example@@website.ca"/>
     </div>
     
     <div>
         <label>Message</label>
-        <textarea placeholder="I really like your website!"></textarea>
+        <textarea asp-for="Message.Message" placeholder="I really like your website!"></textarea>
     </div>
     
     <div>

@@ -1,16 +1,73 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Portfolio.Models;
+using System.Net;
+using System.Net.Mail;
 
 namespace Portfolio.Pages;
 
 public class ContactModel : PageModel
 {
-    // TODO: Send email to me
-
     // TODO: Do scam/spam filtering
+    [BindProperty]
+    public ContactMessage? Message { get; set; }
+
+    public ContactModel()
+    {
+    }
 
     public void OnGet()
     {
+    }
 
+    public IActionResult OnPost()
+    {
+        if (Message == null) {
+            return Page();
+        }
+        // TODO: more input validation?
+
+        string subject = "New message! - anthonysafatli.com";
+        string body = @"
+<html lang=""en"">
+<head>
+    <meta charset=""utf-8"">
+    <link rel=""stylesheet"" href=""https://localhost:44358/css/admin.css"">
+</head>
+<body>
+    <header>
+    </header>
+
+    <main>
+        <h1>New Message</h1>
+        <div class=""section center"">
+            From: <a class=""inline-button"" href=""mailto:" + Message.Email + @""">" + Message.Email + @"</a>
+        </div>
+        <div class=""center section"">
+            Message:
+        </div>
+        <div class=""section center"">
+            " + Message.Message + @"
+        </div>
+    </main>
+</body>
+</html>";
+
+        MailMessage mail = new MailMessage();
+        mail.From = new MailAddress(Security.FromAddress);
+        mail.To.Add(Security.ToAddress);
+        mail.Subject = subject;
+        mail.Body = body;
+        mail.IsBodyHtml = true;
+
+        SmtpClient smtpClient = new SmtpClient("smtp.outlook.com", 587);
+        smtpClient.EnableSsl = true;
+        smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+        smtpClient.UseDefaultCredentials = false;
+        smtpClient.Credentials = new NetworkCredential(Security.FromAddress, Security.FromAdressPassword);
+
+        smtpClient.Send(mail);
+
+        return Page();
     }
 }

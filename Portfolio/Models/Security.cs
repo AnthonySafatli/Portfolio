@@ -5,6 +5,7 @@ namespace Portfolio.Models;
 
 public static class Security
 {
+    // Admin Stuff
     public const string AdminCookieName = "AdminCookieAuth";
     public const string AdminPassword = "***REMOVED***";
 
@@ -24,4 +25,10 @@ public static class Security
             return builder.ToString();
         }
     }
+
+    // Email Stuff
+    public const string ToAddress = "***REMOVED***";
+    public const string FromAddress = "***REMOVED***";
+    public const string FromAdressPassword = ""; // Hidden for obvious reasons
+
 }
