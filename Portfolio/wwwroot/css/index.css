@@ -42,10 +42,10 @@
     font-size: 1.3rem;
     padding-right: 25px;
     transition: 
-        font-weight 0.2s ease, 
-        font-size 0.2s ease, 
-        padding-right 0.2s ease,
-        text-shadow 0.2s ease;
+        font-weight 0.2s ease-in, 
+        font-size 0.2s ease-in, 
+        padding-right 0.2s ease-in,
+        text-shadow 0.2s ease-in;
 }
 
 .links a:hover {
@@ -53,10 +53,10 @@
     font-size: 1.5rem;
     font-weight: 550;
     transition: 
-        font-weight 0.5s ease, 
-        font-size 0.5s ease, 
-        padding-right 0.5s ease,
-        text-shadow 0.5s ease;
+        font-weight 0.5s ease-out, 
+        font-size 0.5s ease-out, 
+        padding-right 0.5s ease-out,
+        text-shadow 0.5s ease-out;
 }
 
 .block {

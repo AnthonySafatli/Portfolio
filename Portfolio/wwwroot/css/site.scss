@@ -56,7 +56,6 @@ nav {
 
 nav a {
     padding: 20px;
-    
 }
 
 /* Theme */
@@ -104,4 +103,27 @@ hr {
     border: 2px solid $seconrdary-colour;
     box-shadow: 0 0 30px 2px rgba(255, 255, 255, 0.3);
     transition: border ease 0.5s, color ease 0.5s, box-shadow ease 0.5s;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer nav {
+    display: flex;
+    gap: 30px;
+    padding: 0px;
+}
+
+.fa {
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+    padding: 0px;
+}
+
+.fa::before {
+    font-size: 1.75em;
 }

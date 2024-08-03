@@ -9,6 +9,7 @@
     @* CSS *@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Portfolio.styles.css" asp-append-version="true" />    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     @await RenderSectionAsync("Styles", required: false)
 
     @* Fonts *@
@@ -36,7 +37,14 @@
     </main>
 
     <footer>
-        &copy; 2024 - Anthony Safatli
+        <span>
+            &copy; 2024 - Anthony Safatli
+        </span>
+        <nav>
+            <a href="https://www.instagram.com/anthonysafatli124/" class="fa fa-instagram"></a>
+            <a href="https://www.linkedin.com/in/anthony-safatli-755823296/" class="fa fa-linkedin"></a>
+            <a href="mailto:anthonysafatli@dal.ca" class="fa fa-envelope"></a>
+        </nav>
     </footer>
 
     <script src="~/dist/site.bundle.js" asp-append-version="true"></script>
