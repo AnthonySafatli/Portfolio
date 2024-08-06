@@ -14,7 +14,7 @@
 <div class="projects-div">
     @foreach (Project project in Model.Projects)
     {
-        <a asp-page="/Project" asp-route-name="@project.Name" class="project-card element-class">
+        <a asp-page="/Project" asp-route-name="@project.Name" class="no-glow project-card">
             <div class="project-image">
                 <img src="projects/@project.Thumbnail" alt="thumbnail for @project.Name">
             </div>

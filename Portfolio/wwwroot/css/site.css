@@ -64,7 +64,7 @@ a, a * {
   transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
-a:hover, a:hover * {
+a:hover:not(.no-glow), a:hover:not(.no-glow) * {
   color: white;
   text-shadow: 0 0 8px rgba(255, 255, 255, 0.45), 0 0 16px rgba(255, 255, 255, 0.45), 0 0 24px rgba(255, 255, 255, 0.45);
   transition: color 0.5s ease, text-shadow ease 0.2s;
