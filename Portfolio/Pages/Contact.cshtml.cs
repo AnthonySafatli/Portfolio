@@ -27,6 +27,7 @@ public class ContactModel : PageModel
         }
         // TODO: more input validation?
 
+        // TODO: Replace css with actual css link (and test it)
         string subject = "New message! - anthonysafatli.com";
         string body = @"
 <html lang=""en"">
