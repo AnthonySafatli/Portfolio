@@ -68,7 +68,7 @@ public class EditModel : PageModel
             }
         }
 
-        return Redirect("/Admin/Upload/Markdown/" + Project.Name);
+        return Redirect("../");
     }
 
     private bool ProjectExists(string id)

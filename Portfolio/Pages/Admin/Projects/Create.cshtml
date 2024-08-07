@@ -40,6 +40,31 @@
             <label asp-for="Project.Hidden"></label>
             <input asp-for="Project.Hidden"/>
         </div>
+        <div>
+            <label asp-for="Project.Description"></label>
+            <input asp-for="Project.Description" />
+            <span asp-validation-for="Project.Description"></span>
+        </div>
+        <div>
+            <label asp-for="Project.Github"></label>
+            <input asp-for="Project.Github" />
+            <span asp-validation-for="Project.Github"></span>
+        </div>
+        <div>
+            <label asp-for="Project.Page"></label>
+            <input asp-for="Project.Page" />
+            <span asp-validation-for="Project.Page"></span>
+        </div>
+        <div>
+            <label asp-for="Project.Download"></label>
+            <input asp-for="Project.Download" />
+            <span asp-validation-for="Project.Download"></span>
+        </div>
+        <div>
+            <label asp-for="Project.Tags"></label>
+            <input asp-for="Project.Tags" />
+            <span asp-validation-for="Project.Tags"></span>
+        </div>
         <div class="uninclude">
             <button class="button" type="submit">Create</button>
         </div>
