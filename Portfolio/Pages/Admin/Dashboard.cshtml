@@ -44,7 +44,7 @@
                         @Html.DisplayFor(modelItem => item.File)
                     </td>
                     <td>
-                        <img class="preview" alt="thumbnail for @item.Name" src="projects/@item.Thumbnail" />
+                        <img class="preview" alt="thumbnail for @item.Name [@item.Thumbnail]" src="~/projects/@item.Thumbnail" />
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Tags)

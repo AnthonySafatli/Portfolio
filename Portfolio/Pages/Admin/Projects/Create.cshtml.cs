@@ -40,6 +40,6 @@ public class CreateModel : PageModel
         _context.Projects.Add(Project);
         await _context.SaveChangesAsync();
 
-        return Redirect("/Admin/Upload/Markdown/" + Project.Name);
+        return Redirect("../");
     }
 }

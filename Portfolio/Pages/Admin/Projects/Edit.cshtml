@@ -13,6 +13,10 @@
         <div asp-validation-summary="ModelOnly"></div>
         <input type="hidden" asp-for="Project.Name" />
         <div>
+            <label asp-for="Project.Name"></label>
+            <input readonly asp-for="Project.Name" />
+        </div>
+        <div>
             <label asp-for="Project.DateStarted"></label>
             <input asp-for="Project.DateStarted"/>
             <span asp-validation-for="Project.DateStarted" class="text-danger"></span>
@@ -60,7 +64,8 @@
             <button class="button" type="submit">Update</button>
         </div>
     </form>
-    <form asp-action="Delete" method="post" class="normal-form gap-v">
+    <form asp-page="Delete" method="post" class="normal-form gap-v">
+        <input type="hidden" asp-for="Project.Name" />
         <div class="uninclude">
             <button class="button" type="submit">Delete</button>
         </div>
