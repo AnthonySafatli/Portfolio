@@ -38,7 +38,7 @@
         </div>
         <div>
             <label asp-for="Project.Description"></label>
-            <input asp-for="Project.Description" />
+            <textarea asp-for="Project.Description"></textarea>
         </div>
         <div>
             <label asp-for="Project.Github"></label>
@@ -57,7 +57,12 @@
             <input asp-for="Project.Tags" />
         </div>
         <div class="uninclude">
-            <button class="button" type="submit">Save</button>
+            <button class="button" type="submit">Update</button>
+        </div>
+    </form>
+    <form asp-action="Delete" method="post" class="normal-form gap-v">
+        <div class="uninclude">
+            <button class="button" type="submit">Delete</button>
         </div>
     </form>
 </div>

@@ -7,7 +7,7 @@
 
 <h1>Dashboard</h1>
 
-<div class="center section gap">
+<div class="center-rows section gap">
     <a class="button" asp-page="../Index">Exit Admin Zone</a>
     <a class="button" asp-page="./Files/Index">File Manager</a>
     <a class="button" asp-page="./Projects/Create">Create Project</a>
@@ -19,34 +19,16 @@
             <tr>
                 <th class="name"></th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Project[0].DateStarted)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Project[0].DateEnded)
-                </th>
-                <th>
                     @Html.DisplayNameFor(model => model.Project[0].File)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Project[0].Thumbnail)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Project[0].Hidden)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Project[0].Description)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Project[0].Github)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Project[0].Page)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Project[0].Download)
-                </th>
-                <th>
                     @Html.DisplayNameFor(model => model.Project[0].Tags)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Project[0].Hidden)
                 </th>
                 <th></th>
             </tr>
@@ -59,16 +41,13 @@
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.DateStarted)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DateEnded)
-                    </td>
-                    <td>
                         @Html.DisplayFor(modelItem => item.File)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Thumbnail)
+                        <img class="preview" alt="thumbnail for @item.Name" src="projects/@item.Thumbnail" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tags)
                     </td>
                     <td>
                         @if (item.Hidden)
@@ -77,23 +56,7 @@
                         }
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Github)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Page)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Download)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Tags)
-                    </td>
-                    <td>
-                        <a class="inline-button" asp-page="./Projects/Edit" asp-route-id="@item.Name">Edit</a>
-                        <a class="inline-button" asp-page="./Projects/Delete" asp-route-id="@item.Name">Delete</a>
+                        <a class="inline-button" asp-page="./Projects/Edit" asp-route-id="@item.Name">View</a>
                     </td>
                 </tr>
             }

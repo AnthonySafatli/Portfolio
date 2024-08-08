@@ -70,7 +70,7 @@ button {
     padding: 8px;
 }
 
-.button, .normal-form input[type=text], .normal-form input[type=password], .normal-form input[type=datetime-local] {
+.button, .normal-form input[type=text], .normal-form input[type=password], .normal-form input[type=datetime-local], .normal-form textarea {
     background-color: transparent;
     border-radius: 5px;
     border: 1.5px solid rgba(100, 100, 100, 0.5);
@@ -78,12 +78,19 @@ button {
 }
 
 .button:hover, .button:focus,
+.normal-form textarea:hover, .normal-form textarea:focus,
 .normal-form input[type=text]:hover, .normal-form input[type=text]:focus,
 .normal-form input[type=password]:hover, .normal-form input[type=password]:focus,
 .normal-form input[type=datetime-local]:hover, .normal-form input[type=datetime-local]:focus {
     border-color: white;
     box-shadow: 0 0 30px 2px rgba(255, 255, 255, 0.6);
     transition: border-color ease 0.2s, box-shadow ease 0.3s;
+}
+
+textarea {
+    resize: vertical;
+    width: 100%;
+    height: 200px;
 }
 
 .inline-button {
@@ -157,7 +164,7 @@ tr:hover td.name {
     margin: 5px 0px;
 }
 
-.normal-form input {
+.normal-form input, .normal-form textarea {
     box-sizing: border-box;
     width: 100%;
     min-height: 28px;
@@ -172,6 +179,12 @@ dt {
 
 .center {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.center-rows {
+    display: flex;
     justify-content: center;
 }
 
@@ -181,6 +194,10 @@ dt {
 
 .gap > * {
     margin: 0px 5px;
+}
+
+.gap-v > * {
+    margin: 10px 0px;
 }
 
 .login-button {
@@ -196,4 +213,9 @@ dt {
 
 .center-h {
     margin-top: 100px;
+}
+
+.preview {
+    width: 70px;
+    height: auto;
 }
