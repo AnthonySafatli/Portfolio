@@ -11,12 +11,18 @@
     font-size: 0.9rem;
 }
 
-#desc {
-
+.links {
+    margin: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 
-#links {
-
+.links a {
+    padding: 5px 15px;
+    font-weight: 700;
+    border-radius: 25px;
 }
 
 #project-page {

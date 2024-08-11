@@ -13,17 +13,24 @@
 
 <h1 class="title">Project: @Model.Project.Name</h1>
 
+<div class="links">
+    @if (!String.IsNullOrEmpty(Model.Project.Github))
+    {
+        <a href="@Model.Project.Github" target="_blank"><span class="fa fa-mini fa-github"></span>&nbsp;Github</a>
+    }
+    @if (!String.IsNullOrEmpty(Model.Project.Page))
+    {
+        <a href="@Model.Project.Page" target="_blank"><span class="fa fa-mini fa-globe"></span>&nbsp;Webpage</a>
+    }
+    @if (!String.IsNullOrEmpty(Model.Project.Download))
+    {
+        <a href="@Model.Project.Download" target="_blank"><span class="fa fa-mini fa-download"></span>&nbsp;Download</a>
+    }
+</div>
+
 <div id="dates">
     <span>Date Started: <span class="bolder">@Model.Project.DateStarted.ToString("MMMM yyy")</span></span>
     <span>Date Ended: <span class="bolder">@Model.Project.DateEnded.ToString("MMMM yyy")</span></span>
-</div>
-
-<div id="desc">
-    <!-- Description -->
-</div>
-
-<div id="links">
-    <!-- Links -->
 </div>
 
 <div id="project-page">

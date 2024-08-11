@@ -128,6 +128,17 @@ footer nav {
     font-size: 1.75em;
 }
 
+.fa-mini {
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+    padding: 0px;
+}
+
+.fa-mini::before {
+    font-size: 1em;
+}
+
 .space-top {
     margin-top: 25px;
 }
