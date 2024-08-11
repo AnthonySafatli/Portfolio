@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Reflection;
 
-namespace Portfolio.Pages.Fun;
+namespace Portfolio.Pages.Page;
 
 public class TimeLineModel : PageModel
 {
