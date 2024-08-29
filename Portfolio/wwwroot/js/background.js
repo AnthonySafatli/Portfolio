@@ -16,12 +16,11 @@ const orbitCtrl = new OrbitControls(camera, renderer.domElement);
 orbitCtrl.enableDamping = true;
 
 // Textures
-// TODO: Import texture files to project
 const textureLoader = new THREE.TextureLoader();
-const starSprite = textureLoader.load("./src/circle.png");
-const colorMap = textureLoader.load("./src/04_rainbow1k.jpg");
-const elevMap = textureLoader.load("./src/01_earthbump1k.jpg");
-const alphaMap = textureLoader.load("./src/02_earthspec1k.jpg");
+const starSprite = textureLoader.load("../assets/three/circle.png");
+const colorMap = textureLoader.load("../assets/three/04_rainbow1k.jpg");
+const elevMap = textureLoader.load("../assets/three/01_earthbump1k.jpg");
+const alphaMap = textureLoader.load("../assets/three/02_earthspec1k.jpg");
 
 // Geometry
 const globeGroup = new THREE.Group();
