@@ -15,4 +15,13 @@ module.exports = {
             '@': path.resolve(__dirname, 'src/')
         }
     },
+    module: {
+        rules: [
+            {
+                test: /\.(glsl|vs|fs)$/,
+                exclude: /node_modules/,
+                use: 'raw-loader'
+            },
+        ]
+    }
 };
