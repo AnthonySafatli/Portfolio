@@ -26,22 +26,22 @@ const colorMap = textureLoader.load("../assets/three/04_rainbow1k.jpg");
 const elevMap = textureLoader.load("../assets/three/01_earthbump1k.jpg");
 const alphaMap = textureLoader.load("../assets/three/02_earthspec1k.jpg");
 
-// Geometry
+// Icosphere Geometry
 const globeGroup = new THREE.Group();
 scene.add(globeGroup);
 
-const geo = new THREE.IcosahedronGeometry(1, 15);
+const geo = new THREE.IcosahedronGeometry(1, 10);
 const mat = new THREE.MeshBasicMaterial({
-    color: 0x303030,
+    color: 0x203030,
     wireframe: true,
 });
 const cube = new THREE.Mesh(geo, mat);
 globeGroup.add(cube);
 
+// Earth Geometry
 const detail = 120;
 const pointsGeo = new THREE.IcosahedronGeometry(1, detail);
 
-// Material
 const uniforms = {
     size: { type: "f", value: 4.0 },
     colorTexture: { type: "t", value: colorMap },
@@ -70,7 +70,7 @@ scene.add(stars);
 // Animation
 function animate() {
     renderer.render(scene, camera);
-    globeGroup.rotation.y += 0.002;
+    globeGroup.rotation.y += 0.001;
 
     requestAnimationFrame(animate);
     orbitCtrl.update();
