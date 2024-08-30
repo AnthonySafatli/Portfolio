@@ -9,7 +9,7 @@ import fragmentShader from "../assets/three/shaders/fragmentShader.glsl";
 // three.js Setup
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 0.1, 1000);
-camera.position.set(0, 0, 3.5);
+camera.position.set(0, 0, 3.25);
 const canvas = document.querySelector(".webgl");
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
 renderer.setSize(innerWidth, innerHeight);
@@ -39,7 +39,7 @@ const cube = new THREE.Mesh(geo, mat);
 globeGroup.add(cube);
 
 // Earth Geometry
-const detail = 120;
+const detail = 110;
 const pointsGeo = new THREE.IcosahedronGeometry(1, detail);
 
 const uniforms = {
@@ -64,13 +64,16 @@ const hemiLight = new THREE.HemisphereLight(0xffffff, 0x080820, 3);
 scene.add(hemiLight);
 
 // Stars
-const stars = getStarfield({ numStars: 4500, sprite: starSprite });
+const stars = getStarfield({ numStars: 2000, sprite: starSprite });
 scene.add(stars);
+
+// Camera Positioning
+globeGroup.position.set(-1, 0, 0); 
 
 // Animation
 function animate() {
     renderer.render(scene, camera);
-    globeGroup.rotation.y += 0.001;
+    globeGroup.rotation.y += 0.0015;
 
     requestAnimationFrame(animate);
     orbitCtrl.update();
