@@ -3,6 +3,10 @@
 @model Portfolio.Pages.ProjectModel
 @{
     ViewData["Title"] = Model.Project?.Name;
+
+    ViewData["Globe X"] = 0;
+    ViewData["Globe Y"] = -0.5;
+    ViewData["Globe Z"] = -3;
 }
 
 @section Styles {
