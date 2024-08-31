@@ -2,6 +2,14 @@
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import getStarfield from "./getStarfield.js";
 
+// Error Checking
+if (!(typeof globeX !== 'undefined' || typeof globeY !== 'undefined' || typeof globeZ !== 'undefined')) {
+    throw new Error("Error: Globe position undefined!");
+}
+if (!(typeof lowColour !== 'undefined' || typeof highColour !== 'undefined' || typeof wireColour !== 'undefined')) {
+    throw new Error("Error: Globe colour undefined!");
+}
+
 // Shaders
 import vertexShader from "../assets/three/shaders/vertexShader.glsl";
 import fragmentShader from "../assets/three/shaders/fragmentShader.glsl";
@@ -32,7 +40,7 @@ scene.add(globeGroup);
 
 const geo = new THREE.IcosahedronGeometry(1, 10);
 const mat = new THREE.MeshBasicMaterial({
-    color: 0x203030,
+    color: wireColour,
     wireframe: true,
 });
 const cube = new THREE.Mesh(geo, mat);
@@ -46,7 +54,9 @@ const uniforms = {
     size: { type: "f", value: 4.0 },
     colorTexture: { type: "t", value: colorMap },
     elevTexture: { type: "t", value: elevMap },
-    alphaTexture: { type: "t", value: alphaMap }
+    alphaTexture: { type: "t", value: alphaMap },
+    lowColour: { value: lowColour },
+    highColour: { value: highColour },
 };
 
 const pointsMat = new THREE.ShaderMaterial({
