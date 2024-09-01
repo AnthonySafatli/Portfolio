@@ -25,9 +25,9 @@ renderer.setPixelRatio(window.devicePixelRatio);
 
 // Textures
 const textureLoader = new THREE.TextureLoader();
-const starSprite = textureLoader.load("../assets/three/circle.png");
-const elevMap = textureLoader.load("../assets/three/01_earthbump1k.jpg");
-const alphaMap = textureLoader.load("../assets/three/02_earthspec1k.jpg");
+const starSprite = textureLoader.load("/assets/three/circle.png");
+const elevMap = textureLoader.load("/assets/three/01_earthbump1k.jpg");
+const alphaMap = textureLoader.load("/assets/three/02_earthspec1k.jpg");
 
 // Icosphere Geometry
 const globeGroup = new THREE.Group();

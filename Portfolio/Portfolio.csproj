@@ -33,6 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Projects\Markdown\" />
     <Folder Include="wwwroot\projects\videos\" />
   </ItemGroup>
 
