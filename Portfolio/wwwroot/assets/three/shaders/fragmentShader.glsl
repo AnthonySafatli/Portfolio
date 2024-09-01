@@ -1,4 +1,3 @@
-uniform sampler2D colorTexture;
 uniform sampler2D alphaTexture;
 uniform sampler2D elevTexture;
 

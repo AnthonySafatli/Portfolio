@@ -3,7 +3,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import getStarfield from "./getStarfield.js";
 
 // Error Checking
-if (!(typeof globeX !== 'undefined' || typeof globeY !== 'undefined' || typeof globeZ !== 'undefined')) {
+if (!(typeof globePos !== 'undefined')) {
     throw new Error("Error: Globe position undefined!");
 }
 if (!(typeof lowColour !== 'undefined' || typeof highColour !== 'undefined' || typeof wireColour !== 'undefined')) {
@@ -23,14 +23,9 @@ const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
 renderer.setSize(innerWidth, innerHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
 
-// Orbit Controls
-const orbitCtrl = new OrbitControls(camera, renderer.domElement);
-orbitCtrl.enableDamping = true;
-
 // Textures
 const textureLoader = new THREE.TextureLoader();
 const starSprite = textureLoader.load("../assets/three/circle.png");
-const colorMap = textureLoader.load("../assets/three/04_rainbow1k.jpg");
 const elevMap = textureLoader.load("../assets/three/01_earthbump1k.jpg");
 const alphaMap = textureLoader.load("../assets/three/02_earthspec1k.jpg");
 
@@ -52,7 +47,6 @@ const pointsGeo = new THREE.IcosahedronGeometry(1, detail);
 
 const uniforms = {
     size: { type: "f", value: 4.0 },
-    colorTexture: { type: "t", value: colorMap },
     elevTexture: { type: "t", value: elevMap },
     alphaTexture: { type: "t", value: alphaMap },
     lowColour: { value: lowColour },
@@ -68,7 +62,8 @@ const pointsMat = new THREE.ShaderMaterial({
 
 const points = new THREE.Points(pointsGeo, pointsMat);
 globeGroup.add(points);
-globeGroup.position.set(globeX, globeY, globeZ); 
+
+globeGroup.position.set(globePos[0], globePos[1], globePos[2]); 
 
 // Lighting
 const hemiLight = new THREE.HemisphereLight(0xffffff, 0x080820, 3);
@@ -84,7 +79,6 @@ function animate() {
     globeGroup.rotation.y += 0.0015;
 
     requestAnimationFrame(animate);
-    orbitCtrl.update();
 };
 animate();
 
