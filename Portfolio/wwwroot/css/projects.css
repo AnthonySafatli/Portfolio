@@ -5,29 +5,30 @@
 }
 
 .project-card {
-    flex: 1 1 50%; 
+    flex: 1 1 50%;
     box-sizing: border-box;
     padding: 10px 30px;
     margin-bottom: 30px;
+    text-align: center;
 }
 
 .project-card h2 {
-    text-align: center;
-    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 2rem;
+    margin: 20px 0px;
+    transition: font-weight ease 0.2s;
+}
+
+.project-card:hover h2 {
+    font-weight: 600;
 }
 
 .project-image {
-    background-color: rgb(20, 20, 20);
     height: 100px;
     width: 100%;
     display: flex;
     justify-content: center;
     transition: height 0.5s ease;
-}
-
-.project-card:hover .project-image {
-    height: 110px;
-    transition: height 0.3s ease-in-out;
 }
 
 .project-image img {

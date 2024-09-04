@@ -7,6 +7,7 @@
     ViewData["Globe X"] = 0;
     ViewData["Globe Y"] = -1;
     ViewData["Globe Z"] = -2;
+    ViewData["Globe Opacity"] = 0.3;
 }
 
 @section Styles {
@@ -18,7 +19,7 @@
 <div class="projects-div">
     @foreach (Project project in Model.Projects)
     {
-        <a asp-page="/Project" asp-route-name="@project.Name" class="no-glow project-card">
+        <a asp-page="/Project" asp-route-name="@project.Name" class="project-card">
             <div class="project-image">
                 <img src="projects/@project.Thumbnail" alt="thumbnail for @project.Name">
             </div>

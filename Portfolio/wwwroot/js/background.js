@@ -9,6 +9,9 @@ if (!(typeof globePos !== 'undefined')) {
 if (!(typeof lowColour !== 'undefined' || typeof highColour !== 'undefined' || typeof wireColour !== 'undefined')) {
     throw new Error("Error: Globe colour undefined!");
 }
+if (!(typeof globeOpacity !== 'undefined')) {
+    throw new Error("Error: Globe opacity undefined!");
+}
 
 // Shaders
 import vertexShader from "../assets/three/shaders/vertexShader.glsl";
@@ -36,7 +39,9 @@ scene.add(globeGroup);
 const geo = new THREE.IcosahedronGeometry(1, 10);
 const mat = new THREE.MeshBasicMaterial({
     color: wireColour,
+    opacity: globeOpacity,
     wireframe: true,
+    transparent: true,
 });
 const cube = new THREE.Mesh(geo, mat);
 globeGroup.add(cube);
@@ -46,6 +51,7 @@ const detail = 110;
 const pointsGeo = new THREE.IcosahedronGeometry(1, detail);
 
 const uniforms = {
+    opacity: { type: "f", value: globeOpacity * 0.3 },
     size: { type: "f", value: 4.0 },
     elevTexture: { type: "t", value: elevMap },
     alphaTexture: { type: "t", value: alphaMap },
