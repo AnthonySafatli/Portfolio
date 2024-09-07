@@ -1,5 +1,6 @@
-$main-colour: cyan;
-$seconrdary-colour: white;
+$main-colour: #0CACBE;
+$link-colour: #91F2F2; 
+$seconrdary-colour: #B6F1F8;
 
 /* Temp, before THREE.js stuff */
 html {
@@ -23,18 +24,21 @@ html {
     box-sizing: border-box;
 }
 
-a {
-    text-decoration: none;
-    color: inherit; 
-}
-
 /* Font Stuff */
 * {
     font-family: "Plus Jakarta Sans", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
+}
+
+h1, p, span, label, li, img {
     color: $main-colour;
+}
+
+a {
+    text-decoration: none;
+    color: $link-colour;
 }
 
 /* Page Grid */
@@ -88,12 +92,6 @@ a:hover:not(.no-glow), a:hover:not(.no-glow) * {
     margin-top: 20px;
 }
 
-hr {
-    background-color: black;
-    border-color: $main-colour;
-    margin: 20px 0;
-}
-
 .center {
     display: flex;
     justify-content: center;
@@ -104,7 +102,7 @@ hr {
     font-size: 1.1rem;
     padding: 10px;
     border-radius: 5px;
-    border: 2px solid $main-colour;
+    border: 2px solid $link-colour;
     transition: border ease 0.3s, color ease 0.3s, box-shadow ease 0.3s;
 }
 

@@ -12,6 +12,10 @@
     text-align: center;
 }
 
+.project-card * {
+    color: #91F2F2;
+}
+
 .project-card h2 {
     font-weight: 500;
     font-size: 2rem;

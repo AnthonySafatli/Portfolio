@@ -1,96 +1,106 @@
 ﻿#dates {
-    padding: 0px 20px;
-    margin-top: 10px;
-    font-size: 0.75rem;
-    display: flex;
-    justify-content: space-around;
+  padding: 0px 20px;
+  margin-top: 10px;
+  font-size: 0.75rem;
+  display: flex;
+  justify-content: space-around;
 }
 
 #dates .bolder {
-    font-weight: 500;
-    font-size: 0.9rem;
+  color: #80C1C9;
+  font-weight: 500;
+  font-size: 0.9rem;
 }
 
 .links {
-    margin: 20px;
-    margin-bottom: 30px;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+  margin: 20px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
 .links a {
-    padding: 5px 15px;
-    font-weight: 700;
-    border-radius: 25px;
+  color: #91F2F2;
+  padding: 5px 15px;
+  font-weight: 700;
+  border-radius: 25px;
+}
+
+.links span {
+  color: #91F2F2;
 }
 
 #contianer {
-    display: flex;          
-    flex-direction: column; 
-    align-items: center;    
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 #project-page {
-    margin: 20px;
-    width: 100%;
-    max-width: 800px;
+  margin: 20px;
+  width: 100%;
+  max-width: 800px;
 }
 
 #project-page h1 {
-    text-align: center;
+  text-align: center;
 }
 
 #project-page h1, #project-page h2, #project-page h3, #project-page h4, #project-page h5, #project-page h6 {
-    margin-top: 20px;
-    margin-bottom: 10px;
+  color: #80C1C9;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 #project-page p {
-    text-align: justify;
-    margin: 5px 0;
+  text-align: justify;
+  margin: 5px 0;
 }
 
 #project-page blockquote {
-    margin: 10px;
-    font-weight: 550;
-    font-size: 1.1rem;
+  margin: 10px;
+  font-weight: 550;
+  font-size: 1.1rem;
 }
 
 #project-page li {
-    margin: 10px 0;
+  margin: 10px 0;
 }
 
 #project-page .media-div {
-    margin: 15px 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
+  margin: 15px 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 #project-page .media-div * {
-    width: 500px;
-    object-fit: cover;
-    text-align: center;
+  width: 500px;
+  object-fit: cover;
+  text-align: center;
 }
 
 #project-page a {
-    display: block;
-    margin: 6px 0;
-    font-weight: 500;
+  display: block;
+  margin: 6px 0;
+  font-weight: 450;
+  text-decoration: underline;
 }
 
 #project-page code {
-    display: block;
-    background-color: rgba(1, 1, 1, 0.5);
-    margin: 10px 0;
-    padding: 5px;
+  display: block;
+  background-color: rgba(220, 255, 255, 0.7);
+  border-radius: 5px;
+  margin: 10px 0;
+  padding: 5px;
+  padding-top: 8px;
 }
 
 #project-page code * {
-    font-family: "Courier Prime", monospace;
-    font-weight: 400;
-    font-style: normal;
-    color: white;
+  font-family: "Courier Prime", monospace;
+  font-weight: 400;
+  font-style: normal;
+  color: #2B4C4F;
 }

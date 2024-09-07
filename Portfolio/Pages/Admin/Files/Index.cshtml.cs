@@ -147,7 +147,9 @@ public class IndexModel : PageModel
                 } 
                 else
                 {
-                    return firstLine.TrimEnd() == output.Replace('\'', '\"').TrimEnd();
+                    firstLine = firstLine.TrimEnd();
+                    output = output.Replace('\'', '\"').TrimEnd();
+                    return firstLine == output;
                 }
             }
         }

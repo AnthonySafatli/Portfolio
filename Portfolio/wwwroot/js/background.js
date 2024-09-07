@@ -76,7 +76,7 @@ const hemiLight = new THREE.HemisphereLight(0xffffff, 0x080820, 3);
 scene.add(hemiLight);
 
 // Stars
-const stars = getStarfield({ numStars: 2000, sprite: starSprite });
+const stars = getStarfield({ numStars: 1000, sprite: starSprite });
 scene.add(stars);
 
 // Animation
