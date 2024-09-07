@@ -7,12 +7,15 @@
 }
 
 form div {
-  max-width: 500px;
+  width: 80%;
+  max-width: 550px;
+  box-sizing: border-box;
 }
 
 form div * {
   display: block;
-  margin: 10px;
+  margin: 10px 0;
+  box-sizing: border-box;
 }
 
 input[type=email], input[type=submit], textarea {
@@ -53,11 +56,13 @@ textarea:focus::placeholder {
 }
 
 input[type=email] {
-  width: 475px;
+  width: 100%;
+  max-width: 525px;
 }
 
 textarea {
-  width: 475px;
-  height: 250px;
+  width: 100%;
+  max-width: 525px;
+  height: 183.3333333333px;
   resize: vertical;
 }

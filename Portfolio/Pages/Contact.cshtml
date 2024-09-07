@@ -15,12 +15,12 @@
 
 <h1 class="title">Contact Me</h1>
 
-<!-- TODO: Make for iphone -->
-
 <p class="center space-top">
     Send me a message here or mail me directly at 
 </p>
-<a class="center" href="mailto:anthonysafatli@dal.ca">AnthonySafatli@dal.ca</a>
+<div class="center">
+    <a href="mailto:anthonysafatli@dal.ca">AnthonySafatli@dal.ca</a>
+</div>
 
 <form method="post">
     <div>
@@ -33,7 +33,7 @@
         <textarea asp-for="Message.Message" placeholder="I really like your website!"></textarea>
     </div>
     
-    <div>
+    <div class="center">
         <input type="submit"/>
     </div>
 </form>

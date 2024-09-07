@@ -1,4 +1,4 @@
-﻿$middle-column-width: 500;
+﻿$middle-column-width: 550;
 
 $main-colour: #0CACBE;
 $seconrdary-colour: #91F2F2;
@@ -13,12 +13,15 @@ form {
 }
 
 form div {
+    width: 80%;
     max-width: #{$middle-column-width}px;
+    box-sizing: border-box
 }
 
 form div * {
     display: block;
-    margin: 10px;
+    margin: 10px 0;
+    box-sizing: border-box
 }
 
 input[type=email], input[type=submit], textarea {
@@ -59,11 +62,14 @@ textarea:focus::placeholder {
 }
 
 input[type=email] {
-    width: #{$middle-column-width - 25}px;
+    width: 100%;
+    max-width: #{$middle-column-width - 25}px;
+
 }
 
 textarea {
-    width: #{$middle-column-width - 25}px;
-    height: #{$middle-column-width / 2}px;
+    width: 100%;
+    max-width: #{$middle-column-width - 25}px;
+    height: #{$middle-column-width / 3}px;
     resize: vertical;
 }

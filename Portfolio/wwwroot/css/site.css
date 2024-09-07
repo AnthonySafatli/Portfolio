@@ -1,8 +1,4 @@
-﻿/* Temp, before THREE.js stuff */
-html {
-  background-color: black;
-}
-
+﻿/* THREE.js stuff */
 .webgl {
   display: block;
   position: fixed;
@@ -60,12 +56,9 @@ footer {
 
 /* Other CSS */
 nav {
-  padding: 20px 0;
-  padding-left: 20px;
-}
-
-nav a {
+  display: flex;
   padding: 20px;
+  gap: 20px;
 }
 
 /* Theme */
@@ -117,8 +110,11 @@ footer {
 
 footer nav {
   display: flex;
-  gap: 30px;
+  row-gap: 5px;
+  column-gap: 30px;
   padding: 0px;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
 }
 
 .fa {

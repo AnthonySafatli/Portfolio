@@ -2,11 +2,7 @@ $main-colour: #0CACBE;
 $link-colour: #91F2F2; 
 $seconrdary-colour: #B6F1F8;
 
-/* Temp, before THREE.js stuff */
-html {
-    background-color: black;
-}
-
+/* THREE.js stuff */
 .webgl {
     display: block;
     position: fixed;
@@ -64,12 +60,13 @@ footer {
 
 /* Other CSS */
 nav {
-    padding: 20px 0;
-    padding-left: 20px;
+    display: flex;
+    padding: 20px;
+    gap: 20px;
 }
 
 nav a {
-    padding: 20px;
+    
 }
 
 /* Theme */
@@ -121,8 +118,11 @@ footer {
 
 footer nav {
     display: flex;
-    gap: 30px;
+    row-gap: 5px;
+    column-gap: 30px;
     padding: 0px;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
 }
 
 .fa {
