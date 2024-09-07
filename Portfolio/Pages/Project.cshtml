@@ -7,7 +7,7 @@
     ViewData["Globe X"] = 0;
     ViewData["Globe Y"] = -0.5;
     ViewData["Globe Z"] = -3;
-    ViewData["Globe Opacity"] = 0.3;
+    ViewData["Globe Opacity"] = 0.1;
 }
 
 @section Styles {
@@ -16,7 +16,7 @@
 
 <!-- TOOD: Make for iphone -->
 
-<h1 class="title">Project: @Model.Project.Name</h1>
+<h1 class="title">@Model.Project.Name</h1>
 
 <div class="links">
     @if (!String.IsNullOrEmpty(Model.Project.Github))
@@ -38,9 +38,11 @@
     <span>Date Ended: <span class="bolder">@Model.Project.DateEnded.ToString("MMMM yyy")</span></span>
 </div>
 
-<div id="project-page">
-    @foreach (PageElement element in Model.ProjectPage.Elements)
-    {
-        @Html.Raw(element.ToHTML());
-    }
+<div id="contianer">
+    <div id="project-page">
+        @foreach (PageElement element in Model.ProjectPage.Elements)
+        {
+            @Html.Raw(element.ToHTML());
+        }
+    </div>
 </div>
