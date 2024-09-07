@@ -25,8 +25,8 @@ My custom-built admin section of this portfolio website is the most sophisticate
 
 The portfolio website is designed to serve not only as a showcase of my work but also as a flexible platform for hosting smaller web projects. Instead of building a separate website for each idea, I can easily create new pages within this portfolio to display and experiment with various concepts. This approach allows for rapid development, seamless integration, and consistent styling across all projects, providing a unified experience for visitors.
 
-Examples:
+#### Examples
 
-- [An interactive data visualization tool using Three.js](https://randomlink.com)
-- [A simple web-based game](https://whatever.ca)
-- [A demo page for a custom UI component or design system](https://a.ca)
+[An interactive data visualization tool using Three.js](https://randomlink.com)
+[A simple web-based game](https://whatever.ca)
+[A demo page for a custom UI component or design system](https://a.ca)

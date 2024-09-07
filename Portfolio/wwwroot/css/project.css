@@ -42,15 +42,13 @@
     text-align: center;
 }
 
-#project-page h1, #project-page h2 {
-    margin-top: 15px;
-}
-
-#project-page h3, #project-page h4, #project-page h5, #project-page h6 {
-    margin-top: 10px;
+#project-page h1, #project-page h2, #project-page h3, #project-page h4, #project-page h5, #project-page h6 {
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 #project-page p {
+    text-align: justify;
     margin: 5px 0;
 }
 
@@ -58,6 +56,10 @@
     margin: 10px;
     font-weight: 550;
     font-size: 1.1rem;
+}
+
+#project-page li {
+    margin: 10px 0;
 }
 
 #project-page .media-div {

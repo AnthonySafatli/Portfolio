@@ -33,11 +33,11 @@ public class PageElement
                 string list = $"\n<{tag}>";
                 foreach (string item in Items)
                 {
-                    list += item;
+                    list += "\n<li>" + item + "</li>";
                 }
-                list += $"</{tag}>\n";
+                list += $"\n</{tag}>\n";
 
-                return tag;
+                return list;
             case "media":
                 string extension = Path.GetExtension(Link).TrimStart('.').ToLower();
 
