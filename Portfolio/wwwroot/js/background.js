@@ -36,7 +36,7 @@ const alphaMap = textureLoader.load("/assets/three/02_earthspec1k.jpg");
 const globeGroup = new THREE.Group();
 scene.add(globeGroup);
 
-const geo = new THREE.IcosahedronGeometry(1, 10);
+const geo = new THREE.IcosahedronGeometry(1, 9);
 const mat = new THREE.MeshBasicMaterial({
     color: wireColour,
     opacity: globeOpacity,
@@ -69,7 +69,7 @@ const pointsMat = new THREE.ShaderMaterial({
 const points = new THREE.Points(pointsGeo, pointsMat);
 globeGroup.add(points);
 
-globeGroup.position.set(globePos[0], globePos[1], globePos[2]); 
+globeGroup.position.set(globePos[0], globePos[1], globePos[2]);
 
 // Lighting
 const hemiLight = new THREE.HemisphereLight(0xffffff, 0x080820, 3);
@@ -82,7 +82,8 @@ scene.add(stars);
 // Animation
 function animate() {
     renderer.render(scene, camera);
-    globeGroup.rotation.y += 0.0015;
+    points.rotation.y += 0.0015;
+    cube.rotation.y += 0.001;
 
     requestAnimationFrame(animate);
 };
