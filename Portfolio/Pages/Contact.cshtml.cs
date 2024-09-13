@@ -55,8 +55,8 @@ public class ContactModel : PageModel
 </html>";
 
         MailMessage mail = new MailMessage();
-        mail.From = new MailAddress(Security.FromAddress);
-        mail.To.Add(Security.ToAddress);
+        mail.From = new MailAddress(Security.Config.FromAddress);
+        mail.To.Add(Security.Config.ToAddress);
         mail.Subject = subject;
         mail.Body = body;
         mail.IsBodyHtml = true;
@@ -65,7 +65,7 @@ public class ContactModel : PageModel
         smtpClient.EnableSsl = true;
         smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
         smtpClient.UseDefaultCredentials = false;
-        smtpClient.Credentials = new NetworkCredential(Security.FromAddress, Security.FromAdressPassword);
+        smtpClient.Credentials = new NetworkCredential(Security.Config.FromAddress, Security.Config.FromAddressPassword);
 
         smtpClient.Send(mail);
 

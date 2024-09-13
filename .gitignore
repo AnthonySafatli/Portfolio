@@ -367,3 +367,6 @@ Designs/
 
 # Python Virtual Environment
 .venv/
+
+# Secrets
+Secrets/

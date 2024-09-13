@@ -21,14 +21,14 @@ public class LoginModel : PageModel
         if (!ModelState.IsValid)
             return Page();
 
-        if (Security.EncryptSHA256(Credential.Password) == Security.AdminPassword)
+        if (Security.EncryptSHA256(Credential.Password) == Security.Config.AdminPassword)
         {
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, "Anthony"),
             };
 
-            var identity = new ClaimsIdentity(claims, Security.AdminCookieName);
+            var identity = new ClaimsIdentity(claims, Security.Config.AdminCookieName);
             ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(identity);
 
             var authProperties = new AuthenticationProperties
@@ -36,7 +36,7 @@ public class LoginModel : PageModel
                 IsPersistent = true,
             };
 
-            await HttpContext.SignInAsync(Security.AdminCookieName, claimsPrincipal, authProperties);
+            await HttpContext.SignInAsync(Security.Config.AdminCookieName, claimsPrincipal, authProperties);
 
             return RedirectToPage("/Admin/Dashboard");
         }
