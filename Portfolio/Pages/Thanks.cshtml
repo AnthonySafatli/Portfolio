@@ -1,0 +1,31 @@
+﻿@page
+@model Portfolio.Pages.ThanksModel
+@{
+    ViewData["Title"] = "Contact Me";
+
+    ViewData["Globe X"] = 0;
+    ViewData["Globe Y"] = -0.5;
+    ViewData["Globe Z"] = -3;
+    ViewData["Globe Opacity"] = 0.075;
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/thanks.css" asp-append-version="true" />
+}
+
+<div>
+    <h1>Thank You!</h1>
+
+    <p>
+        Your message has been sent successfully. I will get back to you as soon as possible.
+    </p>
+
+    <p>
+        In the meantime, feel free to <a href="/">return to the homepage</a> or explore other parts of the site.
+    </p>
+
+    <div class="email">
+        <p><span>Email:</span> @TempData["Email"]</p>
+        <p><span>Message:</span> @TempData["Message"]</p>
+    </div>
+</div>

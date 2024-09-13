@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Reflection;
 
 namespace Portfolio.Pages.Page;
 
+[Authorize]
 public class TimeLineModel : PageModel
 {
     public int WeeksLived { get; set; }

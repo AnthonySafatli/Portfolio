@@ -6,7 +6,7 @@
     ViewData["Globe X"] = 0;
     ViewData["Globe Y"] = -0.5;
     ViewData["Globe Z"] = -3;
-    ViewData["Globe Opacity"] = 0.15;
+    ViewData["Globe Opacity"] = 0.075;
 }
 
 @section Styles {
@@ -30,7 +30,7 @@
     
     <div>
         <label>Message</label>
-        <textarea asp-for="Message.Message" placeholder="I really like your website!"></textarea>
+        <textarea asp-for="Message.Message" placeholder="I really like your website!" required></textarea>
     </div>
     
     <div class="center">

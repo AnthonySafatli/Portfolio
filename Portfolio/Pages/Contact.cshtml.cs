@@ -22,18 +22,23 @@ public class ContactModel : PageModel
 
     public IActionResult OnPost()
     {
-        if (Message == null) {
+        if (Message == null) 
+        {
             return Page();
+        } 
+        else
+        {
+            if (String.IsNullOrEmpty(Message.Message) || String.IsNullOrEmpty(Message.Email))
+            {
+                return Page();
+            }
         }
-        // TODO: more input validation?
 
-        // TODO: Replace css with actual css link (and test it)
-        string subject = "New message! - anthonysafatli.com";
+        string subject = "New message! - anthonysafatli.ca";
         string body = @"
 <html lang=""en"">
 <head>
     <meta charset=""utf-8"">
-    <link rel=""stylesheet"" href=""https://localhost:44358/css/admin.css"">
 </head>
 <body>
     <header>
@@ -41,14 +46,11 @@ public class ContactModel : PageModel
 
     <main>
         <h1>New Message</h1>
-        <div class=""section center"">
-            From: <a class=""inline-button"" href=""mailto:" + Message.Email + @""">" + Message.Email + @"</a>
+        <div>
+            <p>From: <a class=""inline-button"" href=""mailto:" + Message.Email + @""">" + Message.Email + @"</a></p>
         </div>
-        <div class=""center section"">
-            Message:
-        </div>
-        <div class=""section center"">
-            " + Message.Message + @"
+        <div>
+            <p>Message: " + Message.Message + @"</p>
         </div>
     </main>
 </body>
@@ -69,6 +71,8 @@ public class ContactModel : PageModel
 
         smtpClient.Send(mail);
 
-        return Page();
+        TempData["Email"] = Message.Email;
+        TempData["Message"] = Message.Message;
+        return RedirectToPage("Thanks");
     }
 }
