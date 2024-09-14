@@ -18,7 +18,6 @@ public class ContactModel : PageModel
 
     public void OnGet()
     {
-        ViewData["Email"] = Security.Config.ToAddress;
     }
 
     public IActionResult OnPost()
