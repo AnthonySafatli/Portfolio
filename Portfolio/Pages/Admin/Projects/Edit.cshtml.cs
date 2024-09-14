@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Portfolio.Data;
 using Portfolio.Models;
 
-namespace Portfolio.Pages.CMS.Projects;
+namespace Portfolio.Pages.Admin.Projects;
 
 [Authorize]
 public class EditModel : PageModel

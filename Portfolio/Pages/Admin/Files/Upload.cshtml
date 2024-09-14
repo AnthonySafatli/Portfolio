@@ -1,11 +1,11 @@
 ﻿@page
-@model Portfolio.Pages.CMS.Files.MarkdownModel
+@model Portfolio.Pages.Admin.Files.UploadModel
 @{
     Layout = "_AdminLayout";
-    ViewData["Title"] = "Upload Markdown";
+    ViewData["Title"] = "Upload Media";
 }
 
-<h1>Upload Markdown File</h1>
+<h1>Upload Media File</h1>
 
 <div class="section center">
     <form class="normal-form" method="post" enctype="multipart/form-data">
@@ -14,11 +14,12 @@
             <input asp-for="File" accept=".jpg, .png" />
         </div>
         <div>
+            <label asp-for="FileLocation"></label>
+            <input asp-for="FileLocation" />
+        </div>
+        <div>
             <label asp-for="Name"></label>
-            <div class="center">
-                <input asp-for="Name" />
-                <span>.md</span>
-            </div>
+            <input asp-for="Name" />
         </div>
         <div class="uninclude">
             <button class="button" type="submit">Upload</button>

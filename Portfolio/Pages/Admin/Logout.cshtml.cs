@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Portfolio.Models;
 
-namespace Portfolio.Pages.CMS;
+namespace Portfolio.Pages.Admin;
 
 [Authorize]
 public class LogoutModel : PageModel

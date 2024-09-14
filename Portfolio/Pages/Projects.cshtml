@@ -16,6 +16,11 @@
 
 <h1 class="title">Projects</h1>
 
+@if (Model.Projects.Count == 0)
+{
+    <p>No projects, stay tuned!</p>
+}
+
 <div class="projects-div">
     @foreach (Project project in Model.Projects)
     {

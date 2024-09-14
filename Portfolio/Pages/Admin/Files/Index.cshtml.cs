@@ -7,7 +7,7 @@ using Portfolio.Data;
 using Portfolio.Models;
 using System.Diagnostics;
 
-namespace Portfolio.Pages.CMS.Files;
+namespace Portfolio.Pages.Admin.Files;
 
 [Authorize]
 public class IndexModel : PageModel

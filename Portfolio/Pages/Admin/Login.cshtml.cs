@@ -5,7 +5,7 @@ using Portfolio.Models;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 
-namespace Portfolio.Pages.CMS;
+namespace Portfolio.Pages.Admin;
 
 public class LoginModel : PageModel
 {
@@ -38,7 +38,7 @@ public class LoginModel : PageModel
 
             await HttpContext.SignInAsync(Security.Config.AdminCookieName, claimsPrincipal, authProperties);
 
-            return RedirectToPage("/CMS/Dashboard");
+            return RedirectToPage("/Admin/Dashboard");
         }
 
         // TODO: Validation for wrong password
