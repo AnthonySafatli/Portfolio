@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Portfolio.Data;
 using Portfolio.Models;
 
-namespace Portfolio.Pages.Admin.Projects;
+namespace Portfolio.Pages.CMS.Projects;
 
 [Authorize]
 public class CreateModel : PageModel

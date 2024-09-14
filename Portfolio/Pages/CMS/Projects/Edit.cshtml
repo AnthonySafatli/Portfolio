@@ -1,72 +1,73 @@
 ﻿@page
-@model Portfolio.Pages.Admin.Projects.CreateModel
+@model Portfolio.Pages.CMS.Projects.EditModel
 
 @{
     Layout = "_AdminLayout";
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
 }
 
-<h1>Create</h1>
+<h1>Edit</h1>
 
 <div class="section center">
     <form method="post" class="normal-form">
-        <div asp-validation-summary="ModelOnly"></div> @* TODO: maybe remove validation *@
+        <div asp-validation-summary="ModelOnly"></div>
+        <input type="hidden" asp-for="Project.Name" />
         <div>
             <label asp-for="Project.Name"></label>
-            <input asp-for="Project.Name"/>
-            <span asp-validation-for="Project.Name"></span>
+            <input readonly asp-for="Project.Name" />
         </div>
         <div>
             <label asp-for="Project.DateStarted"></label>
             <input asp-for="Project.DateStarted"/>
-            <span asp-validation-for="Project.DateStarted"></span>
+            <span asp-validation-for="Project.DateStarted" class="text-danger"></span>
         </div>
-        <div class="form-group">
+        <div>
             <label asp-for="Project.DateEnded"></label>
             <input asp-for="Project.DateEnded"/>
             <span asp-validation-for="Project.DateEnded"></span>
         </div>
-        <div class="form-group">
+        <div>
             <label asp-for="Project.File"></label>
             <input asp-for="Project.File"/>
             <span asp-validation-for="Project.File"></span>
         </div>
-        <div class="form-group">
+        <div>
             <label asp-for="Project.Thumbnail"></label>
             <input asp-for="Project.Thumbnail"/>
             <span asp-validation-for="Project.Thumbnail"></span>
         </div>
-        <div class="form-group">
+        <div>
             <label asp-for="Project.Hidden"></label>
-            <input asp-for="Project.Hidden"/>
+            <input asp-for="Project.Hidden" />
         </div>
         <div>
             <label asp-for="Project.Description"></label>
             <textarea asp-for="Project.Description"></textarea>
-            <span asp-validation-for="Project.Description"></span>
         </div>
         <div>
             <label asp-for="Project.Github"></label>
             <input asp-for="Project.Github" />
-            <span asp-validation-for="Project.Github"></span>
         </div>
         <div>
             <label asp-for="Project.Page"></label>
             <input asp-for="Project.Page" />
-            <span asp-validation-for="Project.Page"></span>
         </div>
         <div>
             <label asp-for="Project.Download"></label>
             <input asp-for="Project.Download" />
-            <span asp-validation-for="Project.Download"></span>
         </div>
         <div>
             <label asp-for="Project.Tags"></label>
             <input asp-for="Project.Tags" />
-            <span asp-validation-for="Project.Tags"></span>
         </div>
         <div class="uninclude">
-            <button class="button" type="submit">Create</button>
+            <button class="button" type="submit">Update</button>
+        </div>
+    </form>
+    <form asp-page="Delete" method="post" class="normal-form gap-v">
+        <input type="hidden" asp-for="Project.Name" />
+        <div class="uninclude">
+            <button class="button" type="submit">Delete</button>
         </div>
     </form>
 </div>

@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Portfolio.Pages.Admin.Files;
+namespace Portfolio.Pages.CMS.Files;
 
 [Authorize]
 public class DeleteModel : PageModel

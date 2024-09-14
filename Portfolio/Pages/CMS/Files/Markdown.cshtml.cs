@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
 
-namespace Portfolio.Pages.Admin.Files;
+namespace Portfolio.Pages.CMS.Files;
 
 
 [Authorize]

@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Diagnostics;
 
-namespace Portfolio.Pages.Admin.Files;
+namespace Portfolio.Pages.CMS.Files;
 
 [Authorize]
 public class JsonModel : PageModel

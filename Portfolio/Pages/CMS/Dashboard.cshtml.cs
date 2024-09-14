@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Portfolio.Data;
 using Portfolio.Models;
 
-namespace Portfolio.Pages.Admin;
+namespace Portfolio.Pages.CMS;
 
 [Authorize]
 public class DashboardModel : PageModel

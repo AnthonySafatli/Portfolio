@@ -1,6 +1,6 @@
 using Portfolio.Data;
 using Portfolio.Models;
-using Portfolio.Pages.Admin;
+using Portfolio.Pages.CMS;
 
 namespace Portfolio;
 
@@ -13,14 +13,14 @@ public class Program
         // Add services to the container.
         builder.Services.AddRazorPages().AddRazorPagesOptions(options =>
         {
-            options.Conventions.AddPageRoute("/Admin/Dashboard", "/Admin/Index");
-            options.Conventions.AddPageRoute("/Admin/Dashboard", "/Admin");
+            options.Conventions.AddPageRoute("/CMS/Dashboard", "/CMS/Index");
+            options.Conventions.AddPageRoute("/CMS/Dashboard", "/CMS");
         });
         builder.Services.AddAuthentication(Security.Config.AdminCookieName).AddCookie(Security.Config.AdminCookieName, options =>
         {
             options.Cookie.Name = Security.Config.FromAddressPassword;
-            options.LoginPath = "/Admin/Login";
-            options.AccessDeniedPath = "/Admin/AccessDenied";
+            options.LoginPath = "/CMS/Login";
+            options.AccessDeniedPath = "/CMS/AccessDenied";
             options.ExpireTimeSpan = TimeSpan.FromDays(1);
         });
         builder.Services.AddDbContext<ProjectsContext>();
