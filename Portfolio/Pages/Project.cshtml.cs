@@ -31,7 +31,7 @@ public class ProjectModel : PageModel
         if (Project.Hidden)
             return NotFound();
 
-        string jsonPath = @"Projects\Json\" + Project.File + ".json";
+        string jsonPath = @"projects/json/" + Project.File + ".json";
         if (!System.IO.File.Exists(jsonPath))
             return NotFound();
 

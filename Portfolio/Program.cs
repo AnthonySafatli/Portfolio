@@ -38,6 +38,8 @@ public class Program
         app.UseHttpsRedirection();
         app.UseStaticFiles();
 
+        app.UseDeveloperExceptionPage();
+
         app.UseRouting();
 
         app.UseAuthentication();

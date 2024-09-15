@@ -1,45 +1,43 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Diagnostics;
+using System.ComponentModel.DataAnnotations;
 
 namespace Portfolio.Pages.Admin.Files;
+
 
 [Authorize]
 public class JsonModel : PageModel
 {
-    [BindProperty(SupportsGet = true)]
-    public string File { get; set; }
+    private readonly IWebHostEnvironment _environment;
 
-    public IActionResult OnGet()
+    [BindProperty, Display(Name = "File to Upload")]
+    public IFormFile File { get; set; }
+    [BindProperty, Display(Name = "File Name")]
+    public string Name { get; set; }
+
+    public JsonModel(IWebHostEnvironment environment)
     {
-        string pythonInterpreter = "python";
-        string pythonScript = @"Scripts\md_to_json.py " + File.Substring(0, File.Length - 3);
+        _environment = environment;
+    }
 
-        ProcessStartInfo startInfo = new ProcessStartInfo
-        {
-            FileName = pythonInterpreter,
-            Arguments = pythonScript,
-            UseShellExecute = false,
-            RedirectStandardOutput = true,
-            RedirectStandardError = true,
-            CreateNoWindow = true
-        };
+    public void OnGet()
+    {
+    }
 
-        // Create and start the process
-        string error;
-        string output;
-        using (Process process = new Process())
-        {
-            process.StartInfo = startInfo;
-            process.Start();
+    public async Task<IActionResult> OnPostAsync()
+    {
+        if (!ModelState.IsValid)
+            return Page();
 
-            output = process.StandardOutput.ReadToEnd();
-            error = process.StandardError.ReadToEnd();
+        // TODO: More data validation
 
-            process.WaitForExit();
-        }
+        string filePath = Path.Combine(_environment.WebRootPath, "assets/project_json", Name + ".json");
+        using FileStream fileStream = new FileStream(filePath, FileMode.Create);
+        await File.CopyToAsync(fileStream);
 
-        return Redirect("../Index");
+        // TODO: Create folder if folder doesnt exist
+
+        return Redirect("./Index");
     }
 }

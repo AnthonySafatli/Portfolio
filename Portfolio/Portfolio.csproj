@@ -38,4 +38,16 @@
     <Folder Include="wwwroot\projects\videos\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="wwwroot\projects\json\portfolio.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Data\Projects.db">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
