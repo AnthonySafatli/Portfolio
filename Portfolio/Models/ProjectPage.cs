@@ -47,7 +47,7 @@ public class PageElement
                 }
                 else if (Array.Exists(VideoExt, ext => ext == extension))
                 {
-                    return $"\n<div class=\"media-div\"><video controls><source src=\"/projects/{Link}\" type=\"video/{extension}\">{Text}</video></div>\n";
+                    return $"\n<div class=\"media-div\"><video controls><source src=\"~/{Link}\" type=\"video/{extension}\">{Text}</video></div>\n";
                 }
 
                 return "";

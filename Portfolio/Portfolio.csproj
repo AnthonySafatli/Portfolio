@@ -34,6 +34,7 @@
 
   <ItemGroup>
     <Folder Include="Projects\Markdown\" />
+    <Folder Include="Projects\Json\" />
     <Folder Include="Secrets\" />
     <Folder Include="wwwroot\projects\videos\" />
   </ItemGroup>
