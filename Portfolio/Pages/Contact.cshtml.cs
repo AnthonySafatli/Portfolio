@@ -22,6 +22,8 @@ public class ContactModel : PageModel
 
     public IActionResult OnPost()
     {
+        return Page();
+
         if (Message == null) 
         {
             return Page();

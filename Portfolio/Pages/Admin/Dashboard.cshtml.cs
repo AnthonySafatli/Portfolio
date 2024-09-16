@@ -19,6 +19,8 @@ public class DashboardModel : PageModel
 
     public IList<Project> Project { get; set; }
 
+    // TODO: rework entire admin system
+
     public async void OnGet()
     {
         Project = await _context.Projects.ToListAsync();
