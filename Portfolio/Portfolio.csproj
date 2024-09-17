@@ -33,7 +33,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Projects\Markdown\" />
     <Folder Include="Secrets\" />
     <Folder Include="wwwroot\projects\json\" />
     <Folder Include="wwwroot\projects\videos\" />
