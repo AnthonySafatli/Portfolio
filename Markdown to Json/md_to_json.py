@@ -5,7 +5,7 @@ import sys
 
 file_name = input("File Name: ")
 
-md_file = "Projects/Markdown/" + file_name + ".md"
+md_file = "markdown/" + file_name + ".md"
 
 print("Opening File...")
 lines_list = []
@@ -23,4 +23,4 @@ print("Converting to JSON...")
 dictionary = enums_to_json.get_dict(data)
 
 print("Saving to file...")
-enums_to_json.save_dict(dictionary, "Projects/Json/" + file_name + ".json")
+enums_to_json.save_dict(dictionary, "json/" + file_name + ".json")

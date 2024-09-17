@@ -27,17 +27,8 @@
     <Compile Include="md_to_json.py" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Projects\" />
-    <Folder Include="Projects\Json\" />
-    <Folder Include="Projects\Markdown\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Projects\Json\null.json" />
-    <Content Include="Projects\Json\pacman.json" />
-    <Content Include="Projects\Json\portfolio.json" />
-    <Content Include="Projects\Markdown\null.md" />
-    <Content Include="Projects\Markdown\pacman.md" />
-    <Content Include="Projects\Markdown\portfolio.md" />
+    <Folder Include="json\" />
+    <Folder Include="markdown\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
