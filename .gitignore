@@ -365,8 +365,10 @@ FodyWeavers.xsd
 # Designs for pages
 Designs/
 
-# Python Virtual Environment
+# Python stuff
 .venv/
+Markdown to Json/json
+Markdown to Json/markdown
 
 # Secrets
 Secrets/

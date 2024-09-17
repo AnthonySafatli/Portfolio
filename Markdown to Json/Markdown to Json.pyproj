@@ -30,6 +30,11 @@
     <Folder Include="json\" />
     <Folder Include="markdown\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="markdown\null.md" />
+    <Content Include="markdown\pacman.md" />
+    <Content Include="markdown\portfolio.md" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
        Visual Studio and specify your pre- and post-build commands in
