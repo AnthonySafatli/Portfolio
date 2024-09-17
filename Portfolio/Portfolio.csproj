@@ -39,6 +39,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="wwwroot\assets\resume.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Data\Projects.db">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
