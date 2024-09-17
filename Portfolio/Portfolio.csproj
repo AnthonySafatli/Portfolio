@@ -34,15 +34,9 @@
 
   <ItemGroup>
     <Folder Include="Projects\Markdown\" />
-    <Folder Include="Projects\Json\" />
     <Folder Include="Secrets\" />
+    <Folder Include="wwwroot\projects\json\" />
     <Folder Include="wwwroot\projects\videos\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Update="wwwroot\projects\json\portfolio.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>
