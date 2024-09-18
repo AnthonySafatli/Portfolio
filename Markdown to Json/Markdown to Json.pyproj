@@ -31,6 +31,8 @@
     <Folder Include="markdown\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="markdown\archive.md" />
+    <Content Include="markdown\notfound.md" />
     <Content Include="markdown\null.md" />
     <Content Include="markdown\pacman.md" />
     <Content Include="markdown\portfolio.md" />

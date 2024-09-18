@@ -12,6 +12,7 @@ $dark: #2B4C4F;
     font-size: 0.75rem;
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 #dates .bolder {
@@ -26,6 +27,7 @@ $dark: #2B4C4F;
     display: flex;
     justify-content: center;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .links a {
@@ -40,6 +42,7 @@ $dark: #2B4C4F;
 }
 
 #contianer {
+    width: 100%;
     display: flex;          
     flex-direction: column; 
     align-items: center;    
@@ -48,6 +51,7 @@ $dark: #2B4C4F;
 
 #project-page {
     margin: 20px;
+    padding: 0 20px;
     width: 100%;
     max-width: 800px;
 }

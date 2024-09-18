@@ -10,6 +10,7 @@
     padding: 10px 30px;
     margin-bottom: 30px;
     text-align: center;
+    min-width: 250px;
 }
 
 .project-card * {

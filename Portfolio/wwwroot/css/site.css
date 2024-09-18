@@ -40,6 +40,10 @@ body {
   min-height: 100vh;
 }
 
+main {
+  max-width: 100vw;
+}
+
 header {
   grid-row: 1;
 }
