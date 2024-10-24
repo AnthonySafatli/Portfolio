@@ -64,6 +64,10 @@ public class EditModel : PageModel
                 Project.PageContent = null;
             }
         }
+        else
+        {
+            Project.PageContent = _context.Projects.First(e => e.Name == Project.Name).PageContent;
+        }
 
         _context.Attach(Project).State = EntityState.Modified;
 

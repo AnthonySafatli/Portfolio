@@ -20,22 +20,22 @@
             <tr>
                 <th class="name"></th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Project[0].PageContent)
+                    @Html.DisplayNameFor(model => model.Projects[0].PageContent)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Project[0].Thumbnail)
+                    @Html.DisplayNameFor(model => model.Projects[0].Thumbnail)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Project[0].Tags)
+                    @Html.DisplayNameFor(model => model.Projects[0].Tags)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Project[0].Hidden)
+                    @Html.DisplayNameFor(model => model.Projects[0].Hidden)
                 </th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model.Project)
+            @foreach (var item in Model.Projects)
             {
                 <tr>
                     <td class="name">

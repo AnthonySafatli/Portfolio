@@ -19,11 +19,13 @@ public class DashboardModel : PageModel
         _context = context;
     }
 
-    public IList<Project> Project { get; set; }
+    public List<Project> Projects { get; set; } = new();
 
     public async void OnGet()
     {
-        Project = await _context.Projects.ToListAsync();
+        Projects = await _context.Projects
+            .OrderBy(p => p.DateStarted)
+            .ToListAsync();
     }
 
     public bool validPageContent(string? pageContent)
