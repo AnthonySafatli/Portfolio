@@ -35,22 +35,9 @@ public class IndexModel : PageModel
         foreach (string projectFile in projectFiles)
         {
             string shortPath = projectFile.Remove(0, projectDir.Length + 1).Replace("\\", "/");
-            bool used = usedProjectFiles.Contains(shortPath);
+            bool used = usedProjectFiles.Contains(shortPath) || usedProjectFiles.Contains("/" + shortPath);
 
             ProjectFiles.Add(new FileStatus(projectFile, shortPath, used));
-        }
-
-        string mdDir = Path.Combine(_environment.ContentRootPath, "Projects", "Markdown");
-        List<string> mdFiles = GetAllFiles(mdDir);
-
-        foreach (string mdFile in mdFiles)
-        {
-            string shortPath = mdFile.Remove(0, mdDir.Length + 1).Replace("\\", "/");
-            bool used = projects.Any(p => p.PageContent + ".md" == shortPath);
-            bool? jsonStatus = CheckJson(shortPath);
-            bool mediaStatus = CheckMedia(shortPath, projectFiles);
-
-            MarkDownFiles.Add(new MarkDownStatus(mdFile, shortPath, used, jsonStatus, mediaStatus));
         }
     }
 
@@ -62,15 +49,19 @@ public class IndexModel : PageModel
         {
             usedProjectFiles.Add(proj.Thumbnail);
 
-            string jsonPath = @"Projects\Json\" + proj.PageContent + ".json";
-            if (!System.IO.File.Exists(jsonPath))
+            if (proj.PageContent == null)
                 continue;
 
-            string jsonString = System.IO.File.ReadAllText(jsonPath);
-            if (jsonString == null)
+            ProjectPage? projectJson = null;
+            try
+            {
+                projectJson = JsonConvert.DeserializeObject<ProjectPage>(proj.PageContent);
+            }
+            catch (Exception)
+            {
                 continue;
+            }
 
-            ProjectPage projectJson = JsonConvert.DeserializeObject<ProjectPage>(jsonString);
             if (projectJson == null)
                 continue;
 
@@ -97,92 +88,5 @@ public class IndexModel : PageModel
         }
 
         return files;
-    }
-
-    private bool? CheckJson(string mdPath)
-    {
-        string pythonInterpreter = "python";
-        string pythonScript = @"Scripts\md_to_json_tester.py " + mdPath.Substring(0, mdPath.Length - 3);
-
-        ProcessStartInfo startInfo = new ProcessStartInfo
-        {
-            FileName = pythonInterpreter,
-            Arguments = pythonScript,
-            UseShellExecute = false,
-            RedirectStandardOutput = true,
-            RedirectStandardError = true,
-            CreateNoWindow = true
-        };
-
-        // Create and start the process
-        string error;
-        string output;
-        using (Process process = new Process())
-        {
-            process.StartInfo = startInfo;
-            process.Start();
-
-            output = process.StandardOutput.ReadToEnd();
-            error = process.StandardError.ReadToEnd();
-
-            process.WaitForExit();
-        }
-
-        if (!String.IsNullOrEmpty(error))
-        {
-            return null;
-        }
-
-        string filePath = Path.Combine(_environment.ContentRootPath, "Projects\\Json\\" + mdPath.Substring(0, mdPath.Length - 2) + "json");
-
-        try
-        {
-            using (StreamReader reader = new StreamReader(filePath))
-            {
-                string? firstLine = reader.ReadLine();
-
-                if (firstLine == null)
-                {
-                    return false;
-                } 
-                else
-                {
-                    firstLine = firstLine.TrimEnd();
-                    output = output.Replace('\'', '\"').TrimEnd();
-                    return firstLine == output;
-                }
-            }
-        }
-        catch (Exception e)
-        {
-            return false;
-        }
-    }
-
-    private bool CheckMedia(string mdPath, List<string> projectFiles)
-    {
-        string jsonPath = @"Projects\Json\" + mdPath.Substring(0, mdPath.Length - 3) + ".json";
-        if (!System.IO.File.Exists(jsonPath))
-            return true;
-
-        string jsonString = System.IO.File.ReadAllText(jsonPath);
-        if (jsonString == null)
-            return true;
-
-        ProjectPage projectJson = JsonConvert.DeserializeObject<ProjectPage>(jsonString);
-
-        if (projectJson == null)
-            return true;
-
-        foreach (PageElement elem in projectJson.Elements)
-        {
-            if (elem.Name == "media" && elem.Link != null)
-            {
-                if (!projectFiles.Contains(elem.Link))
-                    return false;
-            }
-        }
-
-        return true;
     }
 }
