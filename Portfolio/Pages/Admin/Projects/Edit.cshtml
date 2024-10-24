@@ -9,7 +9,7 @@
 <h1>Edit</h1>
 
 <div class="section center">
-    <form method="post" class="normal-form">
+    <form method="post" class="normal-form" enctype="multipart/form-data">
         <div asp-validation-summary="ModelOnly"></div>
         <input type="hidden" asp-for="Project.Name" />
         <div>
@@ -27,9 +27,9 @@
             <span asp-validation-for="Project.DateEnded"></span>
         </div>
         <div>
-            <label asp-for="Project.PageContent"></label>
-            <input asp-for="Project.PageContent" />
-            <span asp-validation-for="Project.PageContent"></span>
+            <label asp-for="PageContentFile"></label>
+            <input asp-for="PageContentFile" />
+            <span asp-validation-for="PageContentFile"></span>
         </div>
         <div>
             <label asp-for="Project.Thumbnail"></label>

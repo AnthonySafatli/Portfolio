@@ -42,7 +42,10 @@
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.PageContent)
+                        @if (Model.validPageContent(item.PageContent))
+                        {
+                            @Html.Raw("&#x2714");
+                        }
                     </td>
                     <td>
                         <img class="preview" alt="thumbnail for @item.Name [@item.Thumbnail]" src="~/projects/@item.Thumbnail" />

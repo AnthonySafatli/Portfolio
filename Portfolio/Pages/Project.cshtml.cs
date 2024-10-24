@@ -31,15 +31,18 @@ public class ProjectModel : PageModel
         if (Project.Hidden)
             return NotFound();
 
-        string jsonPath = @"wwwroot/projects/json/" + Project.PageContent + ".json";
-        if (!System.IO.File.Exists(jsonPath))
+        if (Project.PageContent == null)
             return NotFound();
 
-        string jsonString = System.IO.File.ReadAllText(jsonPath);
-        if (jsonString == null)
+        try
+        {
+            ProjectPage = JsonConvert.DeserializeObject<ProjectPage>(Project.PageContent);
+        }
+        catch (Exception)
+        {
             return NotFound();
+        }
 
-        ProjectPage = JsonConvert.DeserializeObject<ProjectPage>(jsonString);
         if (ProjectPage == null)
             return NotFound();
 

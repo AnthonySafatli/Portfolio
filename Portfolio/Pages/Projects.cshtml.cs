@@ -18,6 +18,9 @@ public class ProjectsModel : PageModel
 
     public async void OnGetAsync()
     {
-        Projects = await _context.Projects.Where(p => !p.Hidden).ToListAsync();
+        Projects = await _context.Projects
+            .Where(p => !p.Hidden)
+            .OrderBy(p => p.DateStarted)
+            .ToListAsync();
     }
 }

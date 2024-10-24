@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Text;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Portfolio.Data;
 using Portfolio.Models;
 
@@ -28,13 +24,28 @@ public class CreateModel : PageModel
 
     [BindProperty]
     public Project Project { get; set; } = default!;
+    [BindProperty]
+    public IFormFile? PageContentFile { get; set; }
 
-    // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
     public async Task<IActionResult> OnPostAsync()
     {
         if (!ModelState.IsValid)
         {
             return Page();
+        }
+
+        if (PageContentFile != null)
+        {
+            try
+            {
+                string pageContent = await Project.ExtractTextFromFileAsync(PageContentFile);
+                Project.PageContent = pageContent;
+            }
+            catch (ArgumentException)
+            {
+                Project.PageContent = null;
+            }
+
         }
 
         _context.Projects.Add(Project);

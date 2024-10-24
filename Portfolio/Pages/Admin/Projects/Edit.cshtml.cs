@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Portfolio.Data;
 using Portfolio.Models;
@@ -25,6 +25,9 @@ public class EditModel : PageModel
     [BindProperty]
     public Project Project { get; set; } = default!;
 
+    [BindProperty]
+    public IFormFile? PageContentFile { get; set; }
+
     public async Task<IActionResult> OnGetAsync(string id)
     {
         if (id == null)
@@ -32,22 +35,34 @@ public class EditModel : PageModel
             return NotFound();
         }
 
-        var project =  await _context.Projects.FirstOrDefaultAsync(m => m.Name == id);
+        var project = await _context.Projects.FirstOrDefaultAsync(m => m.Name == id);
         if (project == null)
         {
             return NotFound();
         }
+
         Project = project;
         return Page();
     }
 
-    // To protect from overposting attacks, enable the specific properties you want to bind to.
-    // For more details, see https://aka.ms/RazorPagesCRUD.
     public async Task<IActionResult> OnPostAsync()
     {
         if (!ModelState.IsValid)
         {
             return Page();
+        }
+
+        if (PageContentFile != null)
+        {
+            try
+            {
+                string pageContent = await Project.ExtractTextFromFileAsync(PageContentFile);
+                Project.PageContent = pageContent;
+            }
+            catch (ArgumentException)
+            {
+                Project.PageContent = null;
+            }
         }
 
         _context.Attach(Project).State = EntityState.Modified;
