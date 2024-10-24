@@ -13,9 +13,9 @@ public class UploadModel : PageModel
     [BindProperty, Display(Name = "File to Upload")]
     public IFormFile File { get; set; }
     [BindProperty]
-    public string FileLocation { get; set; }
+    public string? FileLocation { get; set; }
     [BindProperty, Display(Name = "New Name")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     public UploadModel(IWebHostEnvironment environment)
     {
@@ -28,20 +28,19 @@ public class UploadModel : PageModel
 
     public async Task<IActionResult> OnPostAsync()
     {
-        ModelState.Remove("Rename");
-        ModelState.Remove("FileLocation");
         if (!ModelState.IsValid)
             return Page();
 
-        // TODO: More data validation
+        string fileName = string.IsNullOrEmpty(Name) ? File.FileName : Name;
+        string folder = string.IsNullOrEmpty(FileLocation) ? "" : FileLocation;
+        string folderPath = Path.Combine(_environment.WebRootPath, "projects", folder);
+        string filePath = Path.Combine(folderPath, fileName);
 
-        string fileName = (Name == null) ? File.FileName : Name;
-        string folder = (FileLocation == null) ? "" : FileLocation;
-        string filePath = Path.Combine(_environment.WebRootPath, "projects", folder, fileName);
+        if (!Directory.Exists(folderPath))
+            Directory.CreateDirectory(folderPath);
+
         using FileStream fileStream = new FileStream(filePath, FileMode.Create);
         await File.CopyToAsync(fileStream);
-
-        // TODO: Create folder if folder doesnt exist
 
         return Redirect("./Index");
     }
