@@ -20,7 +20,7 @@
             <tr>
                 <th class="name"></th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Project[0].File)
+                    @Html.DisplayNameFor(model => model.Project[0].PageContent)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Project[0].Thumbnail)
@@ -42,7 +42,7 @@
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.File)
+                        @Html.DisplayFor(modelItem => item.PageContent)
                     </td>
                     <td>
                         <img class="preview" alt="thumbnail for @item.Name [@item.Thumbnail]" src="~/projects/@item.Thumbnail" />

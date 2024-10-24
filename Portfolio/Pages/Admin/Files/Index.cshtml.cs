@@ -46,7 +46,7 @@ public class IndexModel : PageModel
         foreach (string mdFile in mdFiles)
         {
             string shortPath = mdFile.Remove(0, mdDir.Length + 1).Replace("\\", "/");
-            bool used = projects.Any(p => p.File + ".md" == shortPath);
+            bool used = projects.Any(p => p.PageContent + ".md" == shortPath);
             bool? jsonStatus = CheckJson(shortPath);
             bool mediaStatus = CheckMedia(shortPath, projectFiles);
 
@@ -62,7 +62,7 @@ public class IndexModel : PageModel
         {
             usedProjectFiles.Add(proj.Thumbnail);
 
-            string jsonPath = @"Projects\Json\" + proj.File + ".json";
+            string jsonPath = @"Projects\Json\" + proj.PageContent + ".json";
             if (!System.IO.File.Exists(jsonPath))
                 continue;
 
