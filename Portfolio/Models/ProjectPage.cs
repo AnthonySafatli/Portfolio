@@ -43,17 +43,17 @@ public class PageElement
 
                 if (Array.Exists(ImageExt, ext => ext == extension))
                 {
-                    return $"\n<div class=\"media-div\"><img src=\"project/{Link}\" alt=\"{Text}\"></div>\n";
+                    return $"\n<div class=\"media-div\"><img src=\"/projects{Link}\" alt=\"{Text}\"></div>\n";
                 }
                 else if (Array.Exists(VideoExt, ext => ext == extension))
                 {
-                    return $"\n<div class=\"media-div\"><video controls><source src=\"project/{Link}\" type=\"video/{extension}\">{Text}</video></div>\n";
+                    return $"\n<div class=\"media-div\"><video controls><source src=\"/projects{Link}\" type=\"video/{extension}\">{Text}</video></div>\n";
                 }
 
                 return "";
 
             case "link":
-                return $"\n<a href=\"https://{Link}\" target=\"_blank\">{Text}</a>\n";
+                return $"\n<a href=\"{Link}\" target=\"_blank\">{Text}</a>\n";
 
             case "horizontal":
                 return "\n<hr>\n";
