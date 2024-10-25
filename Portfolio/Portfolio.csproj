@@ -8,6 +8,11 @@
 
   <ItemGroup>
     <Content Remove="compilerconfig.json" />
+    <Content Remove="wwwroot\projects\images\globe.png" />
+    <Content Remove="wwwroot\projects\images\icon of continuity.ico" />
+    <Content Remove="wwwroot\projects\images\null.jpg" />
+    <Content Remove="wwwroot\projects\images\numbers.webp" />
+    <Content Remove="wwwroot\projects\images\pacman.svg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -16,6 +21,11 @@
 
   <ItemGroup>
     <None Include="compilerconfig.json" />
+    <None Include="wwwroot\projects\images\globe.png" />
+    <None Include="wwwroot\projects\images\icon of continuity.ico" />
+    <None Include="wwwroot\projects\images\null.jpg" />
+    <None Include="wwwroot\projects\images\numbers.webp" />
+    <None Include="wwwroot\projects\images\pacman.svg" />
   </ItemGroup>
 
   <ItemGroup>

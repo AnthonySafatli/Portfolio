@@ -52,6 +52,14 @@ public class EditModel : PageModel
             return Page();
         }
 
+        // Fetch the existing project to ensure it's being tracked
+        var existingProject = await _context.Projects.AsNoTracking().FirstOrDefaultAsync(e => e.Name == Project.Name);
+
+        if (existingProject == null)
+        {
+            return NotFound();
+        }
+
         if (PageContentFile != null)
         {
             try
@@ -66,7 +74,7 @@ public class EditModel : PageModel
         }
         else
         {
-            Project.PageContent = _context.Projects.First(e => e.Name == Project.Name).PageContent;
+            Project.PageContent = existingProject.PageContent;
         }
 
         _context.Attach(Project).State = EntityState.Modified;
@@ -89,6 +97,7 @@ public class EditModel : PageModel
 
         return Redirect("../");
     }
+
 
     private bool ProjectExists(string id)
     {
