@@ -1,6 +1,7 @@
 using Portfolio.Data;
 using Portfolio.Models;
 using Portfolio.Pages.Admin;
+using Portfolio.Services;
 
 namespace Portfolio;
 
@@ -24,6 +25,7 @@ public class Program
             options.ExpireTimeSpan = TimeSpan.FromDays(1);
         });
         builder.Services.AddDbContext<ProjectsContext>();
+        builder.Services.AddSingleton<EmailService>();
 
         var app = builder.Build();
 
