@@ -372,3 +372,8 @@ Markdown to Json/markdown
 
 # Secrets
 Secrets/
+
+# DB Related Files
+*.db
+*.db-shm
+*.db-wal
