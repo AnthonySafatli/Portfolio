@@ -38,7 +38,7 @@
                     <td class="name">
                         @Html.DisplayFor(modelItem => item.SortOrder)
                         <span>-</span>
-                        @Html.DisplayFor(modelItem => item.Name)
+                        @Html.DisplayFor(modelItem => item.DisplayName)
                     </td>
                     <td>
                         @if (Model.validPageContent(item.PageContent))
@@ -47,7 +47,7 @@
                         }
                     </td>
                     <td>
-                        <img class="preview" alt="thumbnail for @item.Name [@item.Thumbnail]" src="~/projects/@item.Thumbnail" />
+                        <img class="preview" alt="thumbnail for @item.DisplayName [@item.Thumbnail]" src="~/projects/@item.Thumbnail" />
                     </td>
                     <td>
                         @if (item.Hidden)
@@ -56,7 +56,7 @@
                         }
                     </td>
                     <td>
-                        <a class="inline-button" asp-page="./Projects/Edit" asp-route-id="@item.Name">View</a>
+                        <a class="inline-button" asp-page="./Projects/Edit" asp-route-id="@item.Id">View</a>
                     </td>
                 </tr>
             }

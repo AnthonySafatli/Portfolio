@@ -14,6 +14,6 @@ public class ProjectsContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Project>().HasKey(t => t.Name);
+        modelBuilder.Entity<Project>().HasKey(t => t.Id);
     }
 }

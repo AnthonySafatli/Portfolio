@@ -12,9 +12,14 @@
     <form method="post" class="normal-form" enctype="multipart/form-data">
         <div asp-validation-summary="ModelOnly"></div> 
         <div>
-            <label asp-for="Project.Name"></label>
-            <input asp-for="Project.Name"/>
-            <span asp-validation-for="Project.Name"></span>
+            <label asp-for="Project.Id"></label>
+            <input asp-for="Project.Id"/>
+            <span asp-validation-for="Project.Id"></span>
+        </div>
+        <div>
+            <label asp-for="Project.DisplayName"></label>
+            <input asp-for="Project.DisplayName" />
+            <span asp-validation-for="Project.DisplayName"></span>
         </div>
         <div>
             <label asp-for="Project.DateStarted"></label>

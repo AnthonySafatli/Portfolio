@@ -23,7 +23,7 @@ public class ProjectModel : PageModel
 
     public async Task<IActionResult> OnGetAsync()
     {
-        Project = await _context.Projects.FirstOrDefaultAsync(x => x.Name == Name);
+        Project = await _context.Projects.FirstOrDefaultAsync(x => x.Id == Name);
 
         if (Project == null)
             return NotFound();

@@ -35,7 +35,7 @@ public class EditModel : PageModel
             return NotFound();
         }
 
-        var project = await _context.Projects.FirstOrDefaultAsync(m => m.Name == id);
+        var project = await _context.Projects.FirstOrDefaultAsync(m => m.Id == id);
         if (project == null)
         {
             return NotFound();
@@ -53,7 +53,7 @@ public class EditModel : PageModel
         }
 
         // Fetch the existing project to ensure it's being tracked
-        var existingProject = await _context.Projects.AsNoTracking().FirstOrDefaultAsync(e => e.Name == Project.Name);
+        var existingProject = await _context.Projects.AsNoTracking().FirstOrDefaultAsync(e => e.Id == Project.Id);
 
         if (existingProject == null)
         {
@@ -85,7 +85,7 @@ public class EditModel : PageModel
         }
         catch (DbUpdateConcurrencyException)
         {
-            if (!ProjectExists(Project.Name))
+            if (!ProjectExists(Project.Id))
             {
                 return NotFound();
             }
@@ -101,6 +101,6 @@ public class EditModel : PageModel
 
     private bool ProjectExists(string id)
     {
-        return _context.Projects.Any(e => e.Name == id);
+        return _context.Projects.Any(e => e.Id == id);
     }
 }

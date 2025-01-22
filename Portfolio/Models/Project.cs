@@ -6,7 +6,8 @@ namespace Portfolio.Models;
 
 public class Project
 {
-    public string Name { get; set; }
+    public string Id { get; set; }
+    public string DisplayName { get; set; }
 
     [DataType(DataType.Date)]
     public DateTime DateStarted { get; set; }

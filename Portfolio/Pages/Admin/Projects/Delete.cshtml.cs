@@ -31,12 +31,12 @@ public class DeleteModel : PageModel
 
     public async Task<IActionResult> OnPostAsync(string id)
     {
-        if (Project.Name == null)
+        if (Project.Id == null)
         {
             return NotFound();
         }
 
-        var project = await _context.Projects.FindAsync(Project.Name);
+        var project = await _context.Projects.FindAsync(Project.Id);
         if (project != null)
         {
             Project = project;

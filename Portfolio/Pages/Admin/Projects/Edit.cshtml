@@ -11,15 +11,20 @@
 <div class="section center">
     <form method="post" class="normal-form" enctype="multipart/form-data">
         <div asp-validation-summary="ModelOnly"></div>
-        <input type="hidden" asp-for="Project.Name" />
+        <input type="hidden" asp-for="Project.Id" />
         <div>
-            <label asp-for="Project.Name"></label>
-            <input readonly asp-for="Project.Name" />
+            <label asp-for="Project.Id"></label>
+            <input readonly asp-for="Project.Id" />
+        </div>
+        <div>
+            <label asp-for="Project.DisplayName"></label>
+            <input asp-for="Project.DisplayName" />
+            <span asp-validation-for="Project.DisplayName"></span>
         </div>
         <div>
             <label asp-for="Project.DateStarted"></label>
             <input asp-for="Project.DateStarted"/>
-            <span asp-validation-for="Project.DateStarted" class="text-danger"></span>
+            <span asp-validation-for="Project.DateStarted"></span>
         </div>
         <div>
             <label asp-for="Project.DateEnded"></label>
@@ -66,7 +71,7 @@
         </div>
     </form>
     <form asp-page="Delete" method="post" class="normal-form gap-v">
-        <input type="hidden" asp-for="Project.Name" />
+        <input type="hidden" asp-for="Project.Id" />
         <div class="uninclude">
             <button class="button" type="submit">Delete</button>
         </div>

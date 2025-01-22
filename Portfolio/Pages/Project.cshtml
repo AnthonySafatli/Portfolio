@@ -2,7 +2,7 @@
 @using Portfolio.Models
 @model Portfolio.Pages.ProjectModel
 @{
-    ViewData["Title"] = Model.Project?.Name;
+    ViewData["Title"] = Model.Project?.DisplayName;
 
     ViewData["Globe X"] = 0;
     ViewData["Globe Y"] = -0.5;
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="~/css/project.css" asp-append-version="true" />
 }
 
-<h1 class="title">@Model.Project.Name</h1>
+<h1 class="title">@Model.Project.DisplayName</h1>
 
 <div class="links">
     @if (!String.IsNullOrEmpty(Model.Project.Github))

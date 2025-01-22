@@ -24,11 +24,11 @@
 <div class="projects-div">
     @foreach (Project project in Model.Projects)
     {
-        <a asp-page="/Project" asp-route-name="@project.Name" class="project-card">
+        <a asp-page="/Project" asp-route-name="@project.Id" class="project-card">
             <div class="project-image">
-                <img src="projects/@project.Thumbnail" alt="thumbnail for @project.Name">
+                <img src="projects/@project.Thumbnail" alt="thumbnail for @project.Id">
             </div>
-            <h2>@project.Name</h2>
+            <h2>@project.DisplayName</h2>
             <p>@project.Description</p>
         </a>
     }
