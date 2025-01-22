@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using Portfolio.Data;
 using Portfolio.Models;
 using Portfolio.Pages.Admin;
@@ -28,6 +29,20 @@ public class Program
         builder.Services.AddSingleton<EmailService>();
 
         var app = builder.Build();
+
+        using (var scope = app.Services.CreateScope())
+        {
+            var context = scope.ServiceProvider.GetRequiredService<ProjectsContext>();
+            try
+            {
+                context.Database.Migrate();
+            }
+            catch (Exception ex)
+            {
+                var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+                logger.LogError(ex, "An error occurred while applying migrations.");
+            }
+        }
 
         // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())
