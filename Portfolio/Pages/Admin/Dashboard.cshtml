@@ -26,9 +26,6 @@
                     @Html.DisplayNameFor(model => model.Projects[0].Thumbnail)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Projects[0].Tags)
-                </th>
-                <th>
                     @Html.DisplayNameFor(model => model.Projects[0].Hidden)
                 </th>
                 <th></th>
@@ -39,6 +36,8 @@
             {
                 <tr>
                     <td class="name">
+                        @Html.DisplayFor(modelItem => item.SortOrder)
+                        <span>-</span>
                         @Html.DisplayFor(modelItem => item.Name)
                     </td>
                     <td>
@@ -49,9 +48,6 @@
                     </td>
                     <td>
                         <img class="preview" alt="thumbnail for @item.Name [@item.Thumbnail]" src="~/projects/@item.Thumbnail" />
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Tags)
                     </td>
                     <td>
                         @if (item.Hidden)

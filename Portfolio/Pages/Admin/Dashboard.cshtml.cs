@@ -24,7 +24,7 @@ public class DashboardModel : PageModel
     public async void OnGet()
     {
         Projects = await _context.Projects
-            .OrderByDescending(p => p.DateStarted)
+            .OrderBy(p => p.SortOrder)
             .ToListAsync();
     }
 

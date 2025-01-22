@@ -18,11 +18,11 @@ public class Project
     public string Description { get; set; }
     
     public bool Hidden { get; set; }
+    public int SortOrder { get; set; }
     
     public string? Github { get; set; }
     public string? Page { get; set; }
     public string? Download { get; set; }
-    public string? Tags { get; set; }
 
     public static async Task<string> ExtractTextFromFileAsync(IFormFile file)
     {

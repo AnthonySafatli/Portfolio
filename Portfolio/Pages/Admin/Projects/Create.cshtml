@@ -40,6 +40,11 @@
             <label asp-for="Project.Hidden"></label>
             <input asp-for="Project.Hidden"/>
         </div>
+        <div class="form-group">
+            <label asp-for="Project.SortOrder"></label>
+            <input asp-for="Project.SortOrder" />
+            <span asp-validation-for="Project.SortOrder"></span>
+        </div>
         <div>
             <label asp-for="Project.Description"></label>
             <textarea asp-for="Project.Description"></textarea>
@@ -59,11 +64,6 @@
             <label asp-for="Project.Download"></label>
             <input asp-for="Project.Download" />
             <span asp-validation-for="Project.Download"></span>
-        </div>
-        <div>
-            <label asp-for="Project.Tags"></label>
-            <input asp-for="Project.Tags" />
-            <span asp-validation-for="Project.Tags"></span>
         </div>
         <div class="uninclude">
             <button class="button" type="submit">Create</button>

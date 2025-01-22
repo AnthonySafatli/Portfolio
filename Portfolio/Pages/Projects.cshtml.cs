@@ -20,7 +20,7 @@ public class ProjectsModel : PageModel
     {
         Projects = await _context.Projects
             .Where(p => !p.Hidden)
-            .OrderByDescending(p => p.DateStarted)
+            .OrderBy(p => p.SortOrder)
             .ToListAsync();
     }
 }
