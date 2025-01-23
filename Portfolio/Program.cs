@@ -18,9 +18,9 @@ public class Program
             options.Conventions.AddPageRoute("/Admin/Dashboard", "/Admin/Index");
             options.Conventions.AddPageRoute("/Admin/Dashboard", "/Admin");
         });
-        builder.Services.AddAuthentication(Security.Config.AdminCookieName).AddCookie(Security.Config.AdminCookieName, options =>
+        builder.Services.AddAuthentication(SecurityService.Config.AdminCookieName).AddCookie(SecurityService.Config.AdminCookieName, options =>
         {
-            options.Cookie.Name = Security.Config.FromAddressPassword;
+            options.Cookie.Name = SecurityService.Config.FromAddressPassword;
             options.LoginPath = "/Admin/Login";
             options.AccessDeniedPath = "/Admin/AccessDenied";
             options.ExpireTimeSpan = TimeSpan.FromDays(1);

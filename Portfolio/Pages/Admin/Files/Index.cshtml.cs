@@ -16,7 +16,6 @@ public class IndexModel : PageModel
     private readonly IWebHostEnvironment _environment;
 
     public List<FileStatus> ProjectFiles { get; set; } = new List<FileStatus>();
-    public List<MarkDownStatus> MarkDownFiles { get; set; } = new List<MarkDownStatus>();
 
     public IndexModel(ProjectsContext context, IWebHostEnvironment environment)
     {

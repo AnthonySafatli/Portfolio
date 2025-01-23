@@ -12,14 +12,14 @@ public class EmailService
     public async Task sendEmail(string subject, string body)
     {
         MimeMessage email = new MimeMessage();
-        email.From.Add(MailboxAddress.Parse(Security.Config.FromAddress));
-        email.To.Add(MailboxAddress.Parse(Security.Config.ToAddress));
+        email.From.Add(MailboxAddress.Parse(SecurityService.Config.FromAddress));
+        email.To.Add(MailboxAddress.Parse(SecurityService.Config.ToAddress));
         email.Subject = subject;
         email.Body = new TextPart(TextFormat.Plain) { Text = body };
 
         using var smtp = new SmtpClient();
         await smtp.ConnectAsync("m01.internetmailserver.net", 587, SecureSocketOptions.StartTls);
-        await smtp.AuthenticateAsync(Security.Config.FromAddress, Security.Config.FromAddressPassword);
+        await smtp.AuthenticateAsync(SecurityService.Config.FromAddress, SecurityService.Config.FromAddressPassword);
         await smtp.SendAsync(email);
         await smtp.DisconnectAsync(true);
     }

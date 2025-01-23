@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Portfolio.Data;
 using Portfolio.Models;
+using Portfolio.Utilities;
 
 namespace Portfolio.Pages.Admin.Projects;
 
@@ -38,7 +39,7 @@ public class CreateModel : PageModel
         {
             try
             {
-                string pageContent = await Project.ExtractTextFromFileAsync(PageContentFile);
+                string pageContent = await FileUtility.ExtractTextAsync(PageContentFile);
                 Project.PageContent = pageContent;
             }
             catch (ArgumentException)

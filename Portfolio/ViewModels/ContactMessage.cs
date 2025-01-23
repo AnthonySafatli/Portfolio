@@ -2,9 +2,9 @@
 using System.Net;
 using Newtonsoft.Json.Linq;
 
-namespace Portfolio.Models;
+namespace Portfolio.ViewModels;
 
-public class EmailMessage
+public class ContactMessage
 {
     public string Email { get; set; } = "";
     public string Message { get; set; } = "";

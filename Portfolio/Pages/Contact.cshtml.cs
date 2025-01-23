@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Portfolio.Models;
 using Portfolio.Services;
+using Portfolio.ViewModels;
 using System.Net;
 using System.Net.Mail;
 
@@ -13,7 +13,7 @@ public class ContactModel : PageModel
 
     // TODO: Do scam/spam filtering
     [BindProperty]
-    public EmailMessage? Message { get; set; }
+    public ContactMessage? Message { get; set; }
 
     public ContactModel(EmailService email)
     {

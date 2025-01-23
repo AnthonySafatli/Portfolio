@@ -29,9 +29,8 @@ public class LoginModel : PageModel
         if (!ModelState.IsValid)
             return Page();
 
-        if (Security.EncryptSHA256(Credential.Password) == Security.Config.AdminPassword)
+        if (SecurityService.EncryptSHA256(Credential.Password) == SecurityService.Config.AdminPassword)
         {
-            EmailMessage loginSuccess = new EmailMessage();
             bool valid = await _email.loginAlert(HttpContext, "New Login!");
             
             if (valid)
@@ -41,7 +40,7 @@ public class LoginModel : PageModel
                     new Claim(ClaimTypes.Name, "Anthony"),
                 };
 
-                var identity = new ClaimsIdentity(claims, Security.Config.AdminCookieName);
+                var identity = new ClaimsIdentity(claims, SecurityService.Config.AdminCookieName);
                 ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(identity);
 
                 var authProperties = new AuthenticationProperties
@@ -49,13 +48,12 @@ public class LoginModel : PageModel
                     IsPersistent = true,
                 };
 
-                await HttpContext.SignInAsync(Security.Config.AdminCookieName, claimsPrincipal, authProperties);
+                await HttpContext.SignInAsync(SecurityService.Config.AdminCookieName, claimsPrincipal, authProperties);
 
                 return RedirectToPage("/Admin/Dashboard");
             }
         }
 
-        EmailMessage loginFailed = new EmailMessage();
         await _email.loginAlert(HttpContext, "Failed Login Attempt!");
 
         return Page();
