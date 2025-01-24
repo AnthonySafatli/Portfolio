@@ -8,4 +8,5 @@ public class PageElement
     public bool? Ordered { get; set; }
     public string[]? Items { get; set; }
     public string? Link { get; set; }
+    public bool? Bordered { get; set; }
 }

@@ -29,13 +29,15 @@ public class PageRenderingService
 
             case "media":
                 string extension = Path.GetExtension(element.Link)?.TrimStart('.').ToLower() ?? "";
+                string classes = element.Bordered == true ? "bordered" : "";
+
                 if (ImageExt.Contains(extension))
                 {
-                    return $"\n<div class=\"media-div\"><img src=\"/projects{element.Link}\" alt=\"{element.Text}\" loading=\"lazy\"></div>\n";
+                    return $"\n<div class=\"media-div\"><img class=\"{classes}\" src=\"/projects{element.Link}\" alt=\"{element.Text}\" loading=\"lazy\"></div>\n";
                 }
                 else if (VideoExt.Contains(extension))
                 {
-                    return $"\n<div class=\"media-div\"><video controls><source src=\"/projects{element.Link}\" type=\"video/{extension}\">{element.Text}</video></div>\n";
+                    return $"\n<div class=\"media-div\"><video class=\"{classes}\" controls><source src=\"/projects{element.Link}\" type=\"video/{extension}\">{element.Text}</video></div>\n";
                 }
                 return "";
 

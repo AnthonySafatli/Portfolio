@@ -66,14 +66,17 @@ def get_dict(data):
             continue 
 
         if element[TYPE] == enum.MEDIA:
+            border = element[TEXT].startswith("!!")
+    
             split_index = element[TEXT].rfind('](')
-            alt = element[TEXT][2:split_index]
+            alt = element[TEXT][3:split_index] if border else element[TEXT][2:split_index]
             file = element[TEXT][(split_index + 2):len(element[TEXT]) - 1]
-            
-            media = { "name": "media", "text": alt, "link": file }
+    
+            media = { "name": "media", "text": alt, "link": file, "bordered": border }
             dictionary["elements"].append(media)
             last_item = element[TYPE]
             continue
+
 
         if element[TYPE] == enum.LINK:
             split_index = element[TEXT].rfind('](')

@@ -5,6 +5,7 @@
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+  gap: 10px;
 }
 
 #dates .bolder {
@@ -81,14 +82,21 @@
 }
 
 #project-page .media-div * {
-  width: 500px;
-  object-fit: cover;
-  text-align: center;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  object-fit: contain;
+}
+
+#project-page .media-div .bordered {
+  border: 1.5px solid transparent;
+  border-image: linear-gradient(35deg, #0CACBE, transparent);
+  border-image-slice: 1;
 }
 
 #project-page a {
   display: block;
-  margin: 6px 0;
+  margin: 10px 0;
   font-weight: 450;
   text-decoration: underline;
 }

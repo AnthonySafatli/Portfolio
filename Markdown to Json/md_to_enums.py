@@ -41,7 +41,7 @@ def get_enum(line):
         return LIST
 
     # Check if line is media element (photo or video)
-    media = re.search(r"^!\[.+\]\(.+\..+\)$", line)
+    media = re.search(r"^!!?\[.+\]\(.+\..+\)$", line)
     if media:
         return MEDIA
     

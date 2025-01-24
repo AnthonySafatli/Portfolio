@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -26,6 +27,7 @@ public class CreateModel : PageModel
     [BindProperty]
     public Project Project { get; set; } = default!;
     [BindProperty]
+    [Display(Name ="Page Content File")]
     public IFormFile? PageContentFile { get; set; }
 
     public async Task<IActionResult> OnPostAsync()
