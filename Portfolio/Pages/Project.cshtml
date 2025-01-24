@@ -1,5 +1,6 @@
 ﻿@page "{name}"
 @using Portfolio.Models
+@inject Portfolio.Services.PageRenderingService PageRenderingService
 @model Portfolio.Pages.ProjectModel
 @{
     ViewData["Title"] = Model.Project?.DisplayName;
@@ -40,7 +41,7 @@
     <div id="project-page">
         @foreach (PageElement element in Model.ProjectPage.Elements)
         {
-            @Html.Raw(element.ToHTML());
+            @Html.Raw(PageRenderingService.RenderElement(element));
         }
     </div>
 </div>

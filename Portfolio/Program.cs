@@ -26,7 +26,9 @@ public class Program
             options.ExpireTimeSpan = TimeSpan.FromDays(1);
         });
         builder.Services.AddDbContext<ProjectsContext>();
-        builder.Services.AddSingleton<EmailService>();
+        builder.Services.AddSingleton<EmailService>(); 
+        builder.Services.AddSingleton<PageRenderingService>();
+
 
         var app = builder.Build();
 

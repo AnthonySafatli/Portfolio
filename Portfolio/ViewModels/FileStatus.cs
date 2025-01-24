@@ -1,4 +1,4 @@
-﻿namespace Portfolio.Models;
+﻿namespace Portfolio.ViewModels;
 
 public class FileStatus
 {
