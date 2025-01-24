@@ -101,12 +101,16 @@ button {
 
 .button:hover, .button:focus,
 .normal-form textarea:hover, .normal-form textarea:focus,
-.normal-form input[type=text]:hover, .normal-form input[type=text]:focus,
+.normal-form input[type=text]:hover:not([readonly]), .normal-form input[type=text]:focus:not([readonly]),
 .normal-form input[type=password]:hover, .normal-form input[type=password]:focus,
 .normal-form input[type=datetime-local]:hover, .normal-form input[type=datetime-local]:focus {
   border-color: white;
   box-shadow: 0 0 30px 2px rgba(255, 255, 255, 0.6);
   transition: border-color ease 0.2s, box-shadow ease 0.3s;
+}
+
+.normal-form input[type=text][readonly]:hover, .normal-form input[type=text][readonly]:hover {
+  cursor: not-allowed;
 }
 
 textarea {
