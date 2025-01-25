@@ -4,6 +4,34 @@
     @* Meta *@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="robots" content="@ViewData["Robots"]">
+    @if (ViewData.Keys.Contains("Description"))
+    {
+        <meta name="author" content="Anthony Safatli">
+        <meta name="description" content="@ViewData["Description"]">
+        @if (ViewData.Keys.Contains("Keywords"))
+        {
+            <meta name="keywords" content="@ViewData["Keywords"]">
+        }
+    
+        <meta property="og:title" content="@ViewData["Title"] - Anthony Safatli" />
+        <meta property="og:description" content="@ViewData["Description"]" />
+        <meta property="og:image" content="https://anthonysafatli.ca/assets/globe-icon-open-graph.png" />
+        <meta property="og:url" content="@ViewData["URL"]" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="@ViewData["Title"] - Anthony Safatli" />
+        <meta name="twitter:description" content="@ViewData["Description"]" />
+        <meta name="twitter:image" content="https://anthonysafatli.ca/assets/globe-icon-open-graph.png" />
+    }
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="rating" content="General">
+
     <title>@ViewData["Title"] - Anthony Safatli</title>
     <link rel="icon" type="image/png" href="~/assets/globe icon.png">
 
@@ -32,6 +60,10 @@
             <a asp-page="\Projects">Projects</a>
             <a asp-page="\AboutMe">About Me</a>
             <a asp-page="\Contact">Contact</a>
+            @if (User.Identity.IsAuthenticated) 
+            {
+                <a asp-page="\Admin\Dashboard">Admin</a>
+            }
         </nav>
     </header>
 
