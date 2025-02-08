@@ -14,11 +14,11 @@ using Portfolio.Utilities;
 namespace Portfolio.Pages.Admin.Projects;
 
 [Authorize]
-public class EditModel : PageModel
+public class ViewModel : PageModel
 {
     private readonly ProjectsContext _context;
 
-    public EditModel(ProjectsContext context)
+    public ViewModel(ProjectsContext context)
     {
         _context = context;
     }

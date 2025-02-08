@@ -11,8 +11,12 @@
     <a class="button" asp-page="../Index">Exit Admin Zone</a>
     <a class="button" asp-page="./Files/Index">File Manager</a>
     <a class="button" asp-page="./Files/Upload">Upload Media</a>
-    <a class="button" asp-page="./Projects/Create">Create Project</a>
-    <a class="button" asp-page="./TechStackItems/Create">Create Tech Stack Item</a>
+</div>
+
+
+<div class="title-button-container">
+    <h2>Projects</h2>
+    <a class="button" asp-page="./Projects/Create">Add Project</a>
 </div>
 
 <div class="center section">
@@ -57,12 +61,18 @@
                         }
                     </td>
                     <td>
-                        <a class="inline-button" asp-page="./Projects/Edit" asp-route-id="@item.Id">View</a>
+                        <a class="inline-button" asp-page="./Projects/View" asp-route-id="@item.Id">View</a>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
+</div>
+
+
+<div class="title-button-container">
+    <h2>Tech Stack Items</h2>
+    <a class="button" asp-page="./TechStackItems/Create">Add Tech Stack Item</a>
 </div>
 
 <div class="center section">
@@ -87,7 +97,7 @@
                         <img class="preview" alt="thumbnail for @item.Name [@item.PathToImage]" src="~/projects/@item.PathToImage" />
                     </td>
                     <td>
-                        <a class="inline-button" asp-page="./TechStackItems/Edit" asp-route-id="@item.Id">View</a>
+                        <a class="inline-button" asp-page="./TechStackItems/View" asp-route-id="@item.Id">View</a>
                     </td>
                 </tr>
             }

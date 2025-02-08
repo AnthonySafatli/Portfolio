@@ -377,3 +377,6 @@ Secrets/
 *.db
 *.db-shm
 *.db-wal
+
+# Aider
+.aider*
