@@ -12,6 +12,7 @@
     <a class="button" asp-page="./Files/Index">File Manager</a>
     <a class="button" asp-page="./Files/Upload">Upload Media</a>
     <a class="button" asp-page="./Projects/Create">Create Project</a>
+    <a class="button" asp-page="./TechStackItems/Create">Create Tech Stack Item</a>
 </div>
 
 <div class="center section">
@@ -57,6 +58,36 @@
                     </td>
                     <td>
                         <a class="inline-button" asp-page="./Projects/Edit" asp-route-id="@item.Id">View</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="center section">
+    <table>
+        <thead>
+            <tr>
+                <th class="name"></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TechStackItems[0].PathToImage)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.TechStackItems)
+            {
+                <tr>
+                    <td class="name">
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        <img class="preview" alt="thumbnail for @item.Name [@item.PathToImage]" src="~/projects/@item.PathToImage" />
+                    </td>
+                    <td>
+                        <a class="inline-button" asp-page="./TechStackItems/Edit" asp-route-id="@item.Id">View</a>
                     </td>
                 </tr>
             }

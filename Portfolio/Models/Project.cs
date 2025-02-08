@@ -29,4 +29,6 @@ public class Project
     public string? Github { get; set; }
     public string? Page { get; set; }
     public string? Download { get; set; }
+
+    public ICollection<TechStackItem> TechStackItems { get; set; } = [];
 }

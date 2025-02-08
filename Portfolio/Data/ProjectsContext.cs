@@ -6,6 +6,7 @@ namespace Portfolio.Data;
 public class ProjectsContext : DbContext
 {
     public DbSet<Project> Projects { get; set; }
+    public DbSet<TechStackItem> TechStackItems { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -14,6 +15,9 @@ public class ProjectsContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Project>().HasKey(t => t.Id);
+        modelBuilder.Entity<Project>()
+            .HasMany(p => p.TechStackItems)
+            .WithMany(t => t.Projects)
+            .UsingEntity(j => j.ToTable("ProjectTechStack"));
     }
 }

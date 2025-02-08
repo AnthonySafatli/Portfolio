@@ -20,11 +20,17 @@ public class DashboardModel : PageModel
     }
 
     public List<Project> Projects { get; set; } = new();
+    public List<TechStackItem> TechStackItems { get; set; } = new();
 
     public async void OnGet()
     {
         Projects = await _context.Projects
             .OrderBy(p => p.SortOrder)
+            .AsNoTracking()
+            .ToListAsync();
+
+        TechStackItems = await _context.TechStackItems
+            .AsNoTracking()
             .ToListAsync();
     }
 

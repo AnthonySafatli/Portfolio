@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Portfolio.Data;
 using Portfolio.Models;
 
-namespace Portfolio.Pages.Admin.Projects;
+namespace Portfolio.Pages.Admin.TechStackItems;
 
 [Authorize]
 public class DeleteModel : PageModel
@@ -22,25 +22,20 @@ public class DeleteModel : PageModel
     }
 
     [BindProperty]
-    public Project Project { get; set; } = default!;
+    public TechStackItem TechStackItem { get; set; } = default!;
 
     public IActionResult OnGet()
     {
         return NotFound();
     }
 
-    public async Task<IActionResult> OnPostAsync(string id)
+    public async Task<IActionResult> OnPostAsync(int id)
     {
-        if (Project.Id == null)
+        var techStackItem = await _context.TechStackItems.FindAsync(TechStackItem.Id);
+        if (techStackItem != null)
         {
-            return NotFound();
-        }
-
-        var project = await _context.Projects.FindAsync(Project.Id);
-        if (project != null)
-        {
-            Project = project;
-            _context.Projects.Remove(Project);
+            TechStackItem = techStackItem;
+            _context.TechStackItems.Remove(TechStackItem);
             await _context.SaveChangesAsync();
         }
 
