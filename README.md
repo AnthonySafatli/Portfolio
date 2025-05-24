@@ -22,6 +22,12 @@ This is the repository for my Portfolio Website. It is being hosted on [anthonys
 - File Manager
   - A page to view all the media and files saved on the server, as well as add and delete files
 
+## Markdown Converter
+
+This project also contains my own Markdown parser and converter. 
+
+It is a python script that will take a simplified markdown file, and then convert it to a specific JSON format. This JSON is then saved in the servers database and will be used to render the project pages HTML content.
+
 ## Technology
 
 This project uses an ASP.NET Web Server with an SQLite DB
