@@ -1,1 +1,27 @@
 # Portfolio
+
+This is the repository for my Portfolio Website. It is being hosted on [https://anthonysafatli.ca](anthonysafatli.ca).
+
+## Pages
+
+### Public Pages
+
+- Home Page
+- Projects Page
+  - This is a list of all my projects
+- Individual Project Pages
+  - This is a page unique to each project. This is written in markdown, then coverted to HTML
+- About Me Page
+- Contact Page
+  - A page containing a form that will send me an email
+### Admin Section
+- Dashboard Page
+  - A page with a list of my projects, showing information about each one
+- Add Project Forms
+  - A create and edit page for adding and editing projects to the DB
+- File Manager
+  - A page to view all the media and files saved on the server, as well as add and delete files
+
+## Technology
+
+This project uses an ASP.NET Web Server with an SQLite DB
