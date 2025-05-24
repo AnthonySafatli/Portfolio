@@ -1,6 +1,6 @@
 # Portfolio
 
-This is the repository for my Portfolio Website. It is being hosted on [https://anthonysafatli.ca](anthonysafatli.ca).
+This is the repository for my Portfolio Website. It is being hosted on [anthonysafatli.ca](https://anthonysafatli.ca).
 
 ## Pages
 
