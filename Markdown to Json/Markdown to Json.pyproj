@@ -32,11 +32,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="markdown\archive.md" />
+    <Content Include="markdown\countmycode.md" />
     <Content Include="markdown\ggj.md" />
+    <Content Include="markdown\mnist.md" />
     <Content Include="markdown\notfound.md" />
     <Content Include="markdown\null.md" />
     <Content Include="markdown\pacman.md" />
     <Content Include="markdown\portfolio.md" />
+    <Content Include="markdown\scribbler.md" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
