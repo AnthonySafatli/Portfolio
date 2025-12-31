@@ -5,13 +5,13 @@ namespace Portfolio.Data;
 
 public class ProjectsContext : DbContext
 {
+    public ProjectsContext(DbContextOptions<ProjectsContext> options)
+        : base(options)
+    {
+    }
+
     public DbSet<Project> Projects { get; set; }
     public DbSet<TechStackItem> TechStackItems { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlite(@"Data source=./Data/Projects.db");
-    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

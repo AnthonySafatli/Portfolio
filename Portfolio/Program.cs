@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
 using Portfolio.Data;
 using Portfolio.Models;
@@ -12,7 +13,10 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        // Add services to the container.
+        var connectionString = builder.Configuration.GetConnectionString("ProjectsConnection");
+        builder.Services.AddDbContext<ProjectsContext>(options =>
+            options.UseSqlite(connectionString));
+
         builder.Services.AddRazorPages().AddRazorPagesOptions(options =>
         {
             options.Conventions.AddPageRoute("/Admin/Dashboard", "/Admin/Index");
@@ -25,10 +29,8 @@ public class Program
             options.AccessDeniedPath = "/Admin/AccessDenied";
             options.ExpireTimeSpan = TimeSpan.FromDays(1);
         });
-        builder.Services.AddDbContext<ProjectsContext>();
         builder.Services.AddSingleton<EmailService>(); 
         builder.Services.AddSingleton<PageRenderingService>();
-
 
         var app = builder.Build();
 
@@ -54,10 +56,23 @@ public class Program
             app.UseHsts();
         }
 
+        app.UseForwardedHeaders(new ForwardedHeadersOptions
+        {
+            ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+        });
+
         app.UseHttpsRedirection();
         app.UseStaticFiles();
 
-        app.UseDeveloperExceptionPage();
+        if (app.Environment.IsDevelopment())
+        {
+            app.UseDeveloperExceptionPage();
+        }
+        else
+        {
+            app.UseExceptionHandler("/Error");
+            app.UseHsts();
+        }
 
         app.UseRouting();
 

@@ -6,27 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Content Remove="compilerconfig.json" />
-    <Content Remove="wwwroot\projects\images\globe.png" />
-    <Content Remove="wwwroot\projects\images\icon of continuity.ico" />
-    <Content Remove="wwwroot\projects\images\null.jpg" />
-    <Content Remove="wwwroot\projects\images\numbers.webp" />
-    <Content Remove="wwwroot\projects\images\pacman.svg" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="wwwroot\css\index.css" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="compilerconfig.json" />
-    <None Include="wwwroot\projects\images\globe.png" />
-    <None Include="wwwroot\projects\images\icon of continuity.ico" />
-    <None Include="wwwroot\projects\images\null.jpg" />
-    <None Include="wwwroot\projects\images\numbers.webp" />
-    <None Include="wwwroot\projects\images\pacman.svg" />
-  </ItemGroup>
+<ItemGroup>
+	<Content Remove="wwwroot\projects\**\*" />
+</ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MailKit" Version="4.9.0" />
@@ -45,8 +27,6 @@
 
   <ItemGroup>
     <Folder Include="Secrets\" />
-    <Folder Include="wwwroot\projects\json\" />
-    <Folder Include="wwwroot\projects\videos\" />
   </ItemGroup>
 
   <ItemGroup>
