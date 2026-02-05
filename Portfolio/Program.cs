@@ -48,11 +48,13 @@ public class Program
             }
         }
 
-        // Configure the HTTP request pipeline.
-        if (!app.Environment.IsDevelopment())
+        if (app.Environment.IsDevelopment())
         {
-            app.UseExceptionHandler("/Error");
-            // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+            app.UseDeveloperExceptionPage();
+        }
+        else
+        {
+            app.UseExceptionHandler("/Error/500");
             app.UseHsts();
         }
 
@@ -64,15 +66,7 @@ public class Program
         app.UseHttpsRedirection();
         app.UseStaticFiles();
 
-        if (app.Environment.IsDevelopment())
-        {
-            app.UseDeveloperExceptionPage();
-        }
-        else
-        {
-            app.UseExceptionHandler("/Error");
-            app.UseHsts();
-        }
+        app.UseStatusCodePagesWithReExecute("/Error/{0}");
 
         app.UseRouting();
 
@@ -82,5 +76,6 @@ public class Program
         app.MapRazorPages();
 
         app.Run();
+
     }
 }
