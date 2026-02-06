@@ -35,7 +35,6 @@ public class Program
         });
 
         builder.Services.AddSingleton<EmailService>(); 
-        builder.Services.AddSingleton<PageRenderingService>();
 
         var app = builder.Build();
 

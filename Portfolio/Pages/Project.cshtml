@@ -40,11 +40,11 @@
     <span>Date Ended: <span class="bolder">@Model.Project.DateEnded.ToString("MMMM yyy")</span></span>
 </div>
 
-<div id="contianer">
+<div id="container">
     <div id="project-page">
         @foreach (PageElement element in Model.ProjectPage.Elements)
         {
-            @Html.Raw(PageRenderingService.RenderElement(element));
+            @await Html.PartialAsync("_PageElement", element)
         }
     </div>
 </div>
