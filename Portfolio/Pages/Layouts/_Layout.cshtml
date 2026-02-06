@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
     @* Meta *@
     <meta charset="utf-8" />
@@ -11,9 +11,9 @@
     <link rel="icon" type="image/png" href="~/assets/globe icon.png">
 
     @* CSS *@
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Portfolio.styles.css" asp-append-version="true" />    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/global.css" asp-append-version="true" />
     @await RenderSectionAsync("Styles", required: false)
 
     @* Fonts *@
@@ -28,36 +28,37 @@
 <body>
     <canvas class="webgl"></canvas>
 
-    <header>
-        <!-- TODO: Logo + icon -->
-        <nav>
-            <a asp-page="\Index">Home</a>
-            <a asp-page="\Projects">Projects</a>
-            <a asp-page="\AboutMe">About Me</a>
-            <a asp-page="\Contact">Contact</a>
-            @if (User.Identity.IsAuthenticated) 
-            {
-                <a asp-page="\Admin\Dashboard">Admin</a>
-            }
-        </nav>
-    </header>
+    <div class="container d-flex flex-column min-vh-100">
+        <header class="my-4">
+            <nav class="d-flex gap-3">
+                <a asp-page="/Index">Home</a>
+                <a asp-page="/Projects">Projects</a>
+                <a asp-page="/AboutMe">About Me</a>
+                <a asp-page="/Contact">Contact</a>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a asp-page="/Admin/Dashboard">Admin</a>
+                }
+            </nav>
+        </header>
 
-    <main>
-        @RenderBody()
-    </main>
+        <main class="flex-grow-1">
+            @RenderBody()
+        </main>
 
-    <footer>
-        <span>
-            &copy; 2024 - Anthony Safatli
-        </span>
+        <footer class="d-flex justify-content-between align-items-center mt-4 mb-3">
+            <span>
+                &copy; 2024 - Anthony Safatli
+            </span>
 
-        <nav>
-            <a href="https://github.com/AnthonySafatli" class="fa fa-github" target="_blank"></a>
-            <a href="https://www.instagram.com/anthonysafatli124/" class="fa fa-instagram" target="_blank"></a>
-            <a href="https://www.linkedin.com/in/anthony-safatli-755823296/" class="fa fa-linkedin" target="_blank"></a>
-            <a href="mailto:anthonysafatli@dal.ca" class="fa fa-envelope"></a>
-        </nav>
-    </footer>
+            <nav class="d-flex gap-3 fs-3">
+                <a href="https://github.com/AnthonySafatli" class="fa fa-github" target="_blank"></a>
+                <a href="https://www.instagram.com/anthonysafatli124/" class="fa fa-instagram" target="_blank"></a>
+                <a href="https://www.linkedin.com/in/anthony-safatli-755823296/" class="fa fa-linkedin" target="_blank"></a>
+                <a href="mailto:anthonysafatli@dal.ca" class="fa fa-envelope"></a>
+            </nav>
+        </footer>
+    </div>
 
     @await Html.PartialAsync("_LayoutGlobe")
     @await RenderSectionAsync("Scripts", required: false)

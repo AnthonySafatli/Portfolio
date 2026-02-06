@@ -18,23 +18,21 @@
     <link rel="stylesheet" href="~/css/index.css" asp-append-version="true" />
 }
 
-<div class="content">
-    
-    <div>
-        <div class="hero">
-            <h1 id="title">
-                <span id="title-1" class="block">Hi</span>
-                <span id="title-2" class="block">I'm Anthony</span>
+<div class="row mt-5">
+    <div class="col-6 offset-6 text-end">
+        <div>
+            <h1 class="hero">
+                <span id="small" class="d-block">Hi</span>
+                <span id="big" class="d-block">I'm Anthony</span>
             </h1>
 
-            <p id="title-desc">Aspiring Software Developer & Current Dalhousie Student</p>
+            <p class="fs-4">Aspiring Software Developer & Current Dalhousie Student</p>
         </div>
 
-        <div class="links">
+        <div class="d-flex flex-column gap-2 fs-5 nav-links">
             <div><a asp-page="/Projects">Projects</a></div>
             <div><a asp-page="/AboutMe">About Me</a></div>
             <div><a asp-page="/Contact">Contact</a></div>
         </div>
     </div>
-
 </div>
