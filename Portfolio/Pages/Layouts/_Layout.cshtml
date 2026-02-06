@@ -5,32 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta name="robots" content="@ViewData["Robots"]">
-    @if (ViewData.Keys.Contains("Description"))
-    {
-        <meta name="author" content="Anthony Safatli">
-        <meta name="description" content="@ViewData["Description"]">
-        @if (ViewData.Keys.Contains("Keywords"))
-        {
-            <meta name="keywords" content="@ViewData["Keywords"]">
-        }
-    
-        <meta property="og:title" content="@ViewData["Title"] - Anthony Safatli" />
-        <meta property="og:description" content="@ViewData["Description"]" />
-        <meta property="og:image" content="https://anthonysafatli.ca/assets/globe-icon-open-graph.png" />
-        <meta property="og:url" content="@ViewData["URL"]" />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="@ViewData["Title"] - Anthony Safatli" />
-        <meta name="twitter:description" content="@ViewData["Description"]" />
-        <meta name="twitter:image" content="https://anthonysafatli.ca/assets/globe-icon-open-graph.png" />
-    }
-
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="rating" content="General">
+    @await Html.PartialAsync("_LayoutMeta")
 
     <title>@ViewData["Title"] - Anthony Safatli</title>
     <link rel="icon" type="image/png" href="~/assets/globe icon.png">
@@ -84,11 +59,7 @@
         </nav>
     </footer>
 
-    <script>var globePos = [@ViewData["Globe X"], @ViewData["Globe Y"], @ViewData["Globe Z"]];</script>
-    <script>var lowColour = [12/255, 172/255, 190/255]; var highColour = [145/255, 242/255, 242/255]; var wireColour = 0x203030;</script>
-    <script>var globeOpacity = @ViewData["Globe Opacity"]</script>
-    <script src="~/dist/site.bundle.js" asp-append-version="true"></script>
-    <script src="~/dist/background.bundle.js" asp-append-version="true"></script>
+    @await Html.PartialAsync("_LayoutGlobe")
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

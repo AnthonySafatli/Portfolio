@@ -17,11 +17,15 @@ public class Program
         builder.Services.AddDbContext<ProjectsContext>(options =>
             options.UseSqlite(connectionString));
 
-        builder.Services.AddRazorPages().AddRazorPagesOptions(options =>
+        builder.Services.AddRazorPages().AddRazorPagesOptions(o =>
         {
-            options.Conventions.AddPageRoute("/Admin/Dashboard", "/Admin/Index");
-            options.Conventions.AddPageRoute("/Admin/Dashboard", "/Admin");
+            o.Conventions.AddPageRoute("/Admin/Dashboard", "/Admin/Index");
+            o.Conventions.AddPageRoute("/Admin/Dashboard", "/Admin");
+        }).AddRazorOptions(o =>
+        {
+            o.PageViewLocationFormats.Add("/Pages/Layouts/{0}.cshtml");
         });
+
         builder.Services.AddAuthentication(SecurityService.Config.AdminCookieName).AddCookie(SecurityService.Config.AdminCookieName, options =>
         {
             options.Cookie.Name = SecurityService.Config.FromAddressPassword;
@@ -29,6 +33,7 @@ public class Program
             options.AccessDeniedPath = "/Admin/AccessDenied";
             options.ExpireTimeSpan = TimeSpan.FromDays(1);
         });
+
         builder.Services.AddSingleton<EmailService>(); 
         builder.Services.AddSingleton<PageRenderingService>();
 
