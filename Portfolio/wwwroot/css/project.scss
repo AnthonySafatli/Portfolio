@@ -6,55 +6,15 @@ $highlight: #b6f1f8;
 
 $dark: #2b4c4f;
 
-#dates {
-	padding: 0px 20px;
-	margin-top: 10px;
-	font-size: 0.75rem;
-	display: flex;
-	justify-content: space-around;
-	flex-wrap: wrap;
-	gap: 10px;
-}
-
-#dates .bolder {
+.bolder {
 	color: $secondary-colour;
-	font-weight: 500;
-	font-size: 0.9rem;
-}
-
-.links {
-	margin: 20px;
-	margin-bottom: 30px;
-	display: flex;
-	justify-content: center;
-	gap: 10px;
-	flex-wrap: wrap;
-}
-
-.links a {
-	color: $link-colour;
-	padding: 5px 15px;
-	font-weight: 700;
-	border-radius: 25px;
-}
-
-.links span {
-	color: $link-colour;
-}
-
-#container {
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
 }
 
 #project-page {
 	margin: 20px;
 	padding: 0 20px;
 	width: 100%;
-	max-width: 800px;
+	max-width: 900px;
 }
 
 #project-page h1 {
@@ -107,8 +67,7 @@ $dark: #2b4c4f;
 	border-image-slice: 1;
 }
 
-#project-page a {
-	display: block;
+#project-page .a-block a {
 	margin: 10px 0;
 	font-weight: 450;
 	text-decoration: underline;

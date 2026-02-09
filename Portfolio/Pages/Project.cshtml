@@ -17,33 +17,45 @@
     <link rel="stylesheet" href="~/css/project.css" asp-append-version="true" />
 }
 
-<h1 class="title">@Model.Project.DisplayName</h1>
+<div class="mt-5">
+    <h1 class="text-center">@Model.Project.DisplayName</h1>
 
-<div class="links">
-    @if (!String.IsNullOrEmpty(Model.Project.Github))
-    {
-        <a href="@Model.Project.Github" target="_blank"><span class="fa fa-mini fa-github"></span>&nbsp;Github</a>
-    }
-    @if (!String.IsNullOrEmpty(Model.Project.Page))
-    {
-        <a href="@Model.Project.Page" target="_blank"><span class="fa fa-mini fa-globe"></span>&nbsp;Webpage</a>
-    }
-    @if (!String.IsNullOrEmpty(Model.Project.Download))
-    {
-        <a href="@Model.Project.Download" target="_blank"><span class="fa fa-mini fa-download"></span>&nbsp;Download</a>
-    }
-</div>
-
-<div id="dates">
-    <span>Date Started: <span class="bolder">@Model.Project.DateStarted.ToString("MMMM yyy")</span></span>
-    <span>Date Ended: <span class="bolder">@Model.Project.DateEnded.ToString("MMMM yyy")</span></span>
-</div>
-
-<div id="container">
-    <div id="project-page">
-        @foreach (PageElement element in Model.ProjectPage.Elements)
+    <div class="d-flex flex-wrap justify-content-center gap-4 mb-3 mt-3">
+        @if (!String.IsNullOrEmpty(Model.Project.Github))
         {
-            @await Html.PartialAsync("_PageElement", element)
+            <a href="@Model.Project.Github" target="_blank">
+                <i class="fa fa-mini fa-github"></i>&nbsp;&nbsp;Github
+            </a>
         }
+        @if (!String.IsNullOrEmpty(Model.Project.Page))
+        {
+            <a href="@Model.Project.Page" target="_blank">
+                <i class="fa fa-mini fa-globe"></i>&nbsp;&nbsp;Webpage
+            </a>
+        }
+        @if (!String.IsNullOrEmpty(Model.Project.Download))
+        {
+            <a href="@Model.Project.Download" target="_blank">
+                <i class="fa fa-mini fa-download"></i>&nbsp;&nbsp;Download
+            </a>
+        }
+    </div>
+
+    <div class="d-flex flex-wrap justify-content-around gap-2 mt-2 px-3 small">
+        <span>
+            Date Started: <span class="bolder fw-medium">@Model.Project.DateStarted.ToString("MMMM yyyy")</span>
+        </span>
+        <span>
+            Date Ended: <span class="bolder fw-medium">@Model.Project.DateEnded.ToString("MMMM yyyy")</span>
+        </span>
+    </div>
+
+    <div class="container mt-5 d-flex justify-content-center">
+        <div id="project-page">
+            @foreach (PageElement element in Model.ProjectPage.Elements)
+            {
+                @await Html.PartialAsync("_PageElement", element)
+            }
+        </div>
     </div>
 </div>
