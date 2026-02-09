@@ -1,41 +1,41 @@
 ﻿.projects-div {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 30px;
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 30px;
 }
 
 .project-card {
-    flex: 1 1 50%;
-    box-sizing: border-box;
-    padding: 10px 30px;
-    margin-bottom: 30px;
-    text-align: center;
-    min-width: 250px;
+	flex: 1 1 50%;
+	box-sizing: border-box;
+	padding: 10px 30px;
+	margin-bottom: 30px;
+	text-align: center;
+	min-width: 250px;
 }
 
 .project-card * {
-    color: #91F2F2;
+	color: #91f2f2;
 }
 
 .project-card h2 {
-    font-weight: 500;
-    font-size: 2rem;
-    margin: 20px 0px;
-    transition: font-weight ease 0.2s;
+	font-weight: 500;
+	font-size: 2rem;
+	margin: 20px 0px;
+	transition: font-weight ease 0.2s;
 }
 
 .project-card:hover h2 {
-    font-weight: 600;
+	font-weight: 600;
 }
 
 .project-image {
-    height: 100px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    transition: height 0.5s ease;
+	height: 100px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	transition: height 0.5s ease;
 }
 
 .project-image img {
-    height: 100%;
+	height: 100%;
 }

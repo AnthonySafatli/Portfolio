@@ -1,14 +1,14 @@
 ﻿.hero #small {
-    font-size: clamp(2rem, 5vw, 3.5rem);
+	font-size: clamp(2rem, 5vw, 3.5rem);
 }
 
 .hero #big {
-    font-size: clamp(2.5rem, 6vw, 4rem);
+	font-size: clamp(2.5rem, 6vw, 4rem);
 }
 
 .nav-links a:hover {
-    font-weight: 550;
-    padding-right: 15px;
-    font-size: 1.4em;
-    transition: all 0.2s ease;
+	font-weight: 550;
+	padding-right: 15px;
+	font-size: 1.4em;
+	transition: all 0.2s ease;
 }
