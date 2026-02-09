@@ -18,23 +18,29 @@
     <link rel="stylesheet" href="~/css/aboutme.css" asp-append-version="true" />
 }
 
-<h1 class="title">About Me</h1>
+<div class="container mt-5 text-center">
+    <h1 class="mb-4">About Me</h1>
 
-<div class="dual-div">
-    <div>
-        <img src="~/assets/me on my bike.png" alt="placeholder image" />
+    <div class="d-flex flex-column align-items-center justify-content-center gap-4">
+        <div class="d-flex justify-content-center w-100" style="max-width:700px;">
+            <img src="~/assets/me on my bike.png"
+                 alt="placeholder image"
+                 class="img-fluid"
+                 style="max-width:350px;" />
+        </div>
+
+        <div class="w-100" style="max-width:700px;">
+            <p>
+                Hello! I'm Anthony, a passionate software developer and student at Dalhousie University. With
+                @Html.Raw(DateTime.Now.Year - 2020) years of experience in programming, I have worked mostly with
+                Python, Java, and especially C#. When I am not programming, I love riding my motorcycle,
+                hanging out with friends, and exploring the outdoors. I'm always eager to embrace new
+                opportunities and continue growing in my field!
+            </p>
+        </div>
     </div>
 
-    <div>
-        <p>
-            Hello! I'm Anthony, a passionate software developer and student at Dalhousie University. With @Html.Raw(DateTime.Now.Year - 2020) years 
-            of experience in programming, I have worked mostly with Python, Java, and especially C#. When I am not programming, I love riding my 
-            motorcycle, hanging out with friends, and exploring the outdoors. I'm always eager to embrace new opportunities and continue growing 
-            in my field!
-        </p>
+    <div class="mt-5"> 
+        <a href="~/assets/resume.pdf" class="button" target="_blank">Resume</a>
     </div>
-</div>
-
-<div class="center">
-    <a href="~/assets/resume.pdf" class="button" target="_blank">Resume</a>
 </div>

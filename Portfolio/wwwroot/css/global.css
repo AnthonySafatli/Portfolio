@@ -61,3 +61,27 @@ a:hover:not(.no-glow) * {
 		0 0 24px rgba(145, 242, 255, 0.45);
 	transition: all 0.2s ease;
 }
+
+.button {
+	font-size: 1.1rem;
+	padding: 10px;
+	border-radius: 5px;
+	border: 2px solid #91f2f2;
+	transition:
+		border ease 0.2s,
+		color ease 0.2s,
+		box-shadow ease 0.2s;
+}
+
+.button:hover {
+	text-shadow: none;
+	border: 2px solid #b6f1f8;
+	box-shadow:
+		0 0 8px rgba(145, 242, 255, 0.45),
+		0 0 16px rgba(145, 242, 255, 0.45),
+		0 0 24px rgba(145, 242, 255, 0.45);
+	transition:
+		border ease 0.2s,
+		color ease 0.2s,
+		box-shadow ease 0.2s;
+}
