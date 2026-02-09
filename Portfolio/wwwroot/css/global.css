@@ -56,8 +56,8 @@ a:hover:not(.no-glow),
 a:hover:not(.no-glow) * {
 	color: #b6f1f8;
 	text-shadow:
-		0 0 8px rgba(255, 255, 255, 0.45),
-		0 0 16px rgba(255, 255, 255, 0.45),
-		0 0 24px rgba(255, 255, 255, 0.45);
+		0 0 8px rgba(145, 242, 255, 0.45),
+		0 0 16px rgba(145, 242, 255, 0.45),
+		0 0 24px rgba(145, 242, 255, 0.45);
 	transition: all 0.2s ease;
 }

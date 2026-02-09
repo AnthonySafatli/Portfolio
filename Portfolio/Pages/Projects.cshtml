@@ -19,22 +19,28 @@
     <link rel="stylesheet" href="~/css/projects.css" asp-append-version="true" />
 }
 
-<h1 class="title">Projects</h1>
+<div class="mt-5">
+    <h1 class="text-center">Projects</h1>
 
-@if (Model.Projects.Count == 0)
-{
-    <p>No projects, stay tuned!</p>
-}
-
-<div class="projects-div">
-    @foreach (Project project in Model.Projects)
+    @if (Model.Projects.Count == 0)
     {
-        <a asp-page="/Project" asp-route-name="@project.Id" class="project-card">
-            <div class="project-image">
-                <img src="projects/@project.Thumbnail" alt="thumbnail for @project.Id">
-            </div>
-            <h2>@project.DisplayName</h2>
-            <p>@project.Description</p>
-        </a>
+        <p class="text-center mt-5">No projects yet, stay tuned!</p>
+    } 
+    else
+    {
+        <div class="mt-5 row">
+            @foreach (Project project in Model.Projects)
+            {
+                <a asp-page="/Project" asp-route-name="@project.Id" class="col-12 col-md-6 mb-4">
+                    <div class="card text-center text-info p-3 h-100 rounded">
+                        <div class="project-image mb-3">
+                            <img src="projects/@project.Thumbnail" alt="thumbnail for @project.Id">
+                        </div>
+                        <h2 class="fw-medium">@project.DisplayName</h2>
+                        <p>@project.Description</p>
+                    </div>
+                </a>
+            }
+        </div>
     }
 </div>
