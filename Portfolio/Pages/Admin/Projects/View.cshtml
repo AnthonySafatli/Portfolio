@@ -6,79 +6,125 @@
     ViewData["Title"] = "View";
 }
 
-<h1>View</h1>
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-content-center">
+        <h1>View Project</h1>
 
-<div class="section center">
-    <form method="post" class="normal-form" enctype="multipart/form-data">
+        <form asp-page="Delete" method="post">
+            <input type="hidden" asp-for="Project.Id" />
+            <div class="uninclude">
+                <button class="button button-danger" type="submit">Delete Project</button>
+            </div>
+        </form>
+    </div>
+
+    <form method="post" class="vstack gap-3" enctype="multipart/form-data">
         <div asp-validation-summary="ModelOnly"></div>
-        <input type="hidden" asp-for="Project.Id" />
+
         <div>
-            <label asp-for="Project.Id"></label>
-            <input readonly asp-for="Project.Id" />
+            <div class="d-flex align-items-center">
+                <label class="flex-grow-1" asp-for="Project.Id"></label>
+                <input readonly asp-for="Project.Id" />
+                <input type="hidden" asp-for="Project.Id" />
+            </div>
+            <span class="text-danger " asp-validation-for="Project.Id"></span>
         </div>
+
         <div>
-            <label asp-for="Project.DisplayName"></label>
-            <input asp-for="Project.DisplayName" />
-            <span asp-validation-for="Project.DisplayName"></span>
+            <div class="d-flex align-items-center">
+                <label class="flex-grow-1" asp-for="Project.DisplayName"></label>
+                <input asp-for="Project.DisplayName" />
+            </div>
+            <span class="text-danger " asp-validation-for="Project.DisplayName"></span>
         </div>
+
         <div>
-            <label asp-for="Project.DateStarted"></label>
-            <input asp-for="Project.DateStarted"/>
-            <span asp-validation-for="Project.DateStarted"></span>
+            <div class="d-flex align-items-center">
+                <label class="flex-grow-1" asp-for="Project.DateStarted"></label>
+                <input asp-for="Project.DateStarted" />
+            </div>
+            <span class="text-danger " asp-validation-for="Project.DateStarted"></span>
         </div>
+
         <div>
-            <label asp-for="Project.DateEnded"></label>
-            <input asp-for="Project.DateEnded"/>
-            <span asp-validation-for="Project.DateEnded"></span>
+            <div class="d-flex align-items-center">
+                <label class="flex-grow-1" asp-for="Project.DateEnded"></label>
+                <input asp-for="Project.DateEnded" />
+            </div>
+            <span class="text-danger " asp-validation-for="Project.DateEnded"></span>
         </div>
+
         <div>
-            <label asp-for="PageContentFile"></label>
-            <input asp-for="PageContentFile" />
-            <span asp-validation-for="PageContentFile"></span>
+            <div class="d-flex align-items-center">
+                <label class="flex-grow-1" asp-for="PageContentFile"></label>
+                <input asp-for="PageContentFile" />
+            </div>
+            <span class="text-danger" asp-validation-for="PageContentFile"></span>
         </div>
+
         <div>
-            <label asp-for="Project.Thumbnail"></label>
-            <input asp-for="Project.Thumbnail"/>
-            <span asp-validation-for="Project.Thumbnail"></span>
+            <div class="d-flex align-items-center">
+                <label class="flex-grow-1" asp-for="Project.Thumbnail"></label>
+                <input asp-for="Project.Thumbnail" accept=".json, .txt" />
+            </div>
+            <span class="text-danger " asp-validation-for="Project.Thumbnail"></span>
         </div>
-        <div>
-            <label asp-for="Project.Hidden"></label>
+
+        <div class="d-flex align-items-center">
+            <label class="flex-grow-1" asp-for="Project.Hidden"></label>
             <input asp-for="Project.Hidden" />
         </div>
-        <div>
-            <label asp-for="Project.SortOrder"></label>
-            <input asp-for="Project.SortOrder" />
-            <span asp-validation-for="Project.SortOrder"></span>
-        </div>
-        <div>
-            <label asp-for="Project.Description"></label>
-            <textarea asp-for="Project.Description"></textarea>
-        </div>
-        <div>
-            <label asp-for="Project.Github"></label>
-            <input asp-for="Project.Github" />
-        </div>
-        <div>
-            <label asp-for="Project.Page"></label>
-            <input asp-for="Project.Page" />
-        </div>
-        <div>
-            <label asp-for="Project.Download"></label>
-            <input asp-for="Project.Download" />
-        </div>
-        <div class="uninclude">
-            <button class="button" type="submit">Update</button>
-        </div>
-    </form>
-    <form asp-page="Delete" method="post" class="normal-form gap-v">
-        <input type="hidden" asp-for="Project.Id" />
-        <div class="uninclude">
-            <button class="button" type="submit">Delete</button>
-        </div>
-    </form>
-</div>
 
-<a class="button" asp-page="../Dashboard">Back to List</a>
+        <div>
+            <div class="d-flex align-items-center ">
+                <label class="flex-grow-1" asp-for="Project.SortOrder"></label>
+                <input asp-for="Project.SortOrder" />
+            </div>
+            <span class="text-danger " asp-validation-for="Project.SortOrder"></span>
+        </div>
+
+        <div>
+            <div class="d-flex flex-column align-items-center gap-2">
+                <label class="w-100 text-start" asp-for="Project.Description"></label>
+                <textarea asp-for="Project.Description"></textarea>
+            </div>
+            <span class="text-danger " asp-validation-for="Project.Description"></span>
+        </div>
+
+        <div>
+            <div class="d-flex align-items-center">
+                <label class="flex-grow-1" asp-for="Project.Github"></label>
+                <input asp-for="Project.Github" />
+            </div>
+            <span class="text-danger " asp-validation-for="Project.Github"></span>
+        </div>
+
+        <div>
+            <div class="d-flex align-items-center">
+                <label class="flex-grow-1" asp-for="Project.Page"></label>
+                <input asp-for="Project.Page" />
+            </div>
+            <span class="text-danger " asp-validation-for="Project.Page"></span>
+        </div>
+
+        <div>
+            <div class="d-flex align-items-center">
+                <label class="flex-grow-1" asp-for="Project.Download"></label>
+                <input asp-for="Project.Download" />
+            </div>
+            <span class="text-danger " asp-validation-for="Project.Download"></span>
+        </div>
+
+        <div class="uninclude">
+            <button class="button" type="submit">Create</button>
+        </div>
+    </form>
+
+    <div class="mt-4">
+        <a asp-page="/Admin/Dashboard">Back To Dashboard</a>
+    </div>
+
+</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

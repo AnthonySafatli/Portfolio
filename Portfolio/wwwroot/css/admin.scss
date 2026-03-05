@@ -70,39 +70,47 @@ a, .a {
 }
 
 .button,
-form input[type="text"],
-form input[type="password"],
-form input[type="datetime-local"],
+form input,
 form textarea {
 	background-color: transparent;
 	border-radius: 5px;
 	border: 1.5px solid rgba(100, 100, 100, 0.5);
 	transition:
-		border-color ease 0.5s,
-		box-shadow ease 0.4s;
+		border-color ease 0.2s,
+		box-shadow ease 0.2s;
 }
 
-.button:hover,
-.button:focus,
-form textarea:hover,
-form textarea:focus,
-form input[type="text"]:hover:not([readonly]),
-form input[type="text"]:focus:not([readonly]),
-form input[type="password"]:hover,
-form input[type="password"]:focus,
-form input[type="datetime-local"]:hover,
-form input[type="datetime-local"]:focus {
-	border-color: white;
-	box-shadow: 0 0 30px 2px rgba(255, 255, 255, 0.6);
-	transition:
-		border-color ease 0.2s,
-		box-shadow ease 0.3s;
-}
+	.button:hover,
+	.button:focus,
+	form textarea:hover,
+	form textarea:focus,
+	form input:hover:not([readonly]):not(input[type="checkbox"]),
+	form input:focus:not([readonly]):not(input[type="checkbox"]) {
+		border-color: white;
+		box-shadow: 0 0 30px 2px rgba(255, 255, 255, 0.6);
+		transition: border-color ease 0.2s, box-shadow ease 0.2s;
+	}
+
+	.button.button-danger {
+		color: rgb(255, 165, 162);
+		border: 1.5px solid rgba(255, 165, 162, 0.50);
+	}
+
+		.button.button-danger:hover,
+		.button.button-danger:focus {
+			border-color: rgb(255, 165, 162);
+			box-shadow: 0 0 30px 2px rgba(255, 165, 162, 0.6);
+		}
 
 form input[type="text"][readonly]:hover,
 form input[type="text"][readonly]:hover {
 	cursor: not-allowed;
 }
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+}
+
 
 textarea {
 	resize: vertical;
@@ -121,7 +129,7 @@ td:not(.name) {
 }
 
 tbody tr {
-	transition: background-color ease 0.5s;
+	transition: background-color ease 0.2s;
 }
 
 tbody tr:hover {
@@ -142,7 +150,7 @@ td {
 td.name {
 	font-size: 1.1rem;
 	font-weight: 450;
-	transition: text-shadow ease 0.5s;
+	transition: text-shadow ease 0.2s;
 }
 
 tr:hover td.name {
@@ -156,7 +164,6 @@ tr:hover td.name {
 form input,
 form textarea {
 	box-sizing: border-box;
-	width: 100%;
 	min-height: 28px;
 	padding: 5px;
 }
