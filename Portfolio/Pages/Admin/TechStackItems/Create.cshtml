@@ -6,28 +6,38 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<div class="container mt-5">
+    <h1>Create Tech Stack Item</h1>
 
-<div class="section center">
-    <form method="post" class="normal-form" enctype="multipart/form-data">
-        <div asp-validation-summary="ModelOnly"></div> 
+    <form method="post" class="vstack gap-3" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly"></div>
+
         <div>
-            <label asp-for="TechStackItem.Name"></label>
-            <input asp-for="TechStackItem.Name" />
-            <span asp-validation-for="TechStackItem.Name"></span>
+            <div class="d-flex align-items-center">
+                <label class="flex-grow-1" asp-for="TechStackItem.Name"></label>
+                <input asp-for="TechStackItem.Name" />
+            </div>
+            <span class="text-danger" asp-validation-for="TechStackItem.Name"></span>
         </div>
+
         <div>
-            <label asp-for="TechStackItem.PathToImage"></label>
-            <input asp-for="TechStackItem.PathToImage" />
-            <span asp-validation-for="TechStackItem.PathToImage"></span>
+            <div class="d-flex align-items-center">
+                <label class="flex-grow-1" asp-for="TechStackItem.PathToImage"></label>
+                <input asp-for="TechStackItem.PathToImage" />
+            </div>
+            <span class="text-danger" asp-validation-for="TechStackItem.PathToImage"></span>
         </div>
+        
         <div class="uninclude">
             <button class="button" type="submit">Create</button>
         </div>
     </form>
-</div>
 
-<a class="button" asp-page="../Dashboard">Back to List</a>
+    <div class="mt-4">
+        <a asp-page="/Admin/Dashboard">Back To Dashboard</a>
+    </div>
+
+</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
