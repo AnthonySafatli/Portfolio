@@ -5,29 +5,45 @@
     ViewData["Title"] = "Upload Media";
 }
 
-<h1>Upload Media File</h1>
+<div class="container mt-5">
+    <h1>Upload Media File</h1>
 
-<div class="section center">
-    <form class="normal-form" method="post" enctype="multipart/form-data">
+    <form method="post" class="vstack gap-3" enctype="multipart/form-data">
         <div>
-            <label asp-for="File"></label>
-            <input asp-for="File" accept=".jpg, .png" />
-            <span asp-validation-for="File"></span>
+            <div class="d-flex align-items-center">
+                <label class="flex-grow-1" asp-for="File"></label>
+                <input asp-for="File" accept=".jpg, .png" />
+            </div>
+            <span class="text-danger" asp-validation-for="File"></span>
         </div>
+
         <div>
-            <label asp-for="FileLocation"></label>
-            <input asp-for="FileLocation" />
+            <div class="d-flex align-items-center">
+                <label class="flex-grow-1" asp-for="FileLocation"></label>
+                <input asp-for="FileLocation" />
+            </div>
             <span asp-validation-for="FileLocation"></span>
         </div>
+
         <div>
-            <label asp-for="Name"></label>
-            <input asp-for="Name" />
+            <div class="d-flex align-items-center">
+                <label class="flex-grow-1" asp-for="Name"></label>
+                <input asp-for="Name" />
+            </div>
             <span asp-validation-for="Name"></span>
         </div>
+
         <div class="uninclude">
             <button class="button" type="submit">Upload</button>
         </div>
     </form>
+
+    <div class="mt-4">
+        <a asp-page="/Admin/Dashboard">Back To Dashboard</a>
+    </div>
+
 </div>
 
-<a class="button" asp-page="../Dashboard">Back to Dashboard</a>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

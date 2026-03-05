@@ -6,42 +6,46 @@
     ViewData["Title"] = "Files";
 }
 
-<h1>Files</h1>
+<div class="container mt-5">
+    <h1 class="text-center">Files</h1>
 
-<div class="center-rows section gap">
-    <a class="button" asp-page="../Dashboard">Back To Dashboard</a>
-    <a class="button" asp-page="./Upload">Upload Media</a>
-</div>
+    <div class="d-flex justify-content-around align-items-center">
+        <h3>Resource Files</h3>
+        <a class="button" asp-page="/Admin/Files/Upload">Upload File</a>
+    </div>
 
-<h2>Project Files</h2>
-
-<div class="center section">
-    <table>
-        <thead>
-            <tr>
-                <th>File</th>
-                <th>Used</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (FileStatus projectFile in Model.ProjectFiles)
-            {
+    <div class="mt-3 d-flex justify-content-center">
+        <table>
+            <thead>
                 <tr>
-                    <td>
-                        <a class="inline-button" href="~/projects/@projectFile.ShortPath" target="_blank">@projectFile.ShortPath</a>
-                    </td>
-                    <td>
-                        @if (projectFile.Used)
-                        {
-                            @: &#x2714
-                        }
-                    </td>
-                    <td>
-                        <a class="inline-button" asp-page="Delete" asp-route-path="@projectFile.ShortPath">Delete</a>
-                    </td>
+                    <th>File</th>
+                    <th>Used</th>
+                    <th>Preview</th>
+                    <th></th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (FileStatus projectFile in Model.ProjectFiles)
+                {
+                    <tr>
+                        <td>
+                            <a class="inline-button" href="~/projects/@projectFile.ShortPath" target="_blank">@projectFile.ShortPath</a>
+                        </td>
+                        <td>
+                            @if (projectFile.Used)
+                            {
+                                @: &#x2714
+                            }
+                        </td>
+                        <td>
+                            <img class="preview img-fluid" alt="thumbnail for @projectFile.ShortPath" src="~/projects/@projectFile.ShortPath" />
+                        </td>
+                        <td>
+                            <a asp-page="Delete" asp-route-path="@projectFile.ShortPath">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>
