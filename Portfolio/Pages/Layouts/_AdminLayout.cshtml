@@ -30,9 +30,9 @@
             <nav class="d-flex gap-3">
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <a asp-page="/">Home</a>
-                    <a asp-page="./Files/Index">File Manager</a>
-                    <a asp-page="./Files/Upload">Upload Media</a>
+                    <a asp-page="/Index">Home</a>
+                    <a asp-page="/Admin/Dashboard">Dashboard</a>
+                    <a asp-page="/Admin/Files/Index">File Manager</a>
                     <form method="post" asp-page="/Admin/Logout">
                         <button class="a" type="submit">Logout</button>
                     </form>

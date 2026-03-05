@@ -26,16 +26,12 @@
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  color: #b9b9b9;
+  color: #c7c7c7;
 }
 
 /* Layout */
 * {
   color-scheme: dark;
-}
-
-main {
-  margin: 0px 10px;
 }
 
 a, .a {
@@ -110,17 +106,6 @@ textarea {
   height: 200px;
 }
 
-.inline-button {
-  display: block;
-  padding: 1px 5px;
-  transition: text-shadow ease 0.5s;
-}
-
-.inline-button:hover {
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6), 0 0 16px rgba(255, 255, 255, 0.6), 0 0 24px rgba(255, 255, 255, 0.6);
-  transition: text-shadow ease 0.2s;
-}
-
 table {
   border-collapse: collapse;
   width: 90%;
@@ -186,10 +171,4 @@ dt {
 .preview {
   width: 70px;
   height: auto;
-}
-
-.title-button-container {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
 }
