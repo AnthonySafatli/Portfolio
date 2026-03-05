@@ -26,28 +26,7 @@
 	font-optical-sizing: auto;
 	font-weight: 400;
 	font-style: normal;
-	color: white;
-}
-
-/* Header */
-html {
-	background-color: black;
-}
-
-form {
-	display: flexbox;
-	align-content: center;
-}
-
-header {
-	display: flex;
-	justify-content: space-between;
-	align-content: center;
-	padding: 3px;
-}
-
-header span {
-	font-size: 2rem;
+	color: #b9b9b9;
 }
 
 /* Layout */
@@ -59,7 +38,7 @@ main {
 	margin: 0px 10px;
 }
 
-a {
+a, .a {
 	text-decoration: none;
 	color: inherit;
 	background: none;
@@ -74,29 +53,31 @@ a {
 	vertical-align: baseline;
 }
 
-h1 {
-	text-align: center;
-	font-size: 1.5rem;
-}
+	a,
+	.a,
+	a *,
+	.a * {
+		transition: all 0.2s ease;
+	}
 
-h2 {
-	text-align: center;
-	font-size: 1.2rem;
-}
-
-button {
-	cursor: pointer;
-}
+		a:hover:not(.no-glow),
+		a:hover:not(.no-glow) *,
+		.a:hover:not(.no-glow),
+		.a:hover:not(.no-glow) * {
+			color: white;
+			text-shadow: 0 0 8px rgba(255, 255, 255, 0.45), 0 0 16px rgba(255, 255, 255, 0.45), 0 0 24px rgba(255, 255, 255, 0.45);
+			transition: all 0.2s ease;
+		}
 
 .button {
 	padding: 8px;
 }
 
 .button,
-.normal-form input[type="text"],
-.normal-form input[type="password"],
-.normal-form input[type="datetime-local"],
-.normal-form textarea {
+form input[type="text"],
+form input[type="password"],
+form input[type="datetime-local"],
+form textarea {
 	background-color: transparent;
 	border-radius: 5px;
 	border: 1.5px solid rgba(100, 100, 100, 0.5);
@@ -107,14 +88,14 @@ button {
 
 .button:hover,
 .button:focus,
-.normal-form textarea:hover,
-.normal-form textarea:focus,
-.normal-form input[type="text"]:hover:not([readonly]),
-.normal-form input[type="text"]:focus:not([readonly]),
-.normal-form input[type="password"]:hover,
-.normal-form input[type="password"]:focus,
-.normal-form input[type="datetime-local"]:hover,
-.normal-form input[type="datetime-local"]:focus {
+form textarea:hover,
+form textarea:focus,
+form input[type="text"]:hover:not([readonly]),
+form input[type="text"]:focus:not([readonly]),
+form input[type="password"]:hover,
+form input[type="password"]:focus,
+form input[type="datetime-local"]:hover,
+form input[type="datetime-local"]:focus {
 	border-color: white;
 	box-shadow: 0 0 30px 2px rgba(255, 255, 255, 0.6);
 	transition:
@@ -122,8 +103,8 @@ button {
 		box-shadow ease 0.3s;
 }
 
-.normal-form input[type="text"][readonly]:hover,
-.normal-form input[type="text"][readonly]:hover {
+form input[type="text"][readonly]:hover,
+form input[type="text"][readonly]:hover {
 	cursor: not-allowed;
 }
 
@@ -190,30 +171,8 @@ tr:hover td.name {
 	transition: text-shadow ease 0.2s;
 }
 
-.normal-form {
-	display: grid;
-	width: 90%;
-}
-
-.login-form {
-	margin-top: 20px;
-}
-
-.login-form input[type="password"],
-.login-form label {
-	padding: 15px;
-	font-size: 2rem;
-}
-
-.normal-form > div:not(.uninclude) {
-	align-items: center;
-	display: grid;
-	grid-template-columns: 1fr 2fr;
-	margin: 5px 0px;
-}
-
-.normal-form input,
-.normal-form textarea {
+form input,
+form textarea {
 	box-sizing: border-box;
 	width: 100%;
 	min-height: 28px;
@@ -226,42 +185,12 @@ dt {
 	font-size: 1.1rem;
 }
 
-.center {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-}
-
-.center-rows {
-	display: flex;
-	justify-content: center;
-}
-
-.section {
-	margin: 30px 10px;
-}
-
 .gap > * {
 	margin: 0px 5px;
 }
 
 .gap-v > * {
 	margin: 10px 0px;
-}
-
-.login-button {
-	margin-top: 50px;
-	display: flex;
-	justify-content: center;
-}
-
-.login-button button {
-	padding: 15px;
-	font-size: 1.5rem;
-}
-
-.center-h {
-	margin-top: 100px;
 }
 
 .preview {

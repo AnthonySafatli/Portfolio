@@ -8,6 +8,8 @@
     <link rel="icon" type="image/png" href="~/assets/globe icon admin.png">
 
     @* CSS *@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
     @await RenderSectionAsync("Styles", required: false)
 
@@ -20,26 +22,44 @@
     <script defer src="https://analytics.anthonysafatli.ca/script.js" data-website-id="1f6912a9-63c6-44b0-8a28-12af8843e515"></script>
 </head>
 <body>
+    <div id="tsparticles"></div>
     <canvas class="webgl"></canvas>
 
-    <header>
-        <span>Admin Zone</span>
+    <div class="container d-flex flex-column min-vh-100">
+        <header class="my-4">
+            <nav class="d-flex gap-3">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a asp-page="/">Home</a>
+                    <a asp-page="./Files/Index">File Manager</a>
+                    <a asp-page="./Files/Upload">Upload Media</a>
+                    <form method="post" asp-page="/Admin/Logout">
+                        <button class="a" type="submit">Logout</button>
+                    </form>
+                } 
+                else
+                {
+                    <p>Admin Zone</p>
+                }
+            </nav>
+        </header>
 
-        @if (User.Identity.IsAuthenticated)
-        {
-            <form method="post" asp-page="/Admin/Logout">
-                <button class="button" type="submit">Logout</button>
-            </form>
-        }
-    </header>
+        <main class="flex-grow-1">
+            @RenderBody()
+        </main>
 
-    <main>
-        @RenderBody()
-    </main>
+        <footer class="d-flex justify-content-between align-items-center mt-4 mb-3">
+            <span>
+                &copy; 2024 - Anthony Safatli
+            </span>
+        </footer>
+    </div>
 
     <script>var globePos = [0, -0.1, -4];</script>
     <script>var lowColour = [0.5, 0.5, 0.5]; var highColour = [0.9, 0.9, 0.9]; var wireColour = 0x303030;</script>
     <script>var globeOpacity = 0.3;</script>
+    <script src="~/lib/tsparticles/tsparticles.bundle.min.js" asp-append-version="true"></script>
+    <script src="~/dist/starfield.bundle.js" asp-append-version="true"></script>
     <script src="~/dist/background.bundle.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

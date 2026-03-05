@@ -26,7 +26,9 @@ public class Program
             o.PageViewLocationFormats.Add("/Pages/Layouts/{0}.cshtml");
         });
 
-        builder.Services.AddAuthentication(SecurityService.Config.AdminCookieName).AddCookie(SecurityService.Config.AdminCookieName, options =>
+        builder.Services
+        .AddAuthentication(SecurityService.Config.AdminCookieName)
+        .AddCookie(SecurityService.Config.AdminCookieName, options =>
         {
             options.Cookie.Name = SecurityService.Config.FromAddressPassword;
             options.LoginPath = "/Admin/Login";
