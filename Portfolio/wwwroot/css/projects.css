@@ -4,15 +4,20 @@
 }
 
 .card:hover {
-	background-color: rgba(255, 255, 255, 0.1);
+	background-color: rgba(255, 255, 255, 0.05);
 }
 
 .card h2 {
 	transition: all 0.2s ease;
 }
 
-.card:hover h2 {
-	font-weight: 600;
+	.card:hover h2 {
+		font-weight: 600;
+		font-size: calc(1.65rem + .9vw);
+	}
+
+.card:hover .project-image {
+	height: 90px;
 }
 
 .project-image {
