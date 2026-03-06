@@ -10,7 +10,7 @@ using Portfolio.Data;
 
 namespace Portfolio.Migrations
 {
-    [DbContext(typeof(ProjectsContext))]
+    [DbContext(typeof(PortfolioDbContext))]
     [Migration("20240502015035_UpdatedProjectClass")]
     partial class UpdatedProjectClass
     {

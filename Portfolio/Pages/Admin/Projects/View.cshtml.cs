@@ -16,9 +16,9 @@ namespace Portfolio.Pages.Admin.Projects;
 [Authorize]
 public class ViewModel : PageModel
 {
-    private readonly ProjectsContext _context;
+    private readonly PortfolioDbContext _context;
 
-    public ViewModel(ProjectsContext context)
+    public ViewModel(PortfolioDbContext context)
     {
         _context = context;
     }

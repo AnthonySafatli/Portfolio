@@ -7,11 +7,11 @@ namespace Portfolio.Pages;
 
 public class ProjectsModel : PageModel
 {
-    private readonly ProjectsContext _context;
+    private readonly PortfolioDbContext _context;
 
     public List<Project> Projects { get; set; } = new();
 
-    public ProjectsModel(ProjectsContext context)
+    public ProjectsModel(PortfolioDbContext context)
     {
         _context = context;
     }

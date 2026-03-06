@@ -9,14 +9,14 @@ namespace Portfolio.Pages;
 
 public class ProjectModel : PageModel
 {
-    private readonly ProjectsContext _context;
+    private readonly PortfolioDbContext _context;
 
     [BindProperty(SupportsGet=true)]
     public string Name { get; set; }
     public Project? Project { get; set; }
     public ProjectPage? ProjectPage { get; set; }
 
-    public ProjectModel(ProjectsContext context)
+    public ProjectModel(PortfolioDbContext context)
     {
         _context = context;
     }

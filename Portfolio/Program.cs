@@ -14,7 +14,7 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         var connectionString = builder.Configuration.GetConnectionString("ProjectsConnection");
-        builder.Services.AddDbContext<ProjectsContext>(options =>
+        builder.Services.AddDbContext<PortfolioDbContext>(options =>
             options.UseSqlite(connectionString));
 
         builder.Services.AddRazorPages().AddRazorPagesOptions(o =>
@@ -33,16 +33,16 @@ public class Program
             options.Cookie.Name = SecurityService.Config.FromAddressPassword;
             options.LoginPath = "/Admin/Login";
             options.AccessDeniedPath = "/Admin/AccessDenied";
-            options.ExpireTimeSpan = TimeSpan.FromDays(1);
+            options.ExpireTimeSpan = TimeSpan.FromDays(30);
         });
 
-        builder.Services.AddSingleton<EmailService>(); 
+        builder.Services.AddSingleton<LocationService>(); 
 
         var app = builder.Build();
 
         using (var scope = app.Services.CreateScope())
         {
-            var context = scope.ServiceProvider.GetRequiredService<ProjectsContext>();
+            var context = scope.ServiceProvider.GetRequiredService<PortfolioDbContext>();
             try
             {
                 context.Database.Migrate();

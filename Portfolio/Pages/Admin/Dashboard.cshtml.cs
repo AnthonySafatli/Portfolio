@@ -12,13 +12,14 @@ namespace Portfolio.Pages.Admin;
 [Authorize]
 public class DashboardModel : PageModel
 {
-    private readonly ProjectsContext _context;
+    private readonly PortfolioDbContext _context;
 
-    public DashboardModel(ProjectsContext context)
+    public DashboardModel(PortfolioDbContext context)
     {
         _context = context;
     }
 
+    public List<Message> NewMessages { get; set; } = new();
     public List<Project> Projects { get; set; } = new();
     public List<TechStackItem> TechStackItems { get; set; } = new();
 
@@ -30,6 +31,12 @@ public class DashboardModel : PageModel
             .ToListAsync();
 
         TechStackItems = await _context.TechStackItems
+            .AsNoTracking()
+            .ToListAsync();
+
+        NewMessages = await _context.Messages
+            .Where(m => m.Status == MessageStatus.New)
+            .OrderByDescending(m => m.SubmissionTime)
             .AsNoTracking()
             .ToListAsync();
     }

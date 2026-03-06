@@ -14,9 +14,9 @@ namespace Portfolio.Pages.Admin.TechStackItems;
 [Authorize]
 public class DeleteModel : PageModel
 {
-    private readonly ProjectsContext _context;
+    private readonly PortfolioDbContext _context;
 
-    public DeleteModel(ProjectsContext context)
+    public DeleteModel(PortfolioDbContext context)
     {
         _context = context;
     }

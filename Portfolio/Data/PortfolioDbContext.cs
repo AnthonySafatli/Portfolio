@@ -3,15 +3,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Portfolio.Data;
 
-public class ProjectsContext : DbContext
+public class PortfolioDbContext : DbContext
 {
-    public ProjectsContext(DbContextOptions<ProjectsContext> options)
+    public PortfolioDbContext(DbContextOptions<PortfolioDbContext> options)
         : base(options)
     {
     }
 
     public DbSet<Project> Projects { get; set; }
     public DbSet<TechStackItem> TechStackItems { get; set; }
+    public DbSet<Message> Messages { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

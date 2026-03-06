@@ -13,12 +13,12 @@ namespace Portfolio.Pages.Admin.Files;
 [Authorize]
 public class IndexModel : PageModel
 {
-    private readonly ProjectsContext _context;
+    private readonly PortfolioDbContext _context;
     private readonly IWebHostEnvironment _environment;
 
     public List<FileStatus> ProjectFiles { get; set; } = new List<FileStatus>();
 
-    public IndexModel(ProjectsContext context, IWebHostEnvironment environment)
+    public IndexModel(PortfolioDbContext context, IWebHostEnvironment environment)
     {
         _context = context;
         _environment = environment;

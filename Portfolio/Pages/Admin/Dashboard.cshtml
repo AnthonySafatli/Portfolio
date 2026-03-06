@@ -9,6 +9,50 @@
 
     <h1 class="text-center">Dashboard</h1>
 
+    <!-- Messages Section -->
+    @if (Model.NewMessages.Count > 0) 
+    {
+        <div class="mb-5 mt-4 border p-3 rounded message-alert">
+            <div class="d-flex align-items-center gap-4 mb-2">
+                <div class="d-flex align-items-center gap-2">
+                    <i class="fw-1 fa fa-exclamation-circle"></i>
+                    <h3 class="m-0">Messages</h3>
+                </div>
+                <p class="m-0">You have <strong>@Model.NewMessages.Count</strong> unread message(s).</p>
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="name"></th>
+                            <th>Message</th>
+                            <th>Date</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var message in Model.NewMessages)
+                        {
+                            <tr>
+                                <td class="name">@message.Email</td>
+                                <td>
+                                    @(message.Text != null && message.Text.Length > 100
+                                                                    ? message.Text.Substring(0, 100) + "..."
+                                                                    : message.Text)
+                                </td>
+                                <td>@message.SubmissionTime.ToString("yyyy-MM-dd")</td>
+                                <td>
+                                    <a asp-page="/Admin/Messages/View" asp-route-id="@message.Id">Open</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+
     <div class="row mt-4">
 
         <!-- Projects Section -->

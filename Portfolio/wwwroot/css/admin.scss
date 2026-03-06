@@ -123,6 +123,10 @@ table {
 	width: 90%;
 }
 
+.border table {
+	width: 100%;
+}
+
 th:not(.name),
 td:not(.name) {
 	border: 1.5px solid rgb(100, 100, 100);
@@ -186,4 +190,9 @@ dt {
 .preview {
 	width: 70px;
 	height: auto;
+}
+
+.message-alert {
+	background-color: rgba(255, 255, 255, 0.05);
+
 }

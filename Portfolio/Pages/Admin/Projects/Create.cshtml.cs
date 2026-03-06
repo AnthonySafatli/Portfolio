@@ -12,9 +12,9 @@ namespace Portfolio.Pages.Admin.Projects;
 [Authorize]
 public class CreateModel : PageModel
 {
-    private readonly ProjectsContext _context;
+    private readonly PortfolioDbContext _context;
 
-    public CreateModel(ProjectsContext context)
+    public CreateModel(PortfolioDbContext context)
     {
         _context = context;
     }

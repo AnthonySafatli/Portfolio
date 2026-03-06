@@ -10,15 +10,8 @@ namespace Portfolio.Pages.Admin;
 
 public class LoginModel : PageModel
 {
-    private readonly EmailService _email;
-
     [BindProperty]
     public Credential Credential { get; set; }
-
-    public LoginModel(EmailService email)
-    {
-        _email = email;
-    }
 
     public void OnGet()
     {
@@ -31,30 +24,29 @@ public class LoginModel : PageModel
 
         if (SecurityService.EncryptSHA256(Credential.Password) == SecurityService.Config.AdminPassword)
         {
-            bool valid = await _email.loginAlert(HttpContext, "New Login!");
-            
-            if (valid)
+            // bool valid = await _email.loginAlert(HttpContext, "New Login!");
+            // TODO: Add a login alert for successful login
+
+            var claims = new List<Claim>
             {
-                var claims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.Name, "Anthony"),
-                };
+                new Claim(ClaimTypes.Name, "Anthony"),
+            };
 
-                var identity = new ClaimsIdentity(claims, SecurityService.Config.AdminCookieName);
-                ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(identity);
+            var identity = new ClaimsIdentity(claims, SecurityService.Config.AdminCookieName);
+            ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(identity);
 
-                var authProperties = new AuthenticationProperties
-                {
-                    IsPersistent = true,
-                };
+            var authProperties = new AuthenticationProperties
+            {
+                IsPersistent = true,
+            };
 
-                await HttpContext.SignInAsync(SecurityService.Config.AdminCookieName, claimsPrincipal, authProperties);
+            await HttpContext.SignInAsync(SecurityService.Config.AdminCookieName, claimsPrincipal, authProperties);
 
-                return RedirectToPage("/Admin/Dashboard");
-            }
+            return RedirectToPage("/Admin/Dashboard");
         }
 
-        await _email.loginAlert(HttpContext, "Failed Login Attempt!");
+        // await _email.loginAlert(HttpContext, "Failed Login Attempt!");
+        // TODO: Add a login alert for failed login 
 
         return Page();
     }
