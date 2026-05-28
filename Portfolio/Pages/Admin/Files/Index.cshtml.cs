@@ -67,9 +67,9 @@ public class IndexModel : PageModel
 
             foreach (PageElement elem in projectJson.Elements)
             {
-                if (elem.Name == "media" && elem.Link != null)
+                if (elem.Type == PageElementType.MEDIA && elem.Text != null)
                 {
-                    usedProjectFiles.Add(elem.Link);
+                    usedProjectFiles.Add(elem.Text);
                 }
             }
         }

@@ -1,110 +1,92 @@
-﻿@model Portfolio.Models.PageElement
+﻿@using Portfolio.Models;
+@model Portfolio.Models.PageElement
 
 @{
     var imageExt = new[] { "jpg", "jpeg", "svg", "gif", "bmp", "png", "webp" };
     var videoExt = new[] { "mp4", "ogg", "webm" };
 
-    string ext = Model.Link != null
-        ? System.IO.Path.GetExtension(Model.Link).TrimStart('.').ToLower()
+    string ext = Model.Text != null
+        ? System.IO.Path.GetExtension(Model.Text).TrimStart('.').ToLower()
         : "";
 
-    string classes = Model.Bordered == true ? "bordered" : "";
+    string classes = Model.Data == "true" ? "bordered" : ""; 
 }
 
-@switch (Model.Name)
+@if (Model.Type == PageElementType.HEADER)
 {
-    case "header":
-        switch (Model.Degree)
-        {
-            case 1:
-                <h1>@Model.Text</h1>
-                break;
-            case 2:
-                <h2>@Model.Text</h2>
-                break;
-            case 3:
-                <h3>@Model.Text</h3>
-                break;
-            case 4:
-                <h4>@Model.Text</h4>
-                break;
-            case 5:
-                <h5>@Model.Text</h5>
-                break;
-            case 6:
-                <h6>@Model.Text</h6>
-                break;
-        }
-        break;
-
-    case "quote":
-        <blockquote>@Model.Text</blockquote>
-        break;
-
-    case "list":
-        if (Model.Ordered == true)
-        {
-            <ol>
-                @foreach (var item in Model.Items ?? Array.Empty<string>())
-                {
-                    <li>@item</li>
-                }
-            </ol>
-        }
-        else
-        {
-            <ul>
-                @foreach (var item in Model.Items ?? Array.Empty<string>())
-                {
-                    <li>@item</li>
-                }
-            </ul>
-        }
-        break;
-
-    case "media":
-        if (imageExt.Contains(ext))
-        {
-            <div class="media-div">
-                <img class="@classes"
-                     src="/projects@Model.Link"
-                     alt="@Model.Text"
-                     loading="lazy" />
-            </div>
-        }
-        else if (videoExt.Contains(ext))
-        {
-            <div class="media-div">
-                <video class="@classes" controls>
-                    <source src="/projects@Model.Link" type="video/@ext" />
-                    @Model.Text
-                </video>
-            </div>
-        }
-        break;
-
-    case "link":
-        <div class="a-block">
-            <a href="@Model.Link" target="_blank">@Model.Text</a>
+    switch (Model.Data)
+    {
+        case "0":
+            <h1>@Model.Text</h1>
+            break;
+        case "1":
+            <h2>@Model.Text</h2>
+            break;
+        case "2":
+            <h3>@Model.Text</h3>
+            break;
+        case "3":
+            <h4>@Model.Text</h4>
+            break;
+        case "4":
+            <h5>@Model.Text</h5>
+            break;
+        case "5":
+            <h6>@Model.Text</h6>
+            break;
+    }
+}
+else if (Model.Type == PageElementType.QUOTE)
+{
+    <blockquote>@Model.Text</blockquote>
+}
+else if (Model.Type == PageElementType.LIST)
+{
+    @await Html.PartialAsync("_PageElementList", Model)
+}
+else if (Model.Type == PageElementType.MEDIA)
+{
+    if (imageExt.Contains(ext))
+    {
+        <div class="media-div">
+            <img class="@classes"
+                src="/projects@(Model.Text)"
+                alt="@Model.SubElements[0].Text"
+                loading="lazy" />
         </div>
-        break;
-
-    case "horizontal":
-        <hr />
-        break;
-
-    case "code":
-        <pre>
-            <code>
-                @foreach (var item in Model.Items ?? Array.Empty<string>())
-                {
-                    @item
-                }
-            </code>
-        </pre>
-        break;
-    
-    case "paragraph":
-        <p>@Html.Raw(Model.Text)</p>
-        break;
+    }
+    else if (videoExt.Contains(ext))
+    {
+        <div class="media-div">
+            <video class="@classes" controls>
+                <source src="/projects@(Model.Text)" type="video/@(ext)" alt="@Model.SubElements[0].Text"/>
+                @Model.Text
+            </video>
+        </div>
+    }
+}
+else if (Model.Type == PageElementType.HORIZONTAL)
+{
+    <hr />
+}
+else if (Model.Type == PageElementType.CODE)
+{
+    <pre>
+        <code>
+            @foreach (var item in Model.SubElements)
+            {
+                @item
+            }
+        </code>
+    </pre>
+}
+else if (Model.Type == PageElementType.HTML)
+{
+    @Html.Raw(Model.Text)
+}
+else if (Model.Type == PageElementType.PARAGRAPH)
+{
+    <p>
+        @await Html.PartialAsync("_PageElementRichText", Model.SubElements)
+    </p>
 }
