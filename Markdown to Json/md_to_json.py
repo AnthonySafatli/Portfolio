@@ -35,19 +35,22 @@ class MarkdownElement:
         self.text = text
         self.sub_elements = []
 
-def convert(path):
-    file_name = Path(path).stem
-    print("\nConverting " + file_name + "...")
-
-    print("Opening file...")
+"""
+Read file line by line
+"""
+def get_lines(path):
     lines_list = []
     with open(path, 'r') as file:
         for line in file:
             lines_list.append(line)
+    return lines_list
 
-    print("Parsing File...")
+"""
+Parse the markdown line-by-line very simply
+"""
+def parse_by_lines(lines):
     items = []
-    for line in lines_list:
+    for line in lines:
         # Header
         if re.search(r"^#{1,6}\s.+", line):
             items.append((MarkdownElement(HEADER), line))
@@ -83,9 +86,14 @@ def convert(path):
         # Empty
         else:
             items.append((MarkdownElement(EMPTY), None))
-            
-    print("Parsing Markdown...")
-    parsed_elements = []
+
+    return items
+
+"""
+Take the parsed lines and actually convert them to markdown
+"""
+def parse_markdown(items):
+    md_elements = []
     current_element = None
     for item in items:
         element = item[0]
@@ -157,13 +165,13 @@ def convert(path):
         if element.type == HEADER:
             element.data = len(line.split(' ')[0]) - 1
             element.text = line.split(' ', 1)[1].strip()
-            parsed_elements.append(element)
+            md_elements.append(element)
             continue
 
         # Create Quote
         if element.type == QUOTE:
             element.text = line.split(' ', 1)[1].strip()
-            parsed_elements.append(element)
+            md_elements.append(element)
             continue
         
         # Start List
@@ -178,7 +186,7 @@ def convert(path):
             element.sub_elements.append(li_element)
 
             current_element = element
-            parsed_elements.append(element)
+            md_elements.append(element)
             continue
 
         # Create Media
@@ -196,25 +204,25 @@ def convert(path):
             alt_element.text = alt
             element.sub_elements.append(alt_element)
 
-            parsed_elements.append(element)
+            md_elements.append(element)
             continue
 
         # Create Horizontal
         if element.type == HORIZONTAL:
-            parsed_elements.append(element)
+            md_elements.append(element)
             continue
 
         # Create Code
         if element.type == CODE:
             element.data = line[2:].strip()
             current_element = element
-            parsed_elements.append(element)
+            md_elements.append(element)
             continue
 
         # Create HTML
         if element.type == HTML:
             current_element = element
-            parsed_elements.append(element)
+            md_elements.append(element)
             continue
 
         # Create Paragraph
@@ -224,68 +232,99 @@ def convert(path):
             else:
                 element.text = line.strip()
                 current_element = element
-                parsed_elements.append(element)
+                md_elements.append(element)
             continue
 
-    print("Adding Rich Text...")
+RICH_TEXT_REGEX = re.compile(
+    r'(?P<bold>\*\*(?P<bold_text>.+?)\*\*)'
+    r'|(?P<italic>\*(?P<italic_text>.+?)\*)'
+    r'|(?P<code>`(?P<code_text>.+?)`)'
+    r'|(?P<link>\[(?P<link_text>.+?)\]\((?P<link_url>.+?)\))'
+)
 
-    rich_text_regex = re.compile(
-        r'(?P<bold>\*\*(?P<bold_text>.+?)\*\*)'
-        r'|(?P<italic>\*(?P<italic_text>.+?)\*)'
-        r'|(?P<code>`(?P<code_text>.+?)`)'
-        r'|(?P<link>\[(?P<link_text>.+?)\]\((?P<link_url>.+?)\))'
-    )
+"""
+Parse rich text from paragraphs
+"""
+def parse_rich_text(text):
+    md_tokens = []
+    pos = 0
 
-    def parse_rich_text(text):
-        tokens = []
-        pos = 0
+    for match in RICH_TEXT_REGEX.finditer(text):
+        start, end = match.span()
 
-        for match in rich_text_regex.finditer(text):
-            start, end = match.span()
-
-            if start > pos:
-                plain_text = MarkdownElement(SUB_TEXT)
-                plain_text.text = text[pos:start]
-                tokens.append(plain_text)
-
-            if match.lastgroup == "bold":
-                bold_text = MarkdownElement(BOLD)
-                bold_text.text = match.group("bold_text")
-                tokens.append(bold_text)
-
-            elif match.lastgroup == "italic":
-                ital_text = MarkdownElement(ITALICS)
-                ital_text.text = match.group("italic_text")
-                tokens.append(ital_text)
-
-            elif match.lastgroup == "code":
-                code_text = MarkdownElement(INLINE_CODE)
-                code_text.text = match.group("code_text")
-                tokens.append(code_text)
-
-            elif match.lastgroup == "link":
-                link_element = MarkdownElement(LINK)
-                link_element.data = match.group("link_url")
-                link_element.text = match.group("link_text")
-                tokens.append(link_element)
-
-            pos = end
-
-        if pos < len(text):
+        if start > pos:
             plain_text = MarkdownElement(SUB_TEXT)
-            plain_text.text = text[pos:]
-            tokens.append(plain_text)
+            plain_text.text = text[pos:start]
+            md_tokens.append(plain_text)
 
-        return tokens
+        if match.lastgroup == "bold":
+            bold_text = MarkdownElement(BOLD)
+            bold_text.text = match.group("bold_text")
+            md_tokens.append(bold_text)
 
-    def parse_rich_list(list_items):
-        for list_item in list_items:
-            list_item.sub_elements = parse_rich_text(list_item.text) + list_item.sub_elements
+        elif match.lastgroup == "italic":
+            ital_text = MarkdownElement(ITALICS)
+            ital_text.text = match.group("italic_text")
+            md_tokens.append(ital_text)
 
-            if len(list_item.sub_elements) > 0 and list_item.sub_elements[-1].type == LIST:
-                parse_rich_list(list_item.sub_elements[-1].sub_elements)
+        elif match.lastgroup == "code":
+            code_text = MarkdownElement(INLINE_CODE)
+            code_text.text = match.group("code_text")
+            md_tokens.append(code_text)
 
-    for element in parsed_elements:
+        elif match.lastgroup == "link":
+            link_element = MarkdownElement(LINK)
+            link_element.data = match.group("link_url")
+            link_element.text = match.group("link_text")
+            md_tokens.append(link_element)
+
+        pos = end
+
+    if pos < len(text):
+        plain_text = MarkdownElement(SUB_TEXT)
+        plain_text.text = text[pos:]
+        md_tokens.append(plain_text)
+
+    return md_tokens
+
+"""
+Recursively parse rich text from lists and sub-lists
+"""
+def parse_rich_list(list_items):
+    for list_item in list_items:
+        list_item.sub_elements = parse_rich_text(list_item.text) + list_item.sub_elements
+
+        if len(list_item.sub_elements) > 0 and list_item.sub_elements[-1].type == LIST:
+            parse_rich_list(list_item.sub_elements[-1].sub_elements)
+
+"""
+Save the parsed markdown to json
+"""
+def save_to_json(file_name, md_elements):
+    data = SimpleNamespace()
+    data.elements = md_elements
+
+    os.makedirs("json", exist_ok=True)
+    json_path = "json/" + file_name + ".json"
+    dictionary = data.__dict__
+    with open(json_path, "w") as json_file:
+        json.dump(dictionary, json_file, default=vars)
+
+def convert(path):
+    file_name = Path(path).stem
+    print("\nConverting " + file_name + "...")
+
+    print("Opening file...")
+    lines = get_lines(path)
+
+    print("Parsing File...")
+    items = parse_by_lines(lines)
+            
+    print("Parsing Markdown...")
+    md_elements = parse_markdown(items)
+
+    print("Parsing Rich Text...")
+    for element in md_elements:
         if element.type != PARAGRAPH and element.type != LIST:
             continue
 
@@ -296,27 +335,21 @@ def convert(path):
         parse_rich_list(element.sub_elements)
 
     print("Saving Json...")
-    data = SimpleNamespace()
-    data.elements = parsed_elements
+    save_to_json(file_name, md_elements)    
 
-    os.makedirs("json", exist_ok=True)
-    json_path = "json/" + file_name + ".json"
-    dictionary = data.__dict__
-    with open(json_path, "w") as json_file:
-        json.dump(dictionary, json_file, default=vars)
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument("name", nargs="?", help="A specific name")
+    group.add_argument("-a", "--all", action="store_true", help="All names")
 
-parser = argparse.ArgumentParser()
-group = parser.add_mutually_exclusive_group(required=True)
-group.add_argument("name", nargs="?", help="A specific name")
-group.add_argument("-a", "--all", action="store_true", help="All names")
+    args = parser.parse_args()
 
-args = parser.parse_args()
-
-if args.all:
-    files = glob.glob("markdown/*.md")
-    for file in files:
+    if args.all:
+        files = glob.glob("markdown/*.md")
+        for file in files:
+            convert(file)
+        print("\nConverted " + str(len(files)) + " Markdown Files.")
+    else:
+        file = "markdown/" + args.name + ".md"
         convert(file)
-    print("\nConverted " + str(len(files)) + " Markdown Files.")
-else:
-    file = "markdown/" + args.name + ".md"
-    convert(file)
