@@ -1,0 +1,30 @@
+@using Portfolio.Models
+@model Portfolio.Models.PageElement[]
+
+@foreach (PageElement element in Model) 
+{
+    if (element.Type == PageElementType.SUB_TEXT)
+    {
+        <span>@element.Text</span>
+    }
+    else if (element.Type == PageElementType.BOLD)
+    {
+        <b>@element.Text</b>
+    }
+    else if (element.Type == PageElementType.ITALICS)
+    {
+        <i>@element.Type</i>
+    } 
+    else if (element.Type == PageElementType.INLINE_CODE) 
+    {
+        <code>@element.Text</code>
+    }
+    else if (element.Type == PageElementType.LINK)
+    {
+        <a href="@(element.Data)">@element.Text</a>
+    }
+    else if (element.Type == PageElementType.LIST)
+    {
+        @await Html.PartialAsync("_PageElementList", element)
+    }
+}

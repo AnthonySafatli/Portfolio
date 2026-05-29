@@ -10,6 +10,13 @@ namespace Portfolio.Pages.Admin;
 [Authorize]
 public class LogoutModel : PageModel
 {
+    private readonly string _adminCookieName;
+
+    public LogoutModel(IConfiguration config)
+    {
+        _adminCookieName = config["AdminCookieName"]!;
+    }
+
     public IActionResult OnGet()
     {
         return NotFound();
@@ -17,8 +24,7 @@ public class LogoutModel : PageModel
 
     public async Task<IActionResult> OnPostAsync()
     {
-        await HttpContext.SignOutAsync(SecurityService.Config.AdminCookieName);
-
+        await HttpContext.SignOutAsync(_adminCookieName);
         return RedirectToPage("/Index");
     }
 }

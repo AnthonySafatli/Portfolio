@@ -1,0 +1,15 @@
+@using Portfolio.Models
+@model Portfolio.Models.PageElement
+
+@{
+    var listTag = Model.Data == "ordered" ? "ol" : "ul";
+}
+
+<@listTag>
+    @foreach (var item in Model.SubElements)
+    {
+        <li>
+            @await Html.PartialAsync("_PageElementRichText", item.SubElements)
+        </li>
+    }
+</@listTag>

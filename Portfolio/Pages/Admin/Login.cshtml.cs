@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Portfolio.Models;
 using Portfolio.Services;
+using Portfolio.Utilities;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 
@@ -13,6 +14,15 @@ public class LoginModel : PageModel
     [BindProperty]
     public Credential Credential { get; set; }
 
+    private readonly string _adminCookieName;
+    private readonly string _adminPassword;
+
+    public LoginModel(IConfiguration config)
+    {
+        _adminCookieName = config["AdminCookieName"]!;
+        _adminPassword = config["AdminPassword"]!;
+    }
+
     public void OnGet()
     {
     }
@@ -22,7 +32,7 @@ public class LoginModel : PageModel
         if (!ModelState.IsValid)
             return Page();
 
-        if (SecurityService.EncryptSHA256(Credential.Password) == SecurityService.Config.AdminPassword)
+        if (SecurityUtility.EncryptSHA256(Credential.Password) == _adminPassword)
         {
             // bool valid = await _email.loginAlert(HttpContext, "New Login!");
             // TODO: Add a login alert for successful login
@@ -32,7 +42,7 @@ public class LoginModel : PageModel
                 new Claim(ClaimTypes.Name, "Anthony"),
             };
 
-            var identity = new ClaimsIdentity(claims, SecurityService.Config.AdminCookieName);
+            var identity = new ClaimsIdentity(claims, _adminCookieName);
             ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(identity);
 
             var authProperties = new AuthenticationProperties
@@ -40,7 +50,7 @@ public class LoginModel : PageModel
                 IsPersistent = true,
             };
 
-            await HttpContext.SignInAsync(SecurityService.Config.AdminCookieName, claimsPrincipal, authProperties);
+            await HttpContext.SignInAsync(_adminCookieName, claimsPrincipal, authProperties);
 
             return RedirectToPage("/Admin/Dashboard");
         }

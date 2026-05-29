@@ -27,10 +27,10 @@ public class Program
         });
 
         builder.Services
-        .AddAuthentication(SecurityService.Config.AdminCookieName)
-        .AddCookie(SecurityService.Config.AdminCookieName, options =>
+        .AddAuthentication(builder.Configuration["AdminCookieName"]!)
+        .AddCookie(builder.Configuration["AdminCookieName"]!, options =>
         {
-            options.Cookie.Name = SecurityService.Config.FromAddressPassword;
+            options.Cookie.Name = builder.Configuration["AdminCookieName"];
             options.LoginPath = "/Admin/Login";
             options.AccessDeniedPath = "/Admin/AccessDenied";
             options.ExpireTimeSpan = TimeSpan.FromDays(30);
