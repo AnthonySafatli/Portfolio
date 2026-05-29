@@ -7,11 +7,16 @@ const outputDir = path.join(__dirname, "../wwwroot/dist/css");
 
 fs.mkdirSync(outputDir, { recursive: true });
 
-const files = fs.readdirSync(inputDir).filter((f) => f.endsWith(".css"));
+// Skip .min.css files
+const files = fs.readdirSync(inputDir).filter((f) => f.endsWith(".css") && !f.endsWith(".min.css"));
 
 for (const file of files) {
 	const inputPath = path.join(inputDir, file);
-	const outputPath = path.join(outputDir, file);
+
+	// Create filename.min.css
+	const baseName = file.replace(/\.css$/, "");
+	const outputFile = `${baseName}.min.css`;
+	const outputPath = path.join(outputDir, outputFile);
 
 	const input = fs.readFileSync(inputPath, "utf8");
 
@@ -23,5 +28,5 @@ for (const file of files) {
 	}
 
 	fs.writeFileSync(outputPath, output.styles);
-	console.log(`Minified: ${file}`);
+	console.log(`Minified: ${file}\t>  ${outputFile}`);
 }

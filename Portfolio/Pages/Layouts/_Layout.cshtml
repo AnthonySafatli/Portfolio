@@ -13,7 +13,7 @@
     @* CSS *@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/global.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/dist/css/global.min.css" asp-append-version="true" />
     @await RenderSectionAsync("Styles", required: false)
 
     @* Fonts *@
@@ -26,7 +26,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
     @* Umami *@
-    <script defer src="https://analytics.anthonysafatli.ca/script.js" data-website-id="1f6912a9-63c6-44b0-8a28-12af8843e515"></script>
+    <environment include="Production">
+        <script defer src="https://analytics.anthonysafatli.ca/script.js" data-website-id="1f6912a9-63c6-44b0-8a28-12af8843e515"></script>
+    </environment>
 </head>
 <body>
     <div id="tsparticles"></div>
@@ -39,7 +41,7 @@
                 <a asp-page="/Projects">Projects</a>
                 <a asp-page="/AboutMe">About Me</a>
                 <a asp-page="/Contact">Contact</a>
-                @if (User.Identity.IsAuthenticated)
+                @if (User.Identity?.IsAuthenticated ?? false)
                 {
                     <a asp-page="/Admin/Dashboard">Admin</a>
                 }
