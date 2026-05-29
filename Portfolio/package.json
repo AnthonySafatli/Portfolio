@@ -4,12 +4,15 @@
 	"private": true,
 	"description": "A portfolio website to display my online and show off my software developement skills",
 	"scripts": {
-		"build:dev": "webpack --mode development",
-		"build:prod": "webpack --mode production"
+		"build:webpack": "webpack --mode production",
+		"build:webpack:prod": "webpack --mode production",
+		"build:webpack:dev": "webpack --mode development",
+		"build:css": "node scripts/build-css.js"
 	},
 	"devDependencies": {
 		"@typescript-eslint/eslint-plugin": "^7.4.0",
 		"@typescript-eslint/parser": "^7.4.0",
+		"clean-css-cli": "^5.6.3",
 		"eslint": "^8.57.0",
 		"gsap": "3.12.5",
 		"raw-loader": "^4.0.2",
