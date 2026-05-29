@@ -71,18 +71,19 @@ else if (Model.Type == PageElementType.HORIZONTAL)
 }
 else if (Model.Type == PageElementType.CODE)
 {
-    <pre>
-        <code>
+    <pre><code>
             @foreach (var item in Model.SubElements)
             {
-                @item
+                @Html.Raw(item.Text)
             }
-        </code>
-    </pre>
+    </code></pre>
 }
 else if (Model.Type == PageElementType.HTML)
 {
-    @Html.Raw(Model.Text)
+    @foreach (var item in Model.SubElements)
+    {
+        @Html.Raw(item.Text)
+    }
 }
 else if (Model.Type == PageElementType.PARAGRAPH)
 {

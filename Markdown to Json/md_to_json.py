@@ -100,7 +100,7 @@ def parse_markdown(items):
         line = item[1]
 
         # Continue List
-        if current_element is not None and current_element.type == LIST:
+        if current_element != None and current_element.type == LIST:
             if element.type == LIST:
                 li_element = MarkdownElement(LIST_ITEM)
                 li_element.text = line.strip().split(' ', 1)[1].strip()
@@ -108,8 +108,8 @@ def parse_markdown(items):
                 degree = len(re.match(r'^(\t| {2})*', line).group()) // 2
 
                 current_list = current_element
-                for i in range(degree):
-                    if len(current_element.sub_elements) > 0:
+                for _ in range(degree):
+                    if len(current_list.sub_elements) > 0:
                         last_li = current_element.sub_elements[-1]
 
                         if len(last_li.sub_elements) == 0:
@@ -126,39 +126,40 @@ def parse_markdown(items):
 
                 current_list.sub_elements.append(li_element)
                 continue
-        else:
-            current_element = None
 
         # Continue Code
-        if current_element is not None and current_element.type == CODE:
-            if element.type == CODE and not re.search(r"^```", line):
-                last_code_text = line[:-3].strip()
+        if current_element != None and current_element.type == CODE:
+            code_text = None
+            if len(current_element.sub_elements) == 0:
+                code_text = MarkdownElement(SUB_TEXT) 
+                current_element.sub_elements.append(code_text)
+            else:
+                code_text = current_element.sub_elements[0]
+
+            code_block_ends = element.type == CODE and re.search(r"```$", line)
+            if code_block_ends:
+                last_code_text = line.lstrip()[:-4]
                 if len(last_code_text) > 0:
-                    code_element = MarkdownElement(SUB_TEXT)
-                    code_element.text = last_code_text
-                    current_element.sub_elements.append(code_element)
+                    code_text.text += last_code_text
                 current_element = None
                 continue
 
-            code_element = MarkdownElement(SUB_TEXT)
-            code_element.text = line.strip()
-            current_element.sub_elements.append(code_element)
+            code_text.text += line
             continue
 
         # Continue HTML
-        if current_element is not None and current_element.type == HTML:
-            if element.type == HTML and not re.search(r"^<>", line):
-                last_code_text = line[:-3].strip()
+        if current_element != None and current_element.type == HTML:
+            html_text = current_element.sub_elements[0]
+
+            html_block_ends = element.type == HTML and re.search(r"</>$", line)
+            if html_block_ends:
+                last_code_text = line.lstrip()[:-3]
                 if len(last_code_text) > 0:
-                    code_element = MarkdownElement(SUB_TEXT)
-                    code_element.text = last_code_text
-                    current_element.sub_elements.append(code_element)
+                    html_text.text += last_code_text
                 current_element = None
                 continue
 
-            code_element = MarkdownElement(SUB_TEXT)
-            code_element.text = line.strip()
-            current_element.sub_elements.append(code_element)
+            html_text.text += line
             continue
 
         # Create Header
@@ -195,8 +196,10 @@ def parse_markdown(items):
         
             split_index = line.rfind('](')
             alt = line[3:split_index] if border else line[2:split_index]
-            file = line[(split_index + 2):len(line) - 1]
-
+            
+            close_index = line.rfind(')')
+            file = line[(split_index + 2):close_index]
+            
             element.data = border
             element.text = file
             
@@ -214,26 +217,34 @@ def parse_markdown(items):
 
         # Create Code
         if element.type == CODE:
-            element.data = line[2:].strip()
+            element.data = line[3:].strip()
             current_element = element
             md_elements.append(element)
             continue
 
         # Create HTML
         if element.type == HTML:
+            html_text = MarkdownElement(SUB_TEXT)
+            html_text.text = line[3:]
+            element.sub_elements.append(html_text)
+
             current_element = element
             md_elements.append(element)
             continue
 
         # Create Paragraph
         if element.type == PARAGRAPH:
-            if current_element is not None and current_element.type == PARAGRAPH:
+            if current_element != None and current_element.type == PARAGRAPH:
                 current_element.text += (" " + line.strip())
             else:
                 element.text = line.strip()
                 current_element = element
                 md_elements.append(element)
             continue
+
+        current_element = None
+
+    return md_elements
 
 RICH_TEXT_REGEX = re.compile(
     r'(?P<bold>\*\*(?P<bold_text>.+?)\*\*)'
@@ -339,7 +350,7 @@ def convert(path):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    group = parser.add_mutually_exclusive_group(required=True)
+    group = parser.add_mutually_exclusive_group()
     group.add_argument("name", nargs="?", help="A specific name")
     group.add_argument("-a", "--all", action="store_true", help="All names")
 
@@ -350,6 +361,10 @@ if __name__ == "__main__":
         for file in files:
             convert(file)
         print("\nConverted " + str(len(files)) + " Markdown Files.")
-    else:
+    elif args.name:
         file = "markdown/" + args.name + ".md"
+        convert(file)
+    else:
+        name = input("File Name: ")
+        file = "markdown/" + name + ".md"
         convert(file)
