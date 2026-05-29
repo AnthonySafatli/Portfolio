@@ -6,6 +6,8 @@
 
 🔗 **[anthonysafatli.ca](https://anthonysafatli.ca)**
 
+🌐 **[More Information](https://anthonysafatli.ca/Project/online-portfolio)**
+
 ## Features
 
 - **Custom Frontend** — Built with Razor Pages and C#, with a Three.js-powered interactive globe as a centerpiece design element.
