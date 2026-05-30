@@ -6,7 +6,7 @@
     ViewData["Globe X"] = -1;
     ViewData["Globe Y"] = 0;
     ViewData["Globe Z"] = -3.25;
-    ViewData["Globe Opacity"] = 0.9;
+    ViewData["Globe Opacity"] = 0.8;
 
     ViewData["Description"] = "Welcome to Anthony Safatli's portfolio. Aspiring software developer and Dalhousie University student. Explore my projects, learn about me, or get in touch!";
     ViewData["Keywords"] = "Anthony Safatli, Software Developer, Dalhousie University, Developer Portfolio, Programming Projects, About Anthony, Contact Anthony, Aspiring Developer";
@@ -18,21 +18,29 @@
     <link rel="stylesheet" href="~/dist/css/index.min.css" asp-append-version="true" />
 }
 
-<div class="row mt-5">
-    <div class="col-6 offset-6 text-end">
-        <div>
-            <h1 class="hero">
-                <span id="small" class="d-block">Hi</span>
-                <span id="big" class="d-block">I'm Anthony</span>
-            </h1>
+<div class="hero-wrapper">
+    <div class="hero-left">
+        <span class="hero-greeting">Hello, I'm</span>
+        <h1 class="hero-name">Anthony<br><span class="hero-name-accent">Safatli</span></h1>
+        <p class="hero-sub">Aspiring Software Developer<br><span class="hero-sub-mono">@@ Dalhousie University</span></p>
+    </div>
 
-            <p class="fs-4">Aspiring Software Developer & Current Dalhousie Student</p>
-        </div>
+    <div class="hero-divider"></div>
 
-        <div class="d-flex flex-column gap-2 fs-5 nav-links">
-            <div><a asp-page="/Projects">Projects</a></div>
-            <div><a asp-page="/AboutMe">About Me</a></div>
-            <div><a asp-page="/Contact">Contact</a></div>
-        </div>
+    <div class="hero-right">
+        <nav class="hero-nav">
+            <a asp-page="/Projects">
+                <span class="nav-num">work</span>
+                <span class="nav-label">Projects</span>
+            </a>
+            <a asp-page="/AboutMe">
+                <span class="nav-num">info</span>
+                <span class="nav-label">About Me</span>
+            </a>
+            <a asp-page="/Contact">
+                <span class="nav-num">talk</span>
+                <span class="nav-label">Contact</span>
+            </a>
+        </nav>
     </div>
 </div>

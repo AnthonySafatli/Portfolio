@@ -1,14 +1,111 @@
-﻿.hero #small {
-	font-size: clamp(2rem, 5vw, 3.5rem);
+﻿.hero-wrapper {
+	display: flex;
+	align-items: center;
+	gap: 3rem;
+	min-height: 80vh;
+	padding-left: 2rem;
 }
 
-.hero #big {
-	font-size: clamp(2.5rem, 6vw, 4rem);
+.hero-left {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 1.2rem;
 }
 
-.nav-links a:hover {
-	font-weight: 550;
-	padding-right: 15px;
-	font-size: 1.4em;
-	transition: all 0.2s ease;
+.hero-greeting {
+	font-family: "DM Mono", monospace;
+	font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+	font-weight: 400;
+	color: var(--clr-pink-light);
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+}
+
+.hero-name {
+	font-family: "Sora", sans-serif;
+	font-size: clamp(3rem, 7vw, 5.5rem);
+	font-weight: 600;
+	line-height: 1.05;
+	color: var(--clr-accent-light);
+	margin: 0;
+}
+
+.hero-name-accent {
+	color: var(--clr-pink);
+	text-shadow: var(--glow-pink);
+}
+
+.hero-sub {
+	font-family: "Sora", sans-serif;
+	font-size: clamp(1rem, 2vw, 1.25rem);
+	font-weight: 400;
+	color: var(--clr-accent-light);
+	line-height: 1.7;
+	margin: 0;
+}
+
+.hero-sub-mono {
+	font-family: "DM Mono", monospace;
+	font-size: 0.9em;
+	color: var(--clr-pink-muted);
+}
+
+.hero-divider {
+	width: 1px;
+	height: 260px;
+	background: linear-gradient(
+		to bottom,
+		transparent,
+		var(--clr-pink),
+		var(--clr-primary),
+		transparent
+	);
+	flex-shrink: 0;
+	opacity: 0.5;
+}
+
+.hero-right {
+	flex: 0 0 auto;
+	padding-left: 1rem;
+}
+
+.hero-nav {
+	display: flex;
+	flex-direction: column;
+	gap: 2.2rem;
+}
+
+.hero-nav a {
+	display: flex;
+	flex-direction: column;
+	gap: 0.15rem;
+	text-decoration: none;
+	transition: none;
+}
+
+.nav-num {
+	font-family: "DM Mono", monospace;
+	font-size: 0.8rem;
+	color: var(--clr-pink-light);
+	letter-spacing: 0.15em;
+	opacity: 0.8;
+	text-transform: uppercase;
+}
+
+.nav-label {
+	font-family: "Sora", sans-serif;
+	font-size: clamp(1.4rem, 2.5vw, 2rem);
+	font-weight: 300;
+	color: var(--clr-accent);
+	letter-spacing: 0.03em;
+}
+
+.hero-nav a:hover .nav-label {
+	color: var(--clr-accent-light);
+	text-shadow: var(--glow);
+}
+
+.hero-nav a:hover .nav-num {
+	opacity: 1;
 }

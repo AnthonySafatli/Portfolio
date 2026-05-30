@@ -19,11 +19,7 @@
     @* Fonts *@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 
     @* Umami *@
     <environment include="Production">
@@ -36,15 +32,17 @@
 
     <div class="container d-flex flex-column min-vh-100">
         <header class="my-4">
-            <nav class="d-flex gap-3">
-                <a asp-page="/Index">Home</a>
-                <a asp-page="/Projects">Projects</a>
-                <a asp-page="/AboutMe">About Me</a>
-                <a asp-page="/Contact">Contact</a>
-                @if (User.Identity?.IsAuthenticated ?? false)
-                {
-                    <a asp-page="/Admin/Dashboard">Admin</a>
-                }
+            <nav class="d-flex gap-4 align-items-center">
+                <a class="nav-brand" asp-page="/Index">AS</a>
+                <div class="d-flex gap-4 nav-links-top">
+                    <a asp-page="/Projects">Projects</a>
+                    <a asp-page="/AboutMe">About Me</a>
+                    <a asp-page="/Contact">Contact</a>
+                    @if (User.Identity?.IsAuthenticated ?? false)
+                    {
+                        <a asp-page="/Admin/Dashboard">Admin</a>
+                    }
+                </div>
             </nav>
         </header>
 
@@ -53,11 +51,8 @@
         </main>
 
         <footer class="d-flex justify-content-between align-items-center mt-4 mb-3">
-            <span>
-                &copy; 2024 - Anthony Safatli
-            </span>
-
-            <nav class="d-flex gap-3 fs-3">
+            <span class="footer-copy">&copy; 2024 — Anthony Safatli</span>
+            <nav class="d-flex gap-3 fs-4 footer-icons">
                 <a href="https://github.com/AnthonySafatli" class="fa fa-github" target="_blank"></a>
                 <a href="https://www.instagram.com/anthonysafatli124/" class="fa fa-instagram" target="_blank"></a>
                 <a href="https://www.linkedin.com/in/anthony-safatli-755823296/" class="fa fa-linkedin" target="_blank"></a>

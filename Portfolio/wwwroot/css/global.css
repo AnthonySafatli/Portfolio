@@ -1,31 +1,41 @@
 ﻿/* CSS Custom Properties */
 
 :root {
-	/* Colors */
+	/* Cyan (primary) */
 	--clr-primary: #0cacbe;
-	--clr-accent: #91f2f2;
-	--clr-accent-light: #b6f1f8;
-	--clr-bg-overlay: rgba(0, 0, 0, 0.5);
+	--clr-accent: #7ee8e8;
+	--clr-accent-light: #c2f4f4;
+
+	/* Pink (new) */
+	--clr-pink: #f472b6;
+	--clr-pink-muted: #c084a0;
+	--clr-pink-light: #fbb6d4;
+
+	/* Background */
+	--clr-bg-overlay: rgba(0, 0, 0, 0.48);
 	--clr-btn-bg: transparent;
 
-	/* Glow */
-	--glow-color-1: rgba(145, 242, 255, 0.45);
-	--glow-color-2: rgba(145, 242, 255, 0.45);
-	--glow-color-3: rgba(145, 242, 255, 0.45);
-	--glow: 0 0 8px var(--glow-color-1), 0 0 16px var(--glow-color-2), 0 0 24px var(--glow-color-3);
+	/* Glows */
+	--glow-color-1: rgba(126, 232, 232, 0.35);
+	--glow-color-2: rgba(126, 232, 232, 0.35);
+	--glow-color-3: rgba(126, 232, 232, 0.35);
+	--glow: 0 0 6px var(--glow-color-1), 0 0 14px var(--glow-color-2), 0 0 22px var(--glow-color-3);
+
+	--glow-pink: 0 0 8px rgba(244, 114, 182, 0.5), 0 0 20px rgba(244, 114, 182, 0.3);
 
 	/* Typography */
-	--font-family: "Plus Jakarta Sans", sans-serif;
-	--font-weight: 400;
+	--font-family: "Sora", sans-serif;
+	--font-mono: "DM Mono", monospace;
+	--font-weight: 300;
 
 	/* Button */
-	--btn-font-size: 1.1rem;
-	--btn-padding: 10px;
-	--btn-radius: 5px;
-	--btn-border-width: 2px;
+	--btn-font-size: 1rem;
+	--btn-padding: 9px 16px;
+	--btn-radius: 4px;
+	--btn-border-width: 1px;
 
 	/* Transitions */
-	--transition: all 0.2s ease;
+	--transition: color 0.2s ease, text-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 /* THREE.js Canvas Layers */
@@ -105,4 +115,47 @@ a:hover:not(.no-glow) * {
 	text-shadow: none;
 	border-color: var(--clr-accent-light);
 	box-shadow: var(--glow);
+}
+
+/* Nav brand */
+.nav-brand {
+	font-family: var(--font-mono);
+	font-size: 1rem;
+	font-weight: 400;
+	color: var(--clr-pink) !important;
+	letter-spacing: 0.1em;
+	text-shadow: var(--glow-pink);
+}
+
+/* Top nav links */
+.nav-links-top a {
+	font-family: var(--font-family);
+	font-weight: 300;
+	font-size: 1.05rem;
+	letter-spacing: 0.05em;
+	color: var(--clr-accent);
+}
+
+.nav-links-top a:hover {
+	color: var(--clr-accent-light);
+	text-shadow: var(--glow);
+}
+
+/* Footer */
+.footer-copy {
+	font-family: var(--font-mono);
+	font-size: 0.8rem;
+	font-weight: 300;
+	color: var(--clr-primary);
+	opacity: 0.6;
+}
+
+.footer-icons a {
+	color: var(--clr-accent);
+	font-size: 1.4rem;
+}
+
+.footer-icons a:hover {
+	color: var(--clr-pink-light);
+	text-shadow: var(--glow-pink);
 }
