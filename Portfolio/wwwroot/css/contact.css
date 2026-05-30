@@ -1,51 +1,147 @@
-﻿form div {
-  width: 80%;
-  max-width: 550px;
-  box-sizing: border-box;
+﻿.contact-page {
+	padding-top: 4rem;
+	padding-bottom: 6rem;
+	width: 100%;
 }
 
-form div * {
-  display: block;
-  box-sizing: border-box;
+/* ── Header ── */
+
+.contact-header {
+	margin-bottom: 3rem;
 }
 
-input[type=email],
+.contact-label {
+	font-family: var(--font-mono);
+	font-size: 0.72rem;
+	letter-spacing: 0.25em;
+	text-transform: uppercase;
+	color: var(--clr-pink-light);
+	display: block;
+	margin-bottom: 0.5rem;
+}
+
+.contact-title {
+	font-family: "Sora", sans-serif;
+	font-size: clamp(2.5rem, 5vw, 4rem);
+	font-weight: 600;
+	color: var(--clr-accent-light);
+	margin: 0 0 1rem;
+	line-height: 1;
+}
+
+.contact-sub {
+	font-family: "Sora", sans-serif;
+	font-size: 0.9rem;
+	font-weight: 300;
+	color: var(--clr-primary);
+	opacity: 0.8;
+	margin: 0;
+	line-height: 1.7;
+}
+
+.contact-sub a {
+	color: var(--clr-pink);
+	font-family: var(--font-mono);
+	font-size: 0.82rem;
+}
+
+.contact-sub a:hover {
+	color: var(--clr-pink-light);
+	text-shadow: var(--glow-pink);
+}
+
+/* ── Form ── */
+
+.contact-form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 1.8rem;
+}
+
+.contact-form div {
+  width: 100%;
+	max-width: 560px;
+}
+
+.form-field {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.form-field label {
+	font-family: var(--font-mono);
+	font-size: 0.72rem;
+	letter-spacing: 0.15em;
+	color: var(--clr-pink-muted);
+	text-transform: uppercase;
+}
+
+input[type="email"],
 textarea {
-  color: #91f2f2;
-  padding: 7.5px;
-  background-color: rgba(0, 0, 0, 0);
-  border: 2px solid #0cacbe;
-  border-radius: 5px;
-  transition: all ease 0.2s;
+	font-family: var(--font-mono);
+	font-size: 0.85rem;
+	color: var(--clr-accent);
+	background-color: transparent;
+	border: 1px solid rgba(12, 172, 190, 0.25);
+	border-radius: 3px;
+	padding: 0.65rem 0.85rem;
+	width: 100%;
+	box-sizing: border-box;
+	transition:
+		border-color 0.2s ease,
+		box-shadow 0.2s ease,
+		color 0.2s ease;
 }
 
-input[type=email]::placeholder,
+input[type="email"]::placeholder,
 textarea::placeholder {
-  color: #0cacbe;
-  transition: all ease 0.2s;
+	color: var(--clr-primary);
+	opacity: 0.4;
 }
 
-input[type=email]:focus,
+input[type="email"]:focus,
 textarea:focus {
-  border-color: #b6f1f8;
-  outline: none;
-  box-shadow: 0 0 30px 2px rgba(255, 255, 255, 0.3);
-  color: #91f2f2;
+	outline: none;
+	border-color: rgba(126, 232, 232, 0.6);
+	box-shadow: var(--glow);
+	color: var(--clr-accent-light);
 }
 
-input[type=email]:focus::placeholder,
+input[type="email"]:focus::placeholder,
 textarea:focus::placeholder {
-  color: #91f2f2;
-}
-
-input[type=email] {
-  width: 100%;
-  max-width: 525px;
+	opacity: 0.25;
 }
 
 textarea {
-  width: 100%;
-  max-width: 525px;
-  height: 183.3333333333px;
-  resize: vertical;
+	height: 180px;
+	resize: vertical;
+	min-height: 100px;
+}
+
+/* ── Submit ── */
+
+.form-submit {
+	display: flex;
+}
+
+input[type="submit"].button {
+	cursor: pointer;
+	font-family: var(--font-mono);
+	font-size: 0.78rem;
+	letter-spacing: 0.12em;
+}
+
+input[type="submit"].button:hover {
+	color: var(--clr-accent-light);
+	border-color: var(--clr-accent);
+	box-shadow: var(--glow);
+}
+
+@media (max-width: 600px) {
+	.contact-page {
+		padding-top: 3rem;
+	}
 }
