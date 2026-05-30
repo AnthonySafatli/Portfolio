@@ -1,4 +1,79 @@
-﻿.bold {
-	font-weight: bold;
-	color: #80c1c9;
+.thanks-page {
+	padding-top: 4rem;
+	padding-bottom: 6rem;
+	max-width: 560px;
+}
+
+.thanks-label {
+	font-family: var(--font-mono);
+	font-size: 0.72rem;
+	letter-spacing: 0.25em;
+	text-transform: uppercase;
+	color: var(--clr-pink-light);
+	display: block;
+	margin-bottom: 0.5rem;
+}
+
+.thanks-title {
+	font-family: "Sora", sans-serif;
+	font-size: clamp(2.5rem, 5vw, 4rem);
+	font-weight: 600;
+	color: var(--clr-accent-light);
+	margin: 0 0 1rem;
+	line-height: 1;
+}
+
+.thanks-sub {
+	font-family: "Sora", sans-serif;
+	font-size: 0.9rem;
+	font-weight: 300;
+	color: var(--clr-primary);
+	opacity: 0.8;
+	margin: 0 0 2.5rem;
+	line-height: 1.7;
+}
+
+/* ── Receipt ── */
+
+.thanks-receipt {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+	border-top: 1px solid rgba(12, 172, 190, 0.15);
+	margin-bottom: 2.5rem;
+}
+
+.receipt-row {
+	display: grid;
+	grid-template-columns: 90px 1fr;
+	gap: 1rem;
+	padding: 0.9rem 0;
+	border-bottom: 1px solid rgba(12, 172, 190, 0.15);
+	align-items: baseline;
+}
+
+.receipt-key {
+	font-family: var(--font-mono);
+	font-size: 0.68rem;
+	letter-spacing: 0.15em;
+	color: var(--clr-pink-muted);
+	text-transform: lowercase;
+	flex-shrink: 0;
+}
+
+.receipt-val {
+	font-family: "Sora", sans-serif;
+	font-size: 0.88rem;
+	font-weight: 300;
+	color: var(--clr-accent);
+	line-height: 1.6;
+	word-break: break-word;
+}
+
+/* ── Actions ── */
+
+.thanks-actions {
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap;
 }

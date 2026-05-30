@@ -11,18 +11,31 @@
     ViewData["Robots"] = "noindex, nofollow";
 }
 
+
+
 @section Styles {
     <link rel="stylesheet" href="~/dist/css/thanks.min.css" asp-append-version="true" />
 }
 
-<div class="container mt-5 text-center">
-    <h1 class="text-center mb-4">Thank You!</h1>
+<div class="thanks-page">
+    <span class="thanks-label">message sent</span>
+    <h1 class="thanks-title">Thank You!</h1>
 
-    <p class="mb-2">Your message has been sent successfully. I will get back to you as soon as possible.</p>
-    <p class="mb-4">In the meantime, feel free to <a href="/">return to the homepage</a> or explore other parts of the site.</p>
+    <p class="thanks-sub">Your message has been received. I'll get back to you as soon as possible.</p>
 
-    <div>
-        <p class="mb-1"><span class="bold">Email:</span> @TempData["Email"]</p>
-        <p><span class="bold">Message:</span> @TempData["Message"]</p>
+    <div class="thanks-receipt">
+        <div class="receipt-row">
+            <span class="receipt-key">email</span>
+            <span class="receipt-val">@TempData["Email"]</span>
+        </div>
+        <div class="receipt-row">
+            <span class="receipt-key">message</span>
+            <span class="receipt-val">@TempData["Message"]</span>
+        </div>
+    </div>
+
+    <div class="thanks-actions">
+        <a asp-page="/Index" class="button">Back to Home</a>
+        <a asp-page="/Projects" class="button button-pink">View Projects</a>
     </div>
 </div>
