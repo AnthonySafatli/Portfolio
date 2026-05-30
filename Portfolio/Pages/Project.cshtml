@@ -12,51 +12,72 @@
     ViewData["Description"] = Model.Project?.Description;
     ViewData["Robots"] = "index, follow";
 }
-
 @section Styles {
     <link rel="stylesheet" href="~/dist/css/project.min.css" asp-append-version="true" />
 }
 
-<div class="mt-5">
-    <h1 class="text-center">@Model.Project.DisplayName</h1>
+<div class="project-page">
 
-    <div class="d-flex flex-wrap justify-content-center gap-4 mb-3 mt-3">
-        @if (!String.IsNullOrEmpty(Model.Project.Github))
-        {
-            <a href="@Model.Project.Github" target="_blank">
-                <i class="fa fa-mini fa-github"></i>&nbsp;&nbsp;Github
-            </a>
-        }
-        @if (!String.IsNullOrEmpty(Model.Project.Page))
-        {
-            <a href="@Model.Project.Page" target="_blank">
-                <i class="fa fa-mini fa-globe"></i>&nbsp;&nbsp;Webpage
-            </a>
-        }
-        @if (!String.IsNullOrEmpty(Model.Project.Download))
-        {
-            <a href="@Model.Project.Download" target="_blank">
-                <i class="fa fa-mini fa-download"></i>&nbsp;&nbsp;Download
-            </a>
-        }
+    <div class="project-hero">
+
+        <div class="project-hero-inner">
+            <span class="project-hero-label">project</span>
+            <h1 class="project-hero-title">@Model.Project.DisplayName</h1>
+            <p class="project-hero-desc">@Model.Project.Description</p>
+
+            <div class="project-meta-row">
+                @if (Model.Project.DateStarted.HasValue)
+                {
+                    <span class="project-date">
+                        @Model.Project.DateStarted.Value.ToString("MMM yyyy")
+                        @if (Model.Project.DateEnded.HasValue)
+                        {
+                            <span> — @Model.Project.DateEnded.Value.ToString("MMM yyyy")</span>
+                        }
+                        else
+                        {
+                            <span> — Present</span>
+                        }
+                    </span>
+                }
+
+                @if (Model.Project.TechStackItems?.Any() == true)
+                {
+                    <div class="project-tags">
+                        @foreach (var tech in Model.Project.TechStackItems)
+                        {
+                            <img src="@tech.PathToImage" alt="@tech.Name" title="@tech.Name" />
+                        }
+                    </div>
+                }
+            </div>
+
+            <div class="project-links">
+                @if (!string.IsNullOrEmpty(Model.Project.Github))
+                {
+                    <a href="@Model.Project.Github" target="_blank" class="project-link">
+                        <span class="fa fa-github"></span> GitHub
+                    </a>
+                }
+                @if (!string.IsNullOrEmpty(Model.Project.Page))
+                {
+                    <a href="@Model.Project.Page" target="_blank" class="project-link">
+                        <span class="fa fa-globe"></span> Live Site
+                    </a>
+                }
+                @if (!string.IsNullOrEmpty(Model.Project.Download))
+                {
+                    <a href="@Model.Project.Download" target="_blank" class="project-link">
+                        <span class="fa fa-download"></span> Download
+                    </a>
+                }
+            </div>
+        </div>
     </div>
 
-    <div class="d-flex flex-wrap justify-content-around gap-2 mt-2 px-3 small">
-        @if (Model.Project.DateStarted.HasValue)
-        {
-            <span>
-                Date Started: <span class="bolder fw-medium">@Model.Project.DateStarted.Value.ToString("MMMM yyyy")</span>
-            </span>
-        }
-        @if (Model.Project.DateEnded.HasValue)
-        {
-            <span>
-                Date Ended: <span class="bolder fw-medium">@Model.Project.DateEnded.Value.ToString("MMMM yyyy")</span>
-            </span>
-        }
-    </div>
+    <div class="project-divider"></div>
 
-    <div class="container mt-5 d-flex justify-content-center">
+    <div class="project-content">
         <div id="project-page">
             @foreach (PageElement element in Model.ProjectPage.Elements)
             {
@@ -64,4 +85,5 @@
             }
         </div>
     </div>
+
 </div>
