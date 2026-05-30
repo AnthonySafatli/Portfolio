@@ -12,10 +12,11 @@ public class Project
 
     [Display(Name = "Date Started")]
     [DataType(DataType.Date)]
-    public DateTime DateStarted { get; set; }
+    public DateTime? DateStarted { get; set; }
+
     [Display(Name = "Date Ended")]
     [DataType(DataType.Date)]
-    public DateTime DateEnded { get; set; }
+    public DateTime? DateEnded { get; set; }
 
     [Display(Name = "Page Content")]
     public string? PageContent {  get; set; }

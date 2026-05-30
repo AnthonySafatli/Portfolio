@@ -1,33 +1,178 @@
-﻿.card {
-	background-color: rgba(0, 0, 0, 0);
-	transition: all 0.2s ease;
+﻿.projects-page {
+	padding-top: 4rem;
 }
 
-.card:hover {
-	background-color: rgba(255, 255, 255, 0.05);
+.projects-header {
+	margin-bottom: 3rem;
 }
 
-.card h2 {
-	transition: all 0.2s ease;
+.projects-label {
+	font-family: var(--font-mono);
+	font-size: 0.75rem;
+	letter-spacing: 0.25em;
+	text-transform: uppercase;
+	color: var(--clr-pink-light);
+	display: block;
+	margin-bottom: 0.5rem;
 }
 
-	.card:hover h2 {
-		font-weight: 600;
-		font-size: calc(1.65rem + .9vw);
+.projects-title {
+	font-family: "Sora", sans-serif;
+	font-size: clamp(2.5rem, 5vw, 4rem);
+	font-weight: 600;
+	color: var(--clr-accent-light);
+	margin: 0;
+	line-height: 1;
+}
+
+.projects-empty {
+	font-family: var(--font-mono);
+	color: var(--clr-primary);
+	opacity: 0.6;
+	margin-top: 4rem;
+}
+
+.projects-grid {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+}
+
+.project-card {
+	display: grid;
+	grid-template-columns: 100px 1fr;
+	align-items: center;
+	gap: 2rem;
+	padding: 1.8rem 1.5rem;
+	border-top: 1px solid rgba(12, 172, 190, 0.15);
+	text-decoration: none;
+	transition: background 0.2s ease;
+	position: relative;
+}
+
+.project-card:last-child {
+	border-bottom: 1px solid rgba(12, 172, 190, 0.15);
+}
+
+.project-card:hover {
+	background: rgba(244, 114, 182, 0.03);
+}
+
+.project-card:hover .card-title {
+	color: var(--clr-accent-light);
+	text-shadow: var(--glow);
+}
+
+.project-card:hover .card-arrow {
+	color: var(--clr-pink);
+	text-shadow: var(--glow-pink);
+	transform: translateX(4px);
+}
+
+.project-card:hover .card-thumb img {
+	opacity: 0.9;
+	filter: drop-shadow(0 0 8px rgba(244, 114, 182, 0.3));
+}
+
+.card-thumb {
+	width: 100px;
+	height: 70px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+
+.card-thumb img {
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: contain;
+	opacity: 0.75;
+	transition:
+		opacity 0.2s ease,
+		filter 0.2s ease;
+}
+
+.card-body {
+	display: flex;
+	flex-direction: column;
+	gap: 0.35rem;
+	min-width: 0;
+}
+
+.card-meta {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+.card-date {
+	font-family: var(--font-mono);
+	font-size: 0.72rem;
+	letter-spacing: 0.1em;
+	color: var(--clr-pink-muted);
+	opacity: 0.8;
+}
+
+.card-title {
+	font-family: "Sora", sans-serif;
+	font-size: clamp(1.1rem, 2vw, 1.4rem);
+	font-weight: 400;
+	color: var(--clr-accent);
+	margin: 0;
+	transition:
+		color 0.2s ease,
+		text-shadow 0.2s ease;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.card-desc {
+	font-family: "Sora", sans-serif;
+	font-size: 0.875rem;
+	font-weight: 300;
+	color: var(--clr-primary);
+	margin: 0;
+	opacity: 0.8;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.card-links {
+	display: flex;
+	gap: 0.75rem;
+	margin-top: 0.25rem;
+}
+
+.card-link-icon {
+	font-size: 0.85rem;
+	color: var(--clr-pink-muted);
+	opacity: 0.65;
+}
+
+.project-card:hover .card-arrow {
+	opacity: 1;
+}
+
+@media (max-width: 600px) {
+	.project-card {
+		grid-template-columns: 60px 1fr;
+		gap: 1rem;
+		padding: 1.4rem 0;
 	}
 
-.card:hover .project-image {
-	height: 90px;
-}
+	.card-thumb {
+		width: 60px;
+		height: 50px;
+	}
 
-.project-image {
-	height: 100px;
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	transition: height 0.5s ease;
-}
+	.card-title {
+		white-space: normal;
+	}
 
-.project-image img {
-	height: 100%;
+	.card-desc {
+		display: none;
+	}
 }

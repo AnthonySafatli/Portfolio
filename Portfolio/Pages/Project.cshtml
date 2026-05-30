@@ -42,12 +42,18 @@
     </div>
 
     <div class="d-flex flex-wrap justify-content-around gap-2 mt-2 px-3 small">
-        <span>
-            Date Started: <span class="bolder fw-medium">@Model.Project.DateStarted.ToString("MMMM yyyy")</span>
-        </span>
-        <span>
-            Date Ended: <span class="bolder fw-medium">@Model.Project.DateEnded.ToString("MMMM yyyy")</span>
-        </span>
+        @if (Model.Project.DateStarted.HasValue)
+        {
+            <span>
+                Date Started: <span class="bolder fw-medium">@Model.Project.DateStarted.Value.ToString("MMMM yyyy")</span>
+            </span>
+        }
+        @if (Model.Project.DateEnded.HasValue)
+        {
+            <span>
+                Date Ended: <span class="bolder fw-medium">@Model.Project.DateEnded.Value.ToString("MMMM yyyy")</span>
+            </span>
+        }
     </div>
 
     <div class="container mt-5 d-flex justify-content-center">

@@ -14,30 +14,64 @@
     ViewData["Robots"] = "index, follow";
     ViewData["URL"] = "https://anthonysafatli.ca/Projects";
 }
-
 @section Styles {
     <link rel="stylesheet" href="~/dist/css/projects.min.css" asp-append-version="true" />
 }
 
-<div class="mt-5">
-    <h1 class="text-center">Projects</h1>
+<div class="projects-page">
+    <div class="projects-header">
+        <span class="projects-label">work</span>
+        <h1 class="projects-title">Projects</h1>
+    </div>
 
     @if (Model.Projects.Count == 0)
     {
-        <p class="text-center mt-5">No projects yet, stay tuned!</p>
-    } 
+        <p class="projects-empty">No projects yet — stay tuned.</p>
+    }
     else
     {
-        <div class="mt-5 row">
+        <div class="projects-grid">
             @foreach (Project project in Model.Projects)
             {
-                <a asp-page="/Project" asp-route-name="@project.Id" class="col-12 col-md-6 mb-4">
-                    <div class="card text-center text-info p-3 h-100 rounded">
-                        <div class="project-image mb-3">
-                            <img src="projects/@project.Thumbnail" alt="thumbnail for @project.Id">
+                <a asp-page="/Project" asp-route-name="@project.Id" class="project-card no-glow">
+                    <div class="card-thumb">
+                        <img src="projects/@project.Thumbnail" alt="@project.DisplayName" />
+                    </div>
+                    <div class="card-body">
+                        <div class="card-meta">
+                            @if (project.DateStarted.HasValue)
+                            {
+                                <span class="card-date">
+                                    @project.DateStarted.Value.ToString("MMM yyyy")
+                                    @if (project.DateEnded.HasValue)
+                                    {
+                                        <span> – @project.DateEnded.Value.ToString("MMM yyyy")</span>
+                                    }
+                                    else
+                                    {
+                                        <span> – Present</span>
+                                    }
+                                </span>
+                            }
                         </div>
-                        <h2 class="fw-medium">@project.DisplayName</h2>
-                        <p>@project.Description</p>
+
+                        <h2 class="card-title">@project.DisplayName</h2>
+                        <p class="card-desc">@project.Description</p>
+
+                        <div class="card-links">
+                            @if (!string.IsNullOrEmpty(project.Github))
+                            {
+                                <span class="card-link-icon fa fa-github" title="GitHub"></span>
+                            }
+                            @if (!string.IsNullOrEmpty(project.Page))
+                            {
+                                <span class="card-link-icon fa fa-external-link" title="Live Site"></span>
+                            }
+                            @if (!string.IsNullOrEmpty(project.Download))
+                            {
+                                <span class="card-link-icon fa fa-download" title="Download"></span>
+                            }
+                        </div>
                     </div>
                 </a>
             }
