@@ -1,26 +1,143 @@
-﻿.dual-div {
-	margin: 40px;
+﻿.about-page {
+	padding-top: 4rem;
+	padding-bottom: 6rem;
+}
+
+.about-header {
+	margin-bottom: 3.5rem;
+}
+
+.about-label {
+	font-family: var(--font-mono);
+	font-size: 0.72rem;
+	letter-spacing: 0.25em;
+	text-transform: uppercase;
+	color: var(--clr-pink-light);
+	display: block;
+	margin-bottom: 0.5rem;
+}
+
+.about-title {
+	font-family: "Sora", sans-serif;
+	font-size: clamp(2.5rem, 5vw, 4rem);
+	font-weight: 600;
+	color: var(--clr-accent-light);
+	margin: 0;
+	line-height: 1;
+}
+
+/* ── Body layout ── */
+
+.about-body {
+	display: grid;
+	grid-template-columns: 1fr 1.4fr;
+	gap: 4rem;
+	align-items: start;
+	width: 100%;
+}
+
+/* ── Photo ── */
+
+.about-photo-wrap {
+	position: relative;
+}
+
+.about-photo {
+	width: 100%;
+	max-width: 340px;
+	border-radius: 4px;
+	display: block;
+	opacity: 0.88;
+	position: relative;
+	z-index: 1;
+}
+
+.about-photo-accent {
+	position: absolute;
+	top: 12px;
+	left: 12px;
+	width: 100%;
+	max-width: 340px;
+	height: 100%;
+	border: 1px solid rgba(244, 114, 182, 0.3);
+	border-radius: 4px;
+	z-index: 0;
+}
+
+/* ── Text ── */
+
+.about-text {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	gap: 20px;
-	text-align: center;
+	gap: 2rem;
+	padding-top: 0.5rem;
 }
 
-.dual-div div {
-	flex: 1;
+.about-text p {
+	font-family: "Sora", sans-serif;
+	font-size: 0.95rem;
+	font-weight: 300;
+	color: var(--clr-primary);
+	line-height: 1.9;
+	margin: 0;
+}
+
+/* ── Fact strip ── */
+
+.about-facts {
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	gap: 3rem;
+	padding: 1.2rem 0;
+	border-top: 1px solid rgba(12, 172, 190, 0.15);
+	border-bottom: 1px solid rgba(12, 172, 190, 0.15);
 }
 
-.dual-div > * {
-	width: 75%;
-	max-width: 700px;
+.about-fact {
+	display: flex;
+	flex-direction: column;
+	gap: 0.2rem;
 }
 
-img {
-	width: 100%;
-	max-width: 350px;
+.fact-value {
+	font-family: "Sora", sans-serif;
+	font-size: 1.5rem;
+	font-weight: 600;
+	color: var(--clr-accent-light);
+	line-height: 1;
+}
+
+.fact-label {
+	font-family: var(--font-mono);
+	font-size: 0.68rem;
+	letter-spacing: 0.15em;
+	color: var(--clr-pink-muted);
+	text-transform: lowercase;
+}
+
+/* ── Actions ── */
+
+.about-actions {
+	display: flex;
+	gap: 1rem;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 700px) {
+	.about-body {
+		grid-template-columns: 1fr;
+		gap: 2.5rem;
+	}
+
+	.about-photo {
+		max-width: 280px;
+	}
+
+	.about-photo-accent {
+		max-width: 280px;
+	}
+
+	.about-facts {
+		gap: 1.5rem;
+	}
 }

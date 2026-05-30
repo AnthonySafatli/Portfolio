@@ -6,7 +6,7 @@
     ViewData["Globe X"] = 0;
     ViewData["Globe Y"] = 0;
     ViewData["Globe Z"] = -2.5;
-    ViewData["Globe Opacity"] = 0.3;
+    ViewData["Globe Opacity"] = 0.2;
 
     ViewData["Description"] = "Meet Anthony Safatli, a passionate software developer and student at Dalhousie University. Explore his journey in programming with Python, Java, and C#, and learn about his hobbies like riding motorcycles and exploring the outdoors.";
     ViewData["Keywords"] = "Anthony Safatli, About Me, Software Developer, Dalhousie University, Python Developer, Java Developer, C# Developer, Motorcycle Enthusiast, Resume";
@@ -18,29 +18,49 @@
     <link rel="stylesheet" href="~/dist/css/aboutme.min.css" asp-append-version="true" />
 }
 
-<div class="container mt-5 text-center">
-    <h1 class="mb-4">About Me</h1>
+<div class="about-page">
 
-    <div class="d-flex flex-column align-items-center justify-content-center gap-4">
-        <div class="d-flex justify-content-center w-100" style="max-width:700px;">
-            <img src="~/assets/me on my bike.png"
-                 alt="placeholder image"
-                 class="img-fluid"
-                 style="max-width:350px;" />
+    <div class="about-header">
+        <span class="about-label">about me</span>
+        <h1 class="about-title">Anthony Safatli</h1>
+    </div>
+
+    <div class="about-body">
+        <div class="about-photo-wrap">
+            <img src="~/assets/me on my bike.png" alt="Anthony on his motorcycle" class="about-photo" />
+            <div class="about-photo-accent"></div>
         </div>
 
-        <div class="w-100" style="max-width:700px;">
+        <div class="about-text">
             <p>
                 Hello! I'm Anthony, a passionate software developer and student at Dalhousie University. With
                 @Html.Raw(DateTime.Now.Year - 2020) years of experience in programming, I have worked mostly with
-                Python, Java, and especially C#. When I am not programming, I love riding my motorcycle,
+                Python, Java, and especially C#. When I'm not programming, I love riding my motorcycle,
                 hanging out with friends, and exploring the outdoors. I'm always eager to embrace new
                 opportunities and continue growing in my field!
             </p>
+
+            <div class="about-facts">
+                <div class="about-fact">
+                    <span class="fact-value">@Html.Raw(DateTime.Now.Year - 2020)</span>
+                    <span class="fact-label">years coding</span>
+                </div>
+                <div class="about-fact">
+                    <span class="fact-value">Dalhousie</span>
+                    <span class="fact-label">university</span>
+                </div>
+                <div class="about-fact">
+                    <span class="fact-value">Nova Scotia</span>
+                    <span class="fact-label">based in</span>
+                </div>
+            </div>
+
+            <div class="about-actions">
+                <a href="~/assets/resume.pdf" class="button" target="_blank">
+                    <span class="fa fa-file-text-o"></span>&nbsp; Resume
+                </a>
+            </div>
         </div>
     </div>
 
-    <div class="mt-5"> 
-        <a href="~/assets/resume.pdf" class="button" target="_blank">Resume</a>
-    </div>
 </div>

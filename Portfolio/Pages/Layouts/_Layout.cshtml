@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
+
 <head>
     @* Meta *@
     <meta charset="utf-8" />
@@ -19,13 +20,17 @@
     @* Fonts *@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;600&family=DM+Mono:wght@300;400&display=swap"
+    rel="stylesheet">
 
     @* Umami *@
     <environment include="Production">
-        <script defer src="https://analytics.anthonysafatli.ca/script.js" data-website-id="1f6912a9-63c6-44b0-8a28-12af8843e515"></script>
+        <script defer src="https://analytics.anthonysafatli.ca/script.js"
+                data-website-id="1f6912a9-63c6-44b0-8a28-12af8843e515"></script>
     </environment>
 </head>
+
 <body>
     <div id="tsparticles"></div>
     <canvas class="webgl"></canvas>
@@ -51,11 +56,12 @@
         </main>
 
         <footer class="d-flex justify-content-between align-items-center mt-4 mb-3">
-            <span class="footer-copy">&copy; 2024 — Anthony Safatli</span>
+            <span class="footer-copy">&copy; @Html.Raw(DateTime.Now.Year) — Anthony Safatli</span>
             <nav class="d-flex gap-3 fs-4 footer-icons">
                 <a href="https://github.com/AnthonySafatli" class="fa fa-github" target="_blank"></a>
                 <a href="https://www.instagram.com/anthonysafatli124/" class="fa fa-instagram" target="_blank"></a>
-                <a href="https://www.linkedin.com/in/anthony-safatli-755823296/" class="fa fa-linkedin" target="_blank"></a>
+                <a href="https://www.linkedin.com/in/anthony-safatli-755823296/" class="fa fa-linkedin"
+                   target="_blank"></a>
                 <a href="mailto:anthonysafatli@dal.ca" class="fa fa-envelope"></a>
             </nav>
         </footer>
@@ -64,4 +70,5 @@
     @await Html.PartialAsync("_LayoutGlobe")
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>

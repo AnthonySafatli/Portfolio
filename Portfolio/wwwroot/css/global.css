@@ -98,22 +98,26 @@ a:hover:not(.no-glow) * {
 	text-shadow: var(--glow);
 }
 
-/* Button */
-
 .button {
+	font-family: var(--font-mono);
+	font-size: 0.78rem;
+	letter-spacing: 0.12em;
 	color: var(--clr-accent);
-	font-size: var(--btn-font-size);
-	padding: var(--btn-padding);
-	border-radius: var(--btn-radius);
-	border: var(--btn-border-width) solid var(--clr-accent);
-	background-color: var(--clr-btn-bg);
+	padding: 0.45rem 1.1rem;
+	border-radius: 3px;
+	border: 1px solid rgba(126, 232, 232, 0.25);
+	background-color: transparent;
 	transition: var(--transition);
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	text-decoration: none;
 }
 
 .button:hover {
 	color: var(--clr-accent-light);
+	border-color: var(--clr-accent);
 	text-shadow: none;
-	border-color: var(--clr-accent-light);
 	box-shadow: var(--glow);
 }
 
