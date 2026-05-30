@@ -176,3 +176,24 @@
 		display: none;
 	}
 }
+
+.card-tags {
+	display: flex;
+	gap: 0.5rem;
+	align-items: center;
+	margin-top: 0.25rem;
+}
+
+.card-tags img {
+	height: 1.1rem;
+	width: auto;
+	opacity: 0.7;
+	transition:
+		opacity 0.2s ease,
+		filter 0.2s ease;
+}
+
+.project-card:hover .card-tags img {
+	opacity: 1;
+	filter: drop-shadow(0 0 4px rgba(126, 232, 232, 0.4));
+}

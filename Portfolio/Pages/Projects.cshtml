@@ -45,11 +45,11 @@
                                     @project.DateStarted.Value.ToString("MMM yyyy")
                                     @if (project.DateEnded.HasValue)
                                     {
-                                        <span> – @project.DateEnded.Value.ToString("MMM yyyy")</span>
+                                        <span> — @project.DateEnded.Value.ToString("MMM yyyy")</span>
                                     }
                                     else
                                     {
-                                        <span> – Present</span>
+                                        <span> — Present</span>
                                     }
                                 </span>
                             }
@@ -72,6 +72,16 @@
                                 <span class="card-link-icon fa fa-download" title="Download"></span>
                             }
                         </div>
+
+                        @if (project.TechStackItems?.Any() == true)
+                        {
+                            <div class="card-tags">
+                                @foreach (var tech in project.TechStackItems)
+                                {
+                                    <img src="@tech.PathToImage" alt="@tech.Name" title="@tech.Name" />
+                                }
+                            </div>
+                        }
                     </div>
                 </a>
             }
