@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
     @* Meta *@
     <meta charset="utf-8" />
@@ -10,6 +11,7 @@
     @* CSS *@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/dist/css/global.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/dist/css/admin.min.css" asp-append-version="true" />
     @await RenderSectionAsync("Styles", required: false)
 
@@ -20,9 +22,11 @@
 
     @* Umami *@
     <environment include="Production">
-        <script defer src="https://analytics.anthonysafatli.ca/script.js" data-website-id="1f6912a9-63c6-44b0-8a28-12af8843e515"></script>
+        <script defer src="https://analytics.anthonysafatli.ca/script.js"
+                data-website-id="1f6912a9-63c6-44b0-8a28-12af8843e515"></script>
     </environment>
 </head>
+
 <body>
     <div id="tsparticles"></div>
     <canvas class="webgl"></canvas>
@@ -66,4 +70,5 @@
     <script src="~/dist/js/background.bundle.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>
