@@ -33,20 +33,25 @@
 
     <div class="container d-flex flex-column min-vh-100">
         <header class="my-4">
-            <nav class="d-flex gap-3">
+            <nav class="admin-nav">
                 @if (User.Identity?.IsAuthenticated ?? false)
                 {
-                    <a asp-page="/Index">Home</a>
-                    <a asp-page="/Admin/Dashboard">Dashboard</a>
-                    <a asp-page="/Admin/Files/Index">File Manager</a>
-                    <a asp-page="/Admin/Messages/Index">Messages</a>
-                    <form method="post" asp-page="/Admin/Logout">
+                    <a class="admin-brand" asp-page="/Admin/Dashboard">Admin</a>
+                    <div class="admin-nav-links">
+                        <a asp-page="/Admin/Dashboard">Dashboard</a>
+                        <a asp-page="/Admin/Projects/Index">Projects</a>
+                        <a asp-page="/Admin/TechStackItems/Index">Tech Stack</a>
+                        <a asp-page="/Admin/Files/Index">Files</a>
+                        <a asp-page="/Admin/Messages/Index">Messages</a>
+                        <a asp-page="/Index">Site</a>
+                    </div>
+                    <form method="post" asp-page="/Admin/Logout" class="admin-logout">
                         <button class="a" type="submit">Logout</button>
                     </form>
                 }
                 else
                 {
-                    <p>Admin Zone</p>
+                    <span class="admin-brand">Admin Zone</span>
                 }
             </nav>
         </header>
@@ -55,16 +60,14 @@
             @RenderBody()
         </main>
 
-        <footer class="d-flex justify-content-between align-items-center mt-4 mb-3">
-            <span>
-                &copy; 2024 - Anthony Safatli
-            </span>
+        <footer class="admin-footer">
+            <span>&copy; @Html.Raw(DateTime.Now.Year) — Anthony Safatli</span>
         </footer>
     </div>
 
     <script>var globePos = [0, -0.1, -4];</script>
     <script>var lowColour = [0.5, 0.5, 0.5]; var highColour = [0.9, 0.9, 0.9]; var wireColour = 0x303030;</script>
-    <script>var globeOpacity = 0.3;</script>
+    <script>var globeOpacity = 0.1;</script>
     <script src="~/lib/tsparticles/tsparticles.bundle.min.js" asp-append-version="true"></script>
     <script src="~/dist/js/starfield.bundle.js" asp-append-version="true"></script>
     <script src="~/dist/js/background.bundle.js" asp-append-version="true"></script>

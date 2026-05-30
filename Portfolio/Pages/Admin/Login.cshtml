@@ -5,16 +5,17 @@
     ViewData["Title"] = "Login";
 }
 
-<div class="container mt-5">
-    <form method="post" class="d-flex flex-column justify-content-center align-items-center gap-4 fs-4">
-        <div>
-            <div class="hstack gap-3">
-                <label asp-for="Credential.Password"></label>
-                <input type="password" asp-for="Credential.Password" />
+<div class="login-page">
+    <div class="login-box">
+        <span class="login-label">admin access</span>
+        <h1 class="login-title">Sign In</h1>
+
+        <form method="post" class="login-form">
+            <div class="login-field">
+                <label asp-for="Credential.Password">Password</label>
+                <input type="password" asp-for="Credential.Password" placeholder="••••••••" />
             </div>
-        </div>
-        <div class="uninclude">
-            <button class="button fs-5" type="submit">Login</button>
-        </div>
-    </form>
+            <button class="button" type="submit">Login</button>
+        </form>
+    </div>
 </div>

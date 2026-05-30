@@ -5,141 +5,84 @@
     ViewData["Title"] = "Dashboard";
 }
 
-<div class="container mt-5">
+<div class="dash-page">
+    <div class="dash-header">
+        <span class="dash-label">admin</span>
+        <h1 class="dash-title">Dashboard</h1>
+    </div>
 
-    <h1 class="text-center">Dashboard</h1>
-
-    <!-- Messages Section -->
-    @if (Model.NewMessages.Count > 0) 
+    @if (Model.NewMessages.Count > 0)
     {
-        <div class="mb-5 mt-4 border p-3 rounded message-alert">
-            <div class="d-flex align-items-center gap-4 mb-2">
-                <div class="d-flex align-items-center gap-2">
-                    <i class="fw-1 fa fa-exclamation-circle"></i>
-                    <h3 class="m-0">Messages</h3>
-                </div>
-                <p class="m-0">You have <strong>@Model.NewMessages.Count</strong> unread message(s).</p>
+        <div class="dash-alert">
+            <div class="dash-alert-inner">
+                <i class="fa fa-exclamation-circle"></i>
+                <span>
+                    You have
+                    <strong>@Model.NewMessages.Count</strong>
+                    unread message@(Model.NewMessages.Count == 1 ? "" : "s")
+                </span>
+                <a asp-page="/Admin/Messages/Index" class="dash-alert-link">View all</a>
             </div>
 
-            <div class="d-flex justify-content-center">
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="name"></th>
-                            <th>Message</th>
-                            <th>Date</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var message in Model.NewMessages)
-                        {
-                            <tr>
-                                <td class="name">@message.Email</td>
-                                <td>
-                                    @(message.Text != null && message.Text.Length > 100
-                                                                    ? message.Text.Substring(0, 100) + "..."
-                                                                    : message.Text)
-                                </td>
-                                <td>@message.SubmissionTime.ToString("yyyy-MM-dd")</td>
-                                <td>
-                                    <a asp-page="/Admin/Messages/View" asp-route-id="@message.Id">Open</a>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
+            <div class="dash-messages">
+                @foreach (var message in Model.NewMessages)
+                {
+                    <a asp-page="/Admin/Messages/View" asp-route-id="@message.Id" class="dash-message-row no-glow">
+                        <span class="msg-email">@message.Email</span>
+                        <span class="msg-text">
+                            @(message.Text?.Length > 80 ? message.Text.Substring(0, 80) + "…" : message.Text)
+                        </span>
+                        <span class="msg-date">@message.SubmissionTime.ToString("MMM dd")</span>
+                    </a>
+                }
             </div>
         </div>
     }
 
-    <div class="row mt-4">
-
-        <!-- Projects Section -->
-        <div class="col-xl-8">
-            <div class="d-flex justify-content-between align-items-center">
-                <h3>Projects</h3>
-                <a class="button" asp-page="/Admin/Projects/Create">Add Project</a>
+    <div class="dash-cards">
+        <div class="dash-card">
+            <div class="dash-card-icon"><i class="fa fa-code"></i></div>
+            <div class="dash-card-body">
+                <span class="dash-card-label">projects</span>
+                <span class="dash-card-value">@Model.Projects.Count</span>
             </div>
-
-            <div class="mt-3 d-flex justify-content-center">
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="name"></th>
-                            <th>@Html.DisplayNameFor(model => model.Projects[0].PageContent)</th>
-                            <th>@Html.DisplayNameFor(model => model.Projects[0].Thumbnail)</th>
-                            <th>@Html.DisplayNameFor(model => model.Projects[0].Hidden)</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model.Projects)
-                        {
-                            <tr>
-                                <td class="name">
-                                    @Html.DisplayFor(modelItem => item.SortOrder)
-                                    <span>-</span>
-                                    @Html.DisplayFor(modelItem => item.DisplayName)
-                                </td>
-                                <td>
-                                    @if (Model.validPageContent(item.PageContent))
-                                    {
-                                        @Html.Raw("&#x2714;")
-                                    }
-                                </td>
-                                <td>
-                                    <img class="preview img-fluid" alt="thumbnail for @item.DisplayName [@item.Thumbnail]" src="~/projects/@item.Thumbnail" />
-                                </td>
-                                <td>
-                                    @if (item.Hidden)
-                                    {
-                                        @Html.Raw("&#x2714;")
-                                    }
-                                </td>
-                                <td>
-                                    <a asp-page="./Projects/View" asp-route-id="@item.Id">View</a>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
+            <div class="dash-card-links">
+                <a asp-page="/Admin/Projects/Index">View</a>
+                <a asp-page="/Admin/Projects/Create">+ Add</a>
             </div>
         </div>
 
-        <!-- Tech Stack Items Section -->
-        <div class="col-xl-4 mt-4 mt-xl-0">
-            <div class="d-flex justify-content-between align-items-center">
-                <h3>Tech Stack Items</h3>
-                <a class="button" asp-page="/Admin/TechStackItems/Create">Add Item</a>
+        <div class="dash-card">
+            <div class="dash-card-icon"><i class="fa fa-tags"></i></div>
+            <div class="dash-card-body">
+                <span class="dash-card-label">tech stack items</span>
+                <span class="dash-card-value">@Model.TechStackItems.Count</span>
             </div>
+            <div class="dash-card-links">
+                <a asp-page="/Admin/TechStackItems/Index">View</a>
+                <a asp-page="/Admin/TechStackItems/Create">+ Add</a>
+            </div>
+        </div>
 
-            <div class="mt-3 d-flex justify-content-center">
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="name"></th>
-                            <th>@Html.DisplayNameFor(model => model.TechStackItems[0].PathToImage)</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model.TechStackItems)
-                        {
-                            <tr>
-                                <td class="name">
-                                    @Html.DisplayFor(modelItem => item.Name)
-                                </td>
-                                <td>
-                                    <img class="preview img-fluid" alt="thumbnail for @item.Name [@item.PathToImage]" src="~/projects/@item.PathToImage" />
-                                </td>
-                                <td>
-                                    <a asp-page="./TechStackItems/View" asp-route-id="@item.Id">View</a>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
+        <div class="dash-card">
+            <div class="dash-card-icon"><i class="fa fa-envelope"></i></div>
+            <div class="dash-card-body">
+                <span class="dash-card-label">unread messages</span>
+                <span class="dash-card-value">@Model.NewMessages.Count</span>
+            </div>
+            <div class="dash-card-links">
+                <a asp-page="/Admin/Messages/Index">View →</a>
+            </div>
+        </div>
+
+        <div class="dash-card">
+            <div class="dash-card-icon"><i class="fa fa-folder"></i></div>
+            <div class="dash-card-body">
+                <span class="dash-card-label">file manager</span>
+                <span class="dash-card-value">—</span>
+            </div>
+            <div class="dash-card-links">
+                <a asp-page="/Admin/Files/Index">Open →</a>
             </div>
         </div>
     </div>

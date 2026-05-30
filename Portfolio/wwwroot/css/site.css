@@ -35,10 +35,6 @@
 	--transition: color 0.2s ease, text-shadow 0.2s ease, border-color 0.2s ease;
 }
 
-.webgl-cover {
-	background-color: var(--clr-bg-overlay);
-}
-
 * {
 	font-family: var(--font-family);
 	font-weight: var(--font-weight);
