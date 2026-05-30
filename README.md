@@ -32,7 +32,7 @@
  
 | Layer | Technology |
 |-------|-----------|
-| Frontend | Razor Pages, SCSS, Bootstrap, Three.js |
+| Frontend | Razor Pages, Bootstrap, Three.js |
 | Backend | ASP.NET, C#, Python |
 | Auth | ASP.NET Identity Framework |
 | Database | SQLite, Entity Framework ORM |

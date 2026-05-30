@@ -1,4 +1,17 @@
-﻿/* Remove Defaults */
+﻿:root {
+	/* Colors */
+	--secondary-color: #a6f3ff;
+
+	/* Grid */
+	--weeks-columns: 52;
+	--weeks-gap: 4px;
+	--week-size: 5px;
+
+	/* Calculated width: (52 * 5) + (4 * 51) = 464 */
+	--weeks-width: 464px;
+}
+
+/* Remove Defaults */
 * {
 	margin: 0;
 	padding: 0;
@@ -28,13 +41,13 @@ h1 {
 
 h1 #life {
 	font-weight: 450;
-	color: #a6f3ff;
-	text-shadow: 0px 0px 50px #a6f3ff;
+	color: var(--secondary-color);
+	text-shadow: 0 0 50px var(--secondary-color);
 }
 
 h1 #weeks {
 	font-weight: 350;
-	text-shadow: 0px 0px 60px white;
+	text-shadow: 0 0 60px white;
 }
 
 .main-divider {
@@ -48,6 +61,7 @@ h1 #weeks {
 		grid-template-columns: auto;
 	}
 }
+
 .main-divider > div {
 	padding: 20px;
 	flex: 1;
@@ -62,32 +76,29 @@ h1 #weeks {
 	height: 100%;
 	display: grid;
 	place-items: center;
-	grid-template-columns: repeat(52, 1fr);
-	gap: 4px;
+	grid-template-columns: repeat(var(--weeks-columns), 1fr);
+	gap: var(--weeks-gap);
+	width: var(--weeks-width);
 }
 
 .week {
-	width: 5px;
-	height: 5px;
+	width: var(--week-size);
+	height: var(--week-size);
 	background-color: white;
 	opacity: 0.5;
 	border-radius: 100px;
-	padding: 0px;
-	margin: 0px;
+	padding: 0;
+	margin: 0;
 	transition:
 		background-color 0.2s ease,
 		opacity 0.4s ease,
 		box-shadow 0.2s ease;
 }
 
-.weeks {
-	width: 464px;
-}
-
 .selected-week {
-	background-color: #a6f3ff;
+	background-color: var(--secondary-color);
 	opacity: 1;
-	box-shadow: 0 0 20px 0.25px #a6f3ff;
+	box-shadow: 0 0 20px 0.25px var(--secondary-color);
 	transition:
 		background-color 0.5s ease,
 		opacity 1.5s ease,
@@ -107,8 +118,8 @@ h1 #weeks {
 	padding-bottom: 10px;
 	padding-top: 5px;
 	font-weight: 350;
-	color: #a6f3ff;
-	text-shadow: 0px 0px 30px #a6f3ff;
+	color: var(--secondary-color);
+	text-shadow: 0 0 30px var(--secondary-color);
 }
 
 .week-selectors p {
@@ -129,7 +140,7 @@ h1 #weeks {
 .week-selectors p:hover {
 	font-size: larger;
 	font-weight: 400;
-	text-shadow: 0px 0px 15px white;
+	text-shadow: 0 0 15px white;
 	transition:
 		font-size 0.3s ease,
 		font-weight 0.3s ease,
