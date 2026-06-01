@@ -108,17 +108,17 @@
 
 .card-date {
 	font-family: var(--font-mono);
-	font-size: 0.72rem;
+	font-size: 0.8rem;
 	letter-spacing: 0.1em;
-	color: var(--clr-pink-muted);
-	opacity: 0.8;
+	color: var(--clr-pink);
+	opacity: 1;
 }
 
 .card-title {
 	font-family: "Sora", sans-serif;
-	font-size: clamp(1.1rem, 2vw, 1.4rem);
-	font-weight: 400;
-	color: var(--clr-accent);
+	font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+	font-weight: 600;
+	color: var(--clr-accent-light);
 	margin: 0;
 	transition:
 		color 0.2s ease,
@@ -130,11 +130,11 @@
 
 .card-desc {
 	font-family: "Sora", sans-serif;
-	font-size: 0.875rem;
+	font-size: 1rem;
 	font-weight: 300;
-	color: var(--clr-primary);
+	color: var(--clr-accent);
 	margin: 0;
-	opacity: 0.8;
+	opacity: 1;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -147,9 +147,9 @@
 }
 
 .card-link-icon {
-	font-size: 0.85rem;
-	color: var(--clr-pink-muted);
-	opacity: 0.65;
+	font-size: 1rem;
+	color: var(--clr-pink);
+	opacity: 0.9;
 }
 
 .project-card:hover .card-arrow {
