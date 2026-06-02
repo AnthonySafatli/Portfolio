@@ -5,12 +5,11 @@
  * Usage – add to your HTML before </body>:
  *
  *   <script
- *     src="project-badge.js"
- *     data-portfolio="https://yourportfolio.com/projects/my-project"
- *     data-github="https://github.com/you/my-project"
- *     data-label="My Project"        <!-- optional, shown in popup -->
+ *     src="https://anthonysafatli.ca/dist/js/project-badge.bundle.js"
+ *     data-portfolio="https://anthonysafatli.ca/Project/my-project"
+ *     data-github="https://github.com/AnthonySafatli/my-project"
+ *     data-label="My Project"        <!-- [optional] name shown in popup -->
  *     data-position="bottom-right"   <!-- bottom-right (default) | bottom-left | top-right | top-left -->
- *     data-size="52px"               <!-- size of the icon -->
  *   ></script>
  */
 
@@ -23,12 +22,11 @@
 	const githubUrl = script?.dataset.github || "#";
 	const label = script?.dataset.label || "Project";
 	const position = script?.dataset.position || "bottom-right";
-	const size = script?.dataset.size || "52px";
 
 	/* ── CSS ────────────────────────────────────────────────────────────── */
 	const css = `
     #pb-badge {
-      --pb-size: ${size};
+      --pb-size: 60px;
       --pb-gap: 16px;
       --pb-bg: #0a0a0a;
       --pb-border: rgba(126, 232, 232, 0.15);
@@ -166,7 +164,7 @@
   `;
 
 	/* ── SVG icons ──────────────────────────────────────────────────────── */
-	const iconTrigger = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+	const iconTrigger = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
     <circle cx="12" cy="12" r="10"/>
     <line x1="12" y1="8" x2="12" y2="12"/>
     <line x1="12" y1="16" x2="12.01" y2="16"/>
